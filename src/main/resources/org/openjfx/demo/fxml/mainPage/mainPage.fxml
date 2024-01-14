@@ -3,5 +3,5 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane xmlns:fx="http://java.sun.com/JSP/Page">
-    <fx:include source="navbar.fxml"/>
+    <fx:include source="../loginPage.fxml"/>
 </AnchorPane>
