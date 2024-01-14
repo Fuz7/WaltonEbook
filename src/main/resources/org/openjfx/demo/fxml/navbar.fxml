@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="90.0" prefWidth="1800.0" spacing="60.0" styleClass="navBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.demo.mainPageController">
+    <ImageView fitHeight="63.0" fitWidth="64.0">
+        <HBox.margin>
+            <Insets left="50.0" right="20.0" top="8.0" />
+        </HBox.margin>
+        <Image url="@../images/logo.png" />
+    </ImageView>
+    <Button mnemonicParsing="false" styleClass="navButton" text="Home">
+        <HBox.margin>
+            <Insets top="15.0" />
+        </HBox.margin>
+    </Button>
+    <Button mnemonicParsing="false" styleClass="navButton" text="Search">
+        <HBox.margin>
+            <Insets top="15.0" />
+        </HBox.margin>
+    </Button>
+    <Button mnemonicParsing="false" styleClass="navButton" text="My Book">
+        <HBox.margin>
+            <Insets top="15.0" />
+        </HBox.margin>
+    </Button>
+    <Button mnemonicParsing="false" styleClass="navButton" text="Cash In">
+        <HBox.margin>
+            <Insets top="15.0" />
+        </HBox.margin>
+    </Button>
+    <Button mnemonicParsing="false" styleClass="navButton" text="About Us">
+        <HBox.margin>
+            <Insets top="15.0" />
+        </HBox.margin>
+    </Button>
+    <StackPane prefHeight="85.0" prefWidth="319.0">
+        <padding>
+            <Insets bottom="2.0" />
+        </padding>
+        <TextField prefHeight="50.0" prefWidth="319.0" promptText="Enter Book Name">
+           <font>
+               <Font size="24.0" />
+           </font>
+           <StackPane.margin>
+               <Insets />
+           </StackPane.margin>
+           <padding>
+               <Insets left="10.0" right="27.0" />
+           </padding>
+        </TextField>
+        <ImageView fitHeight="24.0" fitWidth="24.0" styleClass="searchLogo">
+            <StackPane.margin>
+                <Insets left="280.0" />
+            </StackPane.margin>
+            <Image url="@../images/searchLogo.png" />
+        </ImageView>
+    </StackPane>
+    <ImageView styleClass="profileLogo">
+        <HBox.margin>
+            <Insets left="40.0" top="10.0" />
+        </HBox.margin>
+        <Image url="@../images/profileLogo.png" />
+    </ImageView>
+    <padding>
+        <Insets left="50.0" top="5.0" />
+    </padding>
+</HBox>

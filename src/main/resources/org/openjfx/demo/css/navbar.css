@@ -1,0 +1,20 @@
+.navBar{
+    -fx-background-color: #D9D9D9;
+    -fx-min-width: 100%;
+}
+
+.navButton{
+    -fx-font-family: "Karla";
+    -fx-font-size: 28px;
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.searchLogo{
+    -fx-cursor: text;
+}
+
+.profileLogo{
+    -fx-cursor: hand;
+}
