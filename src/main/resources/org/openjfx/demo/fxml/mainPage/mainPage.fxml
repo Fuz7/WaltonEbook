@@ -1,7 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://java.sun.com/JSP/Page">
-    <fx:include source="../loginPage.fxml"/>
-</AnchorPane>
+<VBox prefHeight="634.0" prefWidth="1800.0" stylesheets="@../../css/mainPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <fx:include source="../navbar.fxml" />
+      <HBox prefHeight="300.0" prefWidth="1550.0" styleClass="topChoiceContainer">
+         <VBox.margin>
+            <Insets left="125.0" right="125.0" top="35.0" />
+         </VBox.margin>
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="500.0">
+               <children>
+                  <StackPane prefHeight="50.0" prefWidth="550.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoiceWaltonText" text="Walton's Top Choice">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </StackPane>
+                  <ImageView fitHeight="200.0" fitWidth="200.0">
+                     <image>
+                        <Image url="@../../images/waltonSleeping.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe4c9" height="300.0" stroke="BLACK" strokeType="INSIDE" width="4.0" />
+            <HBox prefHeight="300.0" prefWidth="1050.0">
+               <children>
+                  <ImageView fitHeight="279.0" fitWidth="200.0" pickOnBounds="true" styleClass="topChoice__imageCard">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <HBox.margin>
+                        <Insets left="50.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="300.0" prefWidth="769.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                     <children>
+                        <StackPane prefHeight="1.0" prefWidth="768.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__imageTitle" text="Atomic Habits">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

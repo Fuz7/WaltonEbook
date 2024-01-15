@@ -1,0 +1,24 @@
+.topChoiceContainer{
+    -fx-background-color: linear-gradient(to bottom right, #534298 0%, #571616 50%);
+    -fx-background-radius: 4;
+}
+
+.topChoiceWaltonText{
+    -fx-fill: #ffffff;
+    -fx-font-family: 'Kaisei Decol';
+    -fx-font-weight: bold;
+}
+
+.topChoice__imageContainer{
+    -fx-background-radius: 6;
+    -fx-padding: 6;
+}
+.topChoice__imageCard{
+    -fx-image: url("../images/at.jpeg");
+}
+
+.topChoice__imageTitle{
+    -fx-fill: #ffffff;
+    -fx-font-family: 'Kaisei Decol';
+    -fx-font-weight: 500;
+}

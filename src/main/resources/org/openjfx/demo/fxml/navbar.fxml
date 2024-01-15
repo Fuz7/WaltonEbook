@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="90.0" prefWidth="1800.0" spacing="60.0" styleClass="navBar" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.demo.mainPageController">
+<HBox prefHeight="90.0" prefWidth="1800.0" spacing="60.0" styleClass="navBar"  stylesheets="@../css/navbar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.demo.mainPageController">
     <ImageView styleClass="logo" fitHeight="63.0" fitWidth="64.0">
         <HBox.margin>
             <Insets left="50.0" right="20.0" top="8.0" />

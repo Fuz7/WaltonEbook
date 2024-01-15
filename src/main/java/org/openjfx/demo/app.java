@@ -16,10 +16,10 @@ public class app extends Application {
         Font.loadFont(app.class.getResourceAsStream("fonts/KottaOne-Regular.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/MergeOne-Regular.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/Merienda-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/KaiseiDecol-Regular.ttf"), 16);
 
         FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage/mainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(Objects.requireNonNull(app.class.getResource("css/navbar.css")).toExternalForm());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
