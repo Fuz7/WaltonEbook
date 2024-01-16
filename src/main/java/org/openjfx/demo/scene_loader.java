@@ -2,6 +2,7 @@ package org.openjfx.demo;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,4 +37,19 @@ public class scene_loader {
             e.printStackTrace(); // Handle the exception according to your needs
         }
     }
+
+    public static void loadFonts(){
+        Font.loadFont(app.class.getResourceAsStream("fonts/Karla-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/KottaOne-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/MergeOne-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Merienda-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/KaiseiDecol-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/FugazOne-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Karma-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Koho-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/KaushanScript-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Kanit-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Buenard-Regular.ttf"), 16);
+    }
+
 }

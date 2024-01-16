@@ -7,6 +7,7 @@
     -fx-fill: #ffffff;
     -fx-font-family: 'Kaisei Decol';
     -fx-font-weight: bold;
+    -fx-font-size: 40;
 }
 
 .topChoice__imageContainer{
@@ -21,4 +22,53 @@
     -fx-fill: #ffffff;
     -fx-font-family: 'Kaisei Decol';
     -fx-font-weight: 500;
+    -fx-font-size: 36;
+}
+
+.topChoice__descTitle{
+    -fx-fill: #ffffff;
+    -fx-font-family: 'Kaisei Decol';
+    -fx-font-weight: 500;
+    -fx-font-size: 24;
+}
+
+.topChoice__description{
+    -fx-fill: #ffffff;
+    -fx-font-family: 'Kaisei Decol';
+    -fx-font-size: 14;
+}
+
+.topChoice__tags{
+    -fx-fill: rgba(255,255,255,0.85);
+    -fx-font-family: 'Kaisei Decol';
+    -fx-font-size: 12;
+}
+
+.radioButton--active{
+    -fx-fill: linear-gradient(to bottom right, rgba(98,245,184,1) 0%, rgba(105,110,221,1) 100%);
+}
+
+.radioButton:hover{
+    -fx-fill:  linear-gradient(to bottom right, rgba(98,245,184,.5) 0%, rgba(105,110,221,.5) 100%);
+}
+.topPicksText{
+    -fx-font-size: 48;
+    -fx-font-family: 'Fugaz One';
+}
+
+.topPicks__goldCard,
+.topPicks__silverCard,
+.topPicks__bronzeCard{
+    -fx-background-size: cover;
+    -fx-background-color: transparent;
+}
+
+.topPicks__goldCard{
+    -fx-background-image: url('../images/goldCard.png');
+}
+.topPicks__silverCard{
+    -fx-background-image: url('../images/silverCard.png');
+}
+.topPicks__bronzeCard{
+    -fx-background-image: url('../images/bronzeCard.png');
 }
