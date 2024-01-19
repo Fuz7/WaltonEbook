@@ -51,7 +51,8 @@
 .radioButton:hover{
     -fx-fill:  linear-gradient(to bottom right, rgba(98,245,184,.5) 0%, rgba(105,110,221,.5) 100%);
 }
-.topPicksText{
+.topPicksText,
+.latestUploadText{
     -fx-font-size: 48;
     -fx-font-family: 'Fugaz One';
 }
@@ -71,4 +72,62 @@
 }
 .topPicks__bronzeCard{
     -fx-background-image: url('../images/bronzeCard.png');
+}
+
+.goldCard__imageCard{
+    -fx-image: url('../images/at.jpeg');
+}
+
+.monthCards__title,
+.monthCards__author__title,
+.monthCards__description__title{
+    -fx-font-family: 'Buenard-Bold';
+}
+
+.monthCards__title{
+    -fx-font-size: 24;
+}
+
+.monthCards__author__title,
+.monthCards__author__data{
+    -fx-font-size: 14;
+}
+
+.monthCards__description__title{
+    -fx-font-size: 12;
+}
+
+.monthCards__description__data{
+    -fx-font-size: 10;
+}
+
+.monthCards__genre__title,
+.monthCards__genre__data{
+    -fx-font-family: 'Buenard';
+    -fx-font-size: 10;
+}
+
+.monthCards__buyNowButton{
+    -fx-font-family: 'Kanit';
+    -fx-font-size: 14;
+    -fx-background-color: #f3f3f3;
+    -fx-background-radius:3;
+    -fx-border-width: 1;
+    -fx-border-color: #000000;
+    -fx-border-radius: 3;
+    -fx-background-insets: 1;
+}
+
+.monthCards__priceTag{
+    -fx-font-family: 'Karma';
+    -fx-font-size: 14;
+}
+
+.monthCardFirstButton{
+    -fx-background-color: #ffffff;
+}
+
+.monthCards__sold{
+    -fx-font-family: 'Koho';
+    -fx-font-size: 20;
 }
