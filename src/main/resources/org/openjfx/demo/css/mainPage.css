@@ -15,7 +15,7 @@
     -fx-padding: 6;
 }
 .topChoice__imageCard{
-    -fx-image: url("../images/books/at.jpeg");
+    -fx-image: url("../images/books/b1.jpg");
 }
 
 .topChoice__imageTitle{
@@ -75,7 +75,7 @@
 }
 
 .goldCard__imageCard{
-    -fx-image: url('../images/books/at.jpeg');
+    -fx-image: url('../images/books/b1.jpg');
 }
 
 .monthCards__title,
