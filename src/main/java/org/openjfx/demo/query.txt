@@ -1,1 +1,59 @@
-INSERT INTO
+
+INSERT INTO book_details (book_id, title, image_link,genre,author_id,availability,book_price,book_sold)
+  VALUES (5,"The Unfair Advantage","books/b5.jpg","Nonfiction, Entrepreneurship,  Psychology", 5,1,6.00, 9);
+
+INSERT INTO book_description (description) VALUES("This innovative book shows how to identify your own
+unfair advantages and apply them to any project. Drawing on over two decades of hands-on experience, including
+as the first Marketing Director of Just Eat, the authors offer a unique framework for
+assessing your external circumstances in addition to your internal strengths.");
+
+INSERT INTO user_data (email,username,password) VALUES ("unfairadvantages@gmail.com","Ash Ali","ashali2131");
+
+
+INSERT INTO book_details (book_id, title, image_link,genre,author_id,availability,book_price,book_sold)
+  VALUES (4,"Man's Search For Meaning","books/b4.jpg","Nonfiction, Psychology, History, Memoir, Biography", 4,1,3.00, 97);
+
+INSERT INTO book_description (description) VALUES("Man's Search for Meaning is a 1946 book by Viktor Frankl
+chronicling his experiences as a prisoner in Nazi concentration camps during World War II, and describing
+his psychotherapeutic method, which involved identifying a purpose to each person's life through one of
+three ways: the completion of tasks, caring for another person, or finding meaning by facing suffering with
+dignity.");
+
+INSERT INTO user_data (email,username,password) VALUES ("logotherapy@gmail.com","Viktor E. Frankl","logotherapy1z2");
+
+
+INSERT INTO book_details (book_id, title, image_link,genre,author_id,availability,book_price,book_sold)
+    VALUES (3,"Can't Hurt Me","books/b3.jpg","Nonfiction, Biography, Psychology, Leadership", 3,1, 5.00, 13);
+
+INSERT INTO book_description (description) VALUES("Can't Hurt Me: Master Your Mind and Defy the Odds
+is as much motivational as it is an autobiographical book. It follows David's life from his hard and
+trauma-filled childhood all the way to his becoming one of the world's best endurance athletes and a
+motivational speaker.");
+
+INSERT INTO user_data (email,username,password) VALUES ("stayhard@gmail.com","David Goggins","stayhard101");
+
+
+
+
+INSERT INTO book_details (book_id, title, image_link,genre,author_id,availability,book_price,book_sold)
+    VALUES (2,"Metamorphosis","books/b2.jpg","Drama, Classics, Fantasy, Fiction", 2,1, 8.50,23);
+
+INSERT INTO book_description (description) VALUES("The Metamorphosis by Franz Kafka is about a man named
+Gregor Samsa who becomes an insect. Until this incident, Gregor has worked hard to support his parents and
+sister. After he can no longer provide for their financial comfort, Gregor discovers that his family can indeed work.");
+
+INSERT INTO user_data (email,username,password) VALUES ("franzkafka@gmail.com","Franz Kafka", "franzpassword123");
+
+
+INSERT INTO book_details (book_id, title, image_link,genre,author_id,availability,book_price,book_sold)
+                          VALUES (1,"Atomic Habits","books/b1.jpg","Action, Self-Improvement", 1,1, 5.50,2);
+
+
+INSERT INTO book_description (description) VALUES("No matter your goals, Atomic Habits
+offers a proven framework for improving—every day. James Clear,
+one of the world's leading experts on habit formation,
+reveals practical strategies that will teach you exactly
+how to form good habits, break bad ones, and master
+the tiny behaviors that lead to remarkable results.");
+
+INSERT INTO user_data (email,username,password) VALUES ("jamesclear@gmail.com","James Clear","jamespassword123");
