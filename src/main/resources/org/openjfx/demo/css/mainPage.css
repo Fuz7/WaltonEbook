@@ -43,14 +43,15 @@
     -fx-font-family: 'Kaisei Decol';
     -fx-font-size: 12;
 }
-
-.radioButton--active{
-    -fx-fill: linear-gradient(to bottom right, rgba(98,245,184,1) 0%, rgba(105,110,221,1) 100%);
-}
-
 .radioButton:hover{
     -fx-fill:  linear-gradient(to bottom right, rgba(98,245,184,.5) 0%, rgba(105,110,221,.5) 100%);
 }
+
+.radioButton--active.active{
+    -fx-fill: linear-gradient(to bottom right, rgba(98,245,184,1) 0%, rgba(105,110,221,1) 100%);
+}
+
+
 .topPicksText,
 .latestUploadText{
     -fx-font-size: 48;
@@ -62,6 +63,7 @@
 .topPicks__bronzeCard{
     -fx-background-size: cover;
     -fx-background-color: transparent;
+    -fx-cursor: hand;
 }
 
 .topPicks__goldCard{
@@ -74,9 +76,6 @@
     -fx-background-image: url('../images/bronzeCard.png');
 }
 
-.goldCard__imageCard{
-    -fx-image: url('../images/books/b1.jpg');
-}
 
 .monthCards__title,
 .monthCards__author__title,

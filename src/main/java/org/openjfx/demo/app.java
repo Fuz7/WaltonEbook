@@ -8,11 +8,13 @@ import java.io.IOException;
 
 
 public class app extends Application {
+    static Database_manager db = new Database_manager();
     @Override 
     public void start(Stage stage) throws IOException {
         String location = "jdbc:sqlite:./src/main/java/org/openjfx/demo/test.db";
 
-        Database_manager db = new Database_manager();
+        System.setProperty("prism.order", "sw");
+
         db.init(location);
         db.CreateTablesIfNoExist();
 

@@ -11,7 +11,6 @@ public class Database_manager {
     public String data_location;
 
 
-
     //-------------Intialization-------------//
     // Initialize databse Location
     public void init (String data_location) {
@@ -162,17 +161,23 @@ public class Database_manager {
     public boolean BuyBook(double cost, int user_id, int book_id){
         String updateQuery = "UPDATE user_data SET balance = ?, books_bought = ? WHERE id = ?";
 
-        String[] data = ReturnUserDetailsById(user_id);
-        Double balance = Double.valueOf(data[4]);
+        String[] CurrentUserData = ReturnUserDetailsById(user_id);
+
+        Double balance = Double.valueOf(CurrentUserData[5]);
+
 
         if ((balance - cost) < 0) {
             System.out.println("Not Enough");
             return false;
         } else {
             System.out.println("Successfully bought");
-            // Updates User's cash
-            UpdateUserCash(Integer.valueOf(data[0]), (balance - cost));
-            AddNewBoughtBook(Integer.valueOf(data[0]), String.valueOf(book_id));
+            int User_id = Integer.valueOf(CurrentUserData[0]);
+            // Updates User's Cash
+            UpdateUserCash(User_id, (balance - cost));
+            // Update Bought Books Of The User
+            AddNewBoughtBook(User_id, String.valueOf(book_id));
+            // Add One to Book Sold Count
+            IncreaseBookSoldByOne(book_id);
             return true;
         }
 
@@ -238,6 +243,25 @@ public class Database_manager {
             }
         } catch (SQLException e) {
             // Handle SQLException
+            e.printStackTrace();
+        }
+    }
+    public void IncreaseBookSoldByOne(int bookId) {
+        String incrementSoldQuery = "UPDATE book_details SET book_sold = book_sold + 1 WHERE book_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(this.data_location);
+             PreparedStatement preparedStatement = connection.prepareStatement(incrementSoldQuery)) {
+
+            preparedStatement.setInt(1, bookId);
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                System.out.println("Book sold count incremented successfully for book ID: " + bookId);
+            } else {
+                System.out.println("Failed to increment book sold count for book ID: " + bookId);
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -328,6 +352,27 @@ public class Database_manager {
         // Convert the list to a 2D array
         return dataList.toArray(new Object[0][0]);
     }
+
+
+    public String[] ReturnTopThreeBooks() {
+        String[] topBookIds = new String[3];
+        int count = 0;
+
+        try (Connection connection = DriverManager.getConnection(this.data_location);
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT book_id FROM book_details ORDER BY book_sold DESC LIMIT 3");
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next() && count < 3) {
+                topBookIds[count++] = resultSet.getString("book_id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return topBookIds;}
+
 
 
 
@@ -473,7 +518,7 @@ public class Database_manager {
                     if (resultSet.next()) {
                         data[0] = String.valueOf(resultSet.getInt("id"));
                         data[1] = resultSet.getString("email");
-                        data[2] = resultSet.getString("user_name");
+                        data[2] = resultSet.getString("username");
                         data[3] = resultSet.getString("password");
                         data[4] = String.valueOf(resultSet.getBoolean("admin"));
                         data[5] = String.valueOf(resultSet.getDouble("balance"));
@@ -490,8 +535,7 @@ public class Database_manager {
 
         return data;
     }
-
-
+    // Return Array Of Books Bought By Id
     public String[] ReturnBooksBoughtById(int user_id) {
         String[] booksArray;
 

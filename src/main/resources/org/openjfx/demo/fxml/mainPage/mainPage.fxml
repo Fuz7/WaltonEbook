@@ -24,552 +24,488 @@
 <BorderPane stylesheets="@../../css/mainPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.demo.mainPageController">
    <center>
       <ScrollPane fitToWidth="true" minViewportHeight="780.0" prefHeight="1210.0" prefViewportHeight="780.0" prefWidth="1716.0" BorderPane.alignment="CENTER">
-         <content>
-            <VBox cacheShape="false" prefHeight="1610.0" prefWidth="1701.0" stylesheets="@../../css/mainPage.css">
-               <children>
-                  <HBox prefHeight="300.0" prefWidth="1614.0" styleClass="topChoiceContainer">
+         <VBox cacheShape="false" prefHeight="1610.0" prefWidth="1701.0" stylesheets="@../../css/mainPage.css">
+            <HBox prefHeight="300.0" prefWidth="1614.0" styleClass="topChoiceContainer">
+               <VBox.margin>
+                  <Insets left="100.0" right="59.0" top="50.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow height="16.0" radius="7.75" width="17.0">
+                     <color>
+                        <Color opacity="0.29389312863349915" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="500.0">
+                  <StackPane prefHeight="50.0" prefWidth="550.0">
                      <VBox.margin>
-                        <Insets left="100.0" right="59.0" top="50.0" />
+                        <Insets top="4.0" />
                      </VBox.margin>
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="500.0">
-                           <children>
-                              <StackPane prefHeight="50.0" prefWidth="550.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoiceWaltonText" text="Walton's Top Choice">
-                                       <font>
-                                          <Font size="40.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="4.0" />
-                                 </VBox.margin>
-                              </StackPane>
-                              <ImageView fitHeight="200.0" fitWidth="200.0">
-                                 <image>
-                                    <Image url="@../../images/waltonSleeping.png" />
-                                 </image>
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </ImageView>
-                           </children>
-                        </VBox>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe4c9" height="300.0" stroke="BLACK" strokeType="INSIDE" width="4.0" />
-                        <HBox prefHeight="300.0" prefWidth="1050.0">
-                           <children>
-                              <ImageView fitHeight="251.0" fitWidth="180.0" pickOnBounds="true" styleClass="topChoice__imageCard">
-                                 <viewport>
-                                    <Rectangle2D />
-                                 </viewport>
-                                 <HBox.margin>
-                                    <Insets left="50.0" top="25.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <VBox prefHeight="300.0" prefWidth="769.0">
-                                 <HBox.margin>
-                                    <Insets left="30.0" />
-                                 </HBox.margin>
-                                 <children>
-                                    <StackPane prefHeight="1.0" prefWidth="768.0">
-                                       <children>
-                                          <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__imageTitle" text="Atomic Habits">
-                                             <font>
-                                                <Font size="36.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="4.0" />
-                                       </VBox.margin>
-                                    </StackPane>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__descTitle" text="Description:">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fill="WHITE" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__description" text="The #1 New York Times bestseller. Over 15 million copies sold!Tiny Changes, Remarkable Results No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results." wrappingWidth="720.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                    </Text>
-                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__tags" text="Tags: Self-Improvement, Non-fiction" wrappingWidth="750.0">
-                                       <VBox.margin>
-                                          <Insets top="25.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <HBox fx:id="radioButtonsContainer" alignment="BOTTOM_CENTER" prefHeight="68.0" prefWidth="750.0" spacing="10.0" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow height="12.21" radius="5.605" width="12.21">
-                                                   <color>
-                                                      <Color opacity="0.30534350872039795" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Circle>
-                                          <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow height="12.21" radius="5.605" width="12.21">
-                                                   <color>
-                                                      <Color opacity="0.30534350872039795" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Circle>
-                                          <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow height="12.21" radius="5.605" width="12.21">
-                                                   <color>
-                                                      <Color opacity="0.30534350872039795" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Circle>
-                                          <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow height="12.21" radius="5.605" width="12.21">
-                                                   <color>
-                                                      <Color opacity="0.30534350872039795" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Circle>
-                                          <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                             <effect>
-                                                <DropShadow height="12.21" radius="5.605" width="12.21">
-                                                   <color>
-                                                      <Color opacity="0.30534350872039795" />
-                                                   </color>
-                                                </DropShadow>
-                                             </effect>
-                                          </Circle>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" />
-                                       </padding>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
-                     <effect>
-                        <DropShadow height="16.0" radius="7.75" width="17.0">
-                           <color>
-                              <Color opacity="0.29389312863349915" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </HBox>
-                  <Line endX="1699.0" stroke="#00000026" strokeWidth="2.0">
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoiceWaltonText" text="Walton's Top Choice">
+                        <font>
+                           <Font size="40.0" />
+                        </font>
+                     </Text>
+                  </StackPane>
+                  <ImageView fitHeight="200.0" fitWidth="200.0">
                      <VBox.margin>
-                        <Insets top="120.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topPicksText" text="This Month's Top Picks">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="100.0" top="50.0" />
-                     </VBox.margin>
-                  </Text>
-                  <HBox prefHeight="269.0" prefWidth="1701.0" spacing="56.0">
-                     <padding>
-                        <Insets left="100.0" />
-                     </padding>
-                     <children>
-                        <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__goldCard">
+                     <Image url="@../../images/waltonSleeping.png" />
+                  </ImageView>
+               </VBox>
+               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe4c9" height="300.0" stroke="BLACK" strokeType="INSIDE" width="4.0" />
+               <HBox prefHeight="300.0" prefWidth="1050.0">
+                  <ImageView fx:id="topChoice__imageContainer" fitHeight="251.0" fitWidth="180.0" pickOnBounds="true" styleClass="topChoice__imageCard">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <HBox.margin>
+                        <Insets left="50.0" top="25.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="300.0" prefWidth="769.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                     <StackPane prefHeight="1.0" prefWidth="768.0">
+                        <VBox.margin>
+                           <Insets top="4.0" />
+                        </VBox.margin>
+                        <Text fx:id="topChoice__title" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__imageTitle" text="Atomic Habits">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Text>
+                     </StackPane>
+                     <Text fx:id="topChoice__author" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__descTitle" text="Author: James Clear">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Text>
+                     <Text fx:id="topChoice__description" fill="WHITE" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__description" text="The #1 New York Times bestseller. Over 15 million copies sold!Tiny Changes, Remarkable Results No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results." wrappingWidth="720.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                     </Text>
+                     <Text fx:id="topChoice__genre" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topChoice__tags" text="Tags: Self-Improvement, Non-fiction" wrappingWidth="750.0">
+                        <VBox.margin>
+                           <Insets top="25.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="14.0" />
+                        </font>
+                     </Text>
+                     <HBox fx:id="radioButtonsContainer" alignment="BOTTOM_CENTER" prefHeight="68.0" prefWidth="750.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding>
+                        <Circle fx:id="radioButton1" fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <effect>
-                              <DropShadow height="17.5" radius="8.375" width="18.0">
+                              <DropShadow height="12.21" radius="5.605" width="12.21">
                                  <color>
-                                    <Color opacity="0.19465647637844086" />
+                                    <Color opacity="0.30534350872039795" />
                                  </color>
                               </DropShadow>
                            </effect>
-                           <children>
-                              <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
-                                 <HBox.margin>
-                                    <Insets left="15.0" top="15.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <VBox prefHeight="246.0" prefWidth="308.0">
-                                 <children>
-                                    <StackPane prefHeight="15.0" prefWidth="255.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Atomic Habits">
-                                             <font>
-                                                <Font name="System Bold" size="24.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="11.0" />
-                                       </VBox.margin>
-                                    </StackPane>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text=" James Clear" wrappingWidth="205.81381225585938">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="4.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="The #1 New York Times bestseller. Over 15 million copies sold! Tiny Changes, Remarkable Results No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation." wrappingWidth="296.0">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Text>
-                                          <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Improvement, Non-Fiction, Real Lol">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Buy Now!">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </HBox.margin>
-                                             <styleClass>
-                                                <String fx:value="monthCards__buyNowButton" />
-                                                <String fx:value="monthCardFirstButton" />
-                                             </styleClass>
-                                          </Button>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
-                                             <HBox.margin>
-                                                <Insets bottom="15.0" left="5.0" top="5.0" />
-                                             </HBox.margin>
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Text>
-                                          <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <StackPane.margin>
-                                                      <Insets bottom="10.0" right="10.0" />
-                                                   </StackPane.margin>
-                                                </Text>
-                                             </children>
-                                          </StackPane>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__silverCard">
+                        </Circle>
+                        <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <effect>
-                              <DropShadow height="17.5" radius="8.375" width="18.0">
+                              <DropShadow height="12.21" radius="5.605" width="12.21">
                                  <color>
-                                    <Color opacity="0.19465647637844086" />
+                                    <Color opacity="0.30534350872039795" />
                                  </color>
                               </DropShadow>
                            </effect>
-                           <children>
-                              <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
-                                 <HBox.margin>
-                                    <Insets left="15.0" top="15.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <VBox prefHeight="246.0" prefWidth="308.0">
-                                 <children>
-                                    <StackPane prefHeight="15.0" prefWidth="255.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Natomic">
-                                             <font>
-                                                <Font name="System Bold" size="24.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="11.0" />
-                                       </VBox.margin>
-                                    </StackPane>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text="Not Clear" wrappingWidth="205.81381225585938">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="4.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="Not Best Seller" wrappingWidth="296.0">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Text>
-                                          <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Destruction, Not Lol">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="monthCards__buyNowButton" text="Buy Now!">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
-                                             <HBox.margin>
-                                                <Insets bottom="15.0" left="5.0" top="5.0" />
-                                             </HBox.margin>
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Text>
-                                          <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <StackPane.margin>
-                                                      <Insets bottom="10.0" right="10.0" />
-                                                   </StackPane.margin>
-                                                </Text>
-                                             </children>
-                                          </StackPane>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                        <HBox fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__bronzeCard">
+                        </Circle>
+                        <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <effect>
-                              <DropShadow height="17.5" radius="8.375" width="18.0">
+                              <DropShadow height="12.21" radius="5.605" width="12.21">
                                  <color>
-                                    <Color opacity="0.19465647637844086" />
+                                    <Color opacity="0.30534350872039795" />
                                  </color>
                               </DropShadow>
                            </effect>
-                           <children>
-                              <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
-                                 <HBox.margin>
-                                    <Insets left="15.0" top="15.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                              <VBox prefHeight="246.0" prefWidth="308.0">
-                                 <children>
-                                    <StackPane prefHeight="15.0" prefWidth="255.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Batomic">
-                                             <font>
-                                                <Font name="System Bold" size="24.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="11.0" />
-                                       </VBox.margin>
-                                    </StackPane>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text="But Clear" wrappingWidth="205.81381225585938">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="4.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
-                                       <VBox.margin>
-                                          <Insets top="15.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="Bronze Best Seller" wrappingWidth="296.0">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Text>
-                                    <HBox prefHeight="14.0" prefWidth="259.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets />
-                                             </HBox.margin>
-                                          </Text>
-                                          <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Destruction, Not Lol">
-                                             <font>
-                                                <Font size="10.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="monthCards__buyNowButton" text="Buy Now!">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets bottom="10.0" />
-                                             </HBox.margin>
-                                          </Button>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
-                                             <HBox.margin>
-                                                <Insets bottom="15.0" left="5.0" top="5.0" />
-                                             </HBox.margin>
-                                             <font>
-                                                <Font size="13.0" />
-                                             </font>
-                                          </Text>
-                                          <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                                             <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
-                                                   <font>
-                                                      <Font size="20.0" />
-                                                   </font>
-                                                   <StackPane.margin>
-                                                      <Insets bottom="10.0" right="10.0" />
-                                                   </StackPane.margin>
-                                                </Text>
-                                             </children>
-                                          </StackPane>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="80.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Line endX="1699.0" stroke="#00000026" strokeWidth="2.0">
-                     <VBox.margin>
-                        <Insets top="150.0" />
-                     </VBox.margin>
-                  </Line>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topPicksText" text="Latest Uploads">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="100.0" top="50.0" />
-                     </VBox.margin>
-                  </Text>
-               </children>
-            </VBox>
-         </content>
+                        </Circle>
+                        <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="12.21" radius="5.605" width="12.21">
+                                 <color>
+                                    <Color opacity="0.30534350872039795" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Circle>
+                        <Circle fill="WHITE" onMouseClicked="#onRadioButtonClick" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="radioButton">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="12.21" radius="5.605" width="12.21">
+                                 <color>
+                                    <Color opacity="0.30534350872039795" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Circle>
+                     </HBox>
+                  </VBox>
+               </HBox>
+            </HBox>
+            <Line endX="1699.0" stroke="#00000026" strokeWidth="2.0">
+               <VBox.margin>
+                  <Insets top="120.0" />
+               </VBox.margin>
+            </Line>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topPicksText" text="Popular Now">
+               <font>
+                  <Font size="48.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="100.0" top="50.0" />
+               </VBox.margin>
+            </Text>
+            <HBox prefHeight="269.0" prefWidth="1701.0" spacing="56.0">
+               <padding>
+                  <Insets left="100.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+               <HBox fx:id="goldCard" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__goldCard">
+                  <effect>
+                     <DropShadow height="17.5" radius="8.375" width="18.0">
+                        <color>
+                           <Color opacity="0.19465647637844086" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+                  <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="246.0" prefWidth="308.0">
+                     <StackPane prefHeight="15.0" prefWidth="255.0">
+                        <VBox.margin>
+                           <Insets top="11.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Atomic Habits">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </StackPane>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="4.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text=" James Clear" wrappingWidth="205.81381225585938">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </HBox>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Text>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="The #1 New York Times bestseller. Over 15 million copies sold! Tiny Changes, Remarkable Results No matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation." wrappingWidth="296.0">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </Text>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                        <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Improvement, Non-Fiction, Real Lol">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </HBox>
+                     <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Buy Now!">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="monthCards__buyNowButton" />
+                              <String fx:value="monthCardFirstButton" />
+                           </styleClass>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
+                        <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
+                              <font>
+                                 <Font size="20.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets bottom="10.0" right="10.0" />
+                              </StackPane.margin>
+                           </Text>
+                        </StackPane>
+                     </HBox>
+                  </VBox>
+               </HBox>
+               <HBox fx:id="silverCard" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__silverCard">
+                  <effect>
+                     <DropShadow height="17.5" radius="8.375" width="18.0">
+                        <color>
+                           <Color opacity="0.19465647637844086" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+                  <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="246.0" prefWidth="308.0">
+                     <StackPane prefHeight="15.0" prefWidth="255.0">
+                        <VBox.margin>
+                           <Insets top="11.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Natomic">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </StackPane>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="4.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text="Not Clear" wrappingWidth="205.81381225585938">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </HBox>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Text>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="Not Best Seller" wrappingWidth="296.0">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </Text>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                        <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Destruction, Not Lol">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </HBox>
+                     <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0">
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="monthCards__buyNowButton" text="Buy Now!">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
+                        <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
+                              <font>
+                                 <Font size="20.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets bottom="10.0" right="10.0" />
+                              </StackPane.margin>
+                           </Text>
+                        </StackPane>
+                     </HBox>
+                  </VBox>
+               </HBox>
+               <HBox fx:id="bronzeCard" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="243.0" prefWidth="478.0" spacing="20.0" styleClass="topPicks__bronzeCard">
+                  <effect>
+                     <DropShadow height="17.5" radius="8.375" width="18.0">
+                        <color>
+                           <Color opacity="0.19465647637844086" />
+                        </color>
+                     </DropShadow>
+                  </effect>
+                  <ImageView fitHeight="218.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" styleClass="goldCard__imageCard">
+                     <HBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="246.0" prefWidth="308.0">
+                     <StackPane prefHeight="15.0" prefWidth="255.0">
+                        <VBox.margin>
+                           <Insets top="11.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Batomic">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                     </StackPane>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="4.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__title" text="Author: ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__author__data" text="But Clear" wrappingWidth="205.81381225585938">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                     </HBox>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__title" text="Description: ">
+                        <VBox.margin>
+                           <Insets top="15.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Text>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__description__data" text="Bronze Best Seller" wrappingWidth="296.0">
+                        <font>
+                           <Font size="10.0" />
+                        </font>
+                     </Text>
+                     <HBox prefHeight="14.0" prefWidth="259.0">
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__genre__title" text="Genre:  ">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                        <Label prefHeight="17.0" prefWidth="263.0" styleClass="monthCards__genre__data" text="Self Destruction, Not Lol">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                     </HBox>
+                     <HBox alignment="BOTTOM_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0">
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="monthCards__buyNowButton" text="Buy Now!">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__priceTag" text="18.69$">
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Text>
+                        <StackPane alignment="BOTTOM_CENTER" prefHeight="150.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                           <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__sold" text="Sold : 20" StackPane.alignment="BOTTOM_RIGHT">
+                              <font>
+                                 <Font size="20.0" />
+                              </font>
+                              <StackPane.margin>
+                                 <Insets bottom="10.0" right="10.0" />
+                              </StackPane.margin>
+                           </Text>
+                        </StackPane>
+                     </HBox>
+                  </VBox>
+               </HBox>
+            </HBox>
+            <Line endX="1699.0" stroke="#00000026" strokeWidth="2.0">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+            </Line>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="topPicksText" text="Latest Uploads">
+               <font>
+                  <Font size="48.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="100.0" top="50.0" />
+               </VBox.margin>
+            </Text>
+         </VBox>
       </ScrollPane>
    </center>
    <top>
