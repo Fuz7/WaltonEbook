@@ -1,4 +1,4 @@
-package org.openjfx.demo;
+package org.openjfx.program.controller;
 
 public class loginPageController {
 }

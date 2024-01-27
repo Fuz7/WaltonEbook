@@ -1,7 +1,8 @@
-package org.openjfx.demo;
+package org.openjfx.program.controller;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import org.openjfx.program.scene_loader;
 
 
 public class navbarController {

@@ -1,4 +1,4 @@
-package org.openjfx.demo;
+package org.openjfx.program;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

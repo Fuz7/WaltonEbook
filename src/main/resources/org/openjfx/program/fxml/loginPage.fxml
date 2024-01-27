@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="762.0" styleClass="body" stylesheets="@../css/loginPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.demo.loginPageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="762.0" styleClass="body" stylesheets="@../css/loginPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.loginPageController">
    <children>
       <HBox layoutX="75.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="612.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="106.0">
          <children>

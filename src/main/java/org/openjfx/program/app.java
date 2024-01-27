@@ -1,4 +1,4 @@
-package org.openjfx.demo;
+package org.openjfx.program;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +8,10 @@ import java.io.IOException;
 
 
 public class app extends Application {
-    static Database_manager db = new Database_manager();
+    public static Database_manager db = new Database_manager();
     @Override 
     public void start(Stage stage) throws IOException {
-        String location = "jdbc:sqlite:./src/main/java/org/openjfx/demo/test.db";
+        String location = "jdbc:sqlite:./src/main/java/org/openjfx/program/test.db";
 
         System.setProperty("prism.order", "sw");
 

@@ -1,4 +1,4 @@
-package org.openjfx.demo;
+package org.openjfx.program.controller;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
@@ -14,7 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
+import org.openjfx.program.app;
+import org.openjfx.program.model.BookData;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,23 +27,7 @@ import java.util.ResourceBundle;
 
 public class mainPageController implements Initializable {
 
-    public static class BookData {
-        public String title;
-        public String formattedDescription;
-        public Image image;
-        public String genre;
-        public int bookSold;
-        public double price;
 
-        public BookData(String title, String formattedDescription, Image image, String genre, int bookSold, double price) {
-            this.title = title;
-            this.formattedDescription = formattedDescription;
-            this.image = image;
-            this.genre = genre;
-            this.bookSold = bookSold;
-            this.price = price;
-        }
-    }
     @FXML
     private HBox radioButtonsContainer;
     @FXML
@@ -129,7 +114,7 @@ public class mainPageController implements Initializable {
         String description = (String) value.get(2);
         String formattedDescription = description.replaceAll("\\n", " ");
         String imageLink = (String) value.get(3);
-        String correctPath = String.valueOf(mainPageController.class.getResource("images/" + imageLink));
+        String correctPath = String.valueOf(app.class.getResource("images/" + imageLink));
 
         Image image = new Image(correctPath);
         String genre = "Tags: " + value.get(4);
