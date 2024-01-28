@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,7 +49,8 @@ public class mainPageController implements Initializable {
     private HBox silverCard;
     @FXML
     private HBox bronzeCard;
-
+    @FXML
+    private ScrollPane scrollContainer;
 
     private static boolean fadeAnimating;
 
@@ -235,6 +237,10 @@ public class mainPageController implements Initializable {
             }
 
         }
+
+    }
+
+    public void generateLatestUpload(){
 
     }
 

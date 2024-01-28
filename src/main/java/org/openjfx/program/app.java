@@ -2,7 +2,9 @@ package org.openjfx.program;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -23,8 +25,14 @@ public class app extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage/mainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
+        // Center Screen
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY(0);
+
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {

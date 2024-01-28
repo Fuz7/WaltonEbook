@@ -12,10 +12,10 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="90.0" prefWidth="1700.0" spacing="60.0" styleClass="navBar" stylesheets="@../css/navbar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.navbarController">
+<HBox prefHeight="90.0" prefWidth="1700.0" spacing="70.0" styleClass="navBar" stylesheets="@../css/navbar.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.navbarController">
     <ImageView fitHeight="63.0" fitWidth="64.0" styleClass="logo">
         <HBox.margin>
-            <Insets left="20.0" right="20.0" top="8.0" />
+            <Insets left="40.0" right="20.0" top="8.0" />
         </HBox.margin>
         <Image url="@../images/logo.png" />
     </ImageView>
@@ -29,26 +29,33 @@
             <Insets top="15.0" />
         </HBox.margin>
     </Button>
-    <Button mnemonicParsing="false" styleClass="navButton" text="My Book">
-        <HBox.margin>
-            <Insets top="15.0" />
-        </HBox.margin>
-    </Button>
-    <Button mnemonicParsing="false" styleClass="navButton" text="Cash In">
-        <HBox.margin>
-            <Insets top="15.0" />
-        </HBox.margin>
-    </Button>
+   <StackPane prefHeight="74.0" prefWidth="188.0">
+      <children>
+          <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="188.0" styleClass="navButton" text="My Book" StackPane.alignment="CENTER_LEFT">
+            <padding>
+               <Insets right="40.0" />
+            </padding>
+          </Button>
+         <ImageView>
+            <image>
+               <Image url="@../images/dropDownIcon.png" />
+            </image>
+            <StackPane.margin>
+               <Insets left="135.0" top="5.0" />
+            </StackPane.margin>
+         </ImageView>
+      </children>
+   </StackPane>
     <Button mnemonicParsing="false" styleClass="navButton" text="About Us">
         <HBox.margin>
             <Insets top="15.0" />
         </HBox.margin>
     </Button>
-    <StackPane prefHeight="85.0" prefWidth="319.0">
+    <StackPane prefHeight="85.0" prefWidth="363.0">
         <padding>
             <Insets bottom="2.0" />
         </padding>
-        <TextField prefHeight="50.0" prefWidth="319.0" promptText="Enter Book Name">
+        <TextField prefHeight="50.0" prefWidth="359.0" promptText="Enter Book Name">
            <font>
                <Font size="24.0" />
            </font>
@@ -56,7 +63,7 @@
                <Insets />
            </StackPane.margin>
            <padding>
-               <Insets left="10.0" right="27.0" />
+               <Insets left="10.0" right="38.0" />
            </padding>
          <effect>
             <InnerShadow height="10.0" radius="3.87" width="7.48">
@@ -66,16 +73,16 @@
             </InnerShadow>
          </effect>
         </TextField>
-        <ImageView fitHeight="24.0" fitWidth="24.0" styleClass="searchLogo">
+        <ImageView fitHeight="27.0" fitWidth="27.0" styleClass="searchLogo" StackPane.alignment="CENTER">
             <StackPane.margin>
-                <Insets left="280.0" />
+                <Insets left="305.0" top="2.0" />
             </StackPane.margin>
             <Image url="@../images/searchLogo.png" />
         </ImageView>
     </StackPane>
     <ImageView styleClass="profileLogo">
         <HBox.margin>
-            <Insets left="30.0" top="10.0" />
+            <Insets left="35.0" top="10.0" />
         </HBox.margin>
         <Image url="@../images/profileLogo.png" />
       <effect>

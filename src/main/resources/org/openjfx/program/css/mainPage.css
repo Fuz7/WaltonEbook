@@ -130,3 +130,24 @@
     -fx-font-family: 'Koho';
     -fx-font-size: 20;
 }
+
+.latestCard{
+    -fx-background-color: #B22222;
+    -fx-background-radius: 6 6 4 4;
+    -fx-cursor:hand;
+}
+
+.latestCard__textContainer{
+
+    -fx-background-color: linear-gradient(to right bottom, #202020, #2b2b2c, #373838, #434444, #4f5151);
+    -fx-background-radius: 0 0 6 6;
+}
+
+.latestCard__text{
+    -fx-font-size:16;
+    -fx-font-family: 'Buenard';
+}
+
+.test{
+    -fx-image: url('../images/books/b3.jpg');
+}

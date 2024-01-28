@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -21,9 +22,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <BorderPane stylesheets="@../../css/mainPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.mainPageController">
    <center>
-      <ScrollPane fitToWidth="true" minViewportHeight="780.0" prefHeight="1210.0" prefViewportHeight="780.0" prefWidth="1716.0" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" minViewportHeight="900.0" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1716.0" vbarPolicy="ALWAYS" vmax="800.0" BorderPane.alignment="CENTER">
          <VBox cacheShape="false" prefHeight="1610.0" prefWidth="1701.0" stylesheets="@../../css/mainPage.css">
             <HBox prefHeight="300.0" prefWidth="1614.0" styleClass="topChoiceContainer">
                <VBox.margin>
@@ -505,6 +507,296 @@
                   <Insets left="100.0" top="50.0" />
                </VBox.margin>
             </Text>
+            <FlowPane hgap="90.0" prefHeight="770.0" prefWidth="1701.0" vgap="60.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
+                     <children>
+                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <StackPane alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="252.0" styleClass="latestCard__textContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="25.0" prefWidth="203.0" styleClass="latestCard__text" text="Walton In Alternate Reality" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="15.14" radius="6.3375" spread="0.31" width="12.21">
+                           <color>
+                              <Color opacity="0.4770992398262024" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="120.0" top="100.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="100.0" right="100.0" />
+               </padding>
+            </FlowPane>
          </VBox>
       </ScrollPane>
    </center>
