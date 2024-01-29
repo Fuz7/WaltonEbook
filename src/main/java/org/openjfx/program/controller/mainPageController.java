@@ -167,7 +167,6 @@ public class mainPageController implements Initializable {
         BookData cardBookData = getBookData(id);
         String authorName = app.db.ReturnAuthorNameById(id);
         String ellipsesDescription = limitWithEllipsis(cardBookData.formattedDescription,320);
-        System.out.println(cardBookData.image);
         String formattedPrice = String. format("%.2f$",cardBookData.price);
 
         for (javafx.scene.Node node : hbox.getChildren()) {

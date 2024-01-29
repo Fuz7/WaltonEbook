@@ -1,0 +1,61 @@
+.body{
+    -fx-background-color: #F4F4F4;
+}
+
+.formContent{
+    -fx-background-color: white;
+    -fx-background-radius: 0 8 8 0;
+}
+
+.blackBar{
+    -fx-background-color: black;
+    -fx-background-radius: 8 0 0 8;
+}
+
+.userInput,
+.passwordInput{
+    -fx-border-color: black;
+    -fx-border-radius: 3;
+}
+
+.userLabel,
+.passwordLabel{
+    -fx-font-family: 'Kotta One';
+}
+
+.errorText{
+    -fx-font-family: 'Merge One';
+}
+
+.loginButton,
+.createAccountButton{
+    -fx-font-family: Merienda;
+    -fx-font-size: 24;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+}
+
+.createAccountButton{
+    -fx-font-size: 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color:  linear-gradient(to top right,#f9f9f9, #4e4e4e);
+}
+
+.createAccountButton:focused {
+    -fx-background-radius: 8;
+    -fx-background-insets: 0, 1, 1;
+
+}
+.createAccountButton:hover,
+.loginButton:hover{
+    -fx-background-color: #E3D7EA;
+}
+
+.loginButton:focused {
+    -fx-background-radius: 5;
+    -fx-background-insets: 0, 1, 1;
+}
