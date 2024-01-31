@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.openjfx.program.app;
@@ -27,6 +28,20 @@ public class loginPageController implements Initializable {
 
     public void initialize(URL locations, ResourceBundle resources) {
         login__errorText.setVisible(false);
+        login__emailInput.setOnKeyPressed(ev -> {
+            if (ev.getCode() == KeyCode.ENTER) {
+                loginButtonOnclickHandler();
+            }else{
+                loginInputsOnChangeHandler();
+            }
+        });
+        login__passwordInput.setOnKeyPressed(ev -> {
+            if (ev.getCode() == KeyCode.ENTER) {
+                loginButtonOnclickHandler();
+            }else{
+                loginInputsOnChangeHandler();
+            }
+        });
     }
 
     public void loginInputsOnChangeHandler(){
@@ -36,7 +51,7 @@ public class loginPageController implements Initializable {
     }
 
     @FXML
-    public void loginButtonOnclickHandler(MouseEvent event) {
+    public void loginButtonOnclickHandler() {
         String email = login__emailInput.getText();
         String password = login__passwordInput.getText();
 
