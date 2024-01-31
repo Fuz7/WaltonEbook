@@ -12,11 +12,18 @@
     -fx-background-radius: 8 0 0 8;
 }
 
-.userInput,
-.passwordInput{
+.login__emailInput,
+.login__passwordInput{
     -fx-border-color: black;
     -fx-border-radius: 3;
 }
+
+.login__emailInput--error,
+.login__passwordInput--error{
+    -fx-border-color: red;
+}
+
+
 
 .userLabel,
 .passwordLabel{
@@ -26,6 +33,8 @@
 .errorText{
     -fx-font-family: 'Merge One';
 }
+
+
 
 .loginButton,
 .createAccountButton{

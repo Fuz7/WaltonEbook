@@ -44,7 +44,7 @@
                               <Insets top="2.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="38.0" prefWidth="294.0" styleClass="userInput">
+                        <TextField fx:id="login__emailInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__emailInput">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -67,7 +67,7 @@
                               <Insets top="2.0" />
                            </HBox.margin>
                         </Label>
-                        <PasswordField prefHeight="38.0" prefWidth="294.0" styleClass="passwordInput">
+                        <PasswordField fx:id="login__passwordInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__passwordInput">
                            <HBox.margin>
                               <Insets left="27.5" top="3.0" />
                            </HBox.margin>
@@ -83,7 +83,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="503.0" styleClass="errorText" text="Incorrect username/password, try again." textFill="#c60a0a">
+                  <Label fx:id="login__errorText" alignment="CENTER" prefHeight="25.0" prefWidth="503.0" styleClass="errorText" text="Incorrect username/password, try again." textFill="#c60a0a">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -93,7 +93,7 @@
                   </Label>
                   <StackPane prefHeight="46.0" prefWidth="503.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="loginButton" text="Login">
+                        <Button mnemonicParsing="false" onMousePressed="#loginButtonOnclickHandler" prefHeight="50.0" prefWidth="150.0" styleClass="loginButton" text="Login">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -113,7 +113,7 @@
                   </Separator>
                   <StackPane prefHeight="81.0" prefWidth="503.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="200.0" styleClass="createAccountButton" text="Create New Account" textAlignment="CENTER" wrapText="true">
+                        <Button mnemonicParsing="false" onMousePressed="#switchToCreateAccountScene" prefHeight="65.0" prefWidth="200.0" styleClass="createAccountButton" text="Create New Account" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="20.0" />
                            </font>

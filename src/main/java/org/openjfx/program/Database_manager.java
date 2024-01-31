@@ -269,10 +269,8 @@ public class Database_manager {
 
 
 
-
-
     //-------------RETURN ALL-------------//
-    // Return all book data
+    // Return All Book Data
     public void ReturnAllBooks(){
         try (Connection connection = DriverManager.getConnection(this.data_location)) {
             // SQL statement to retrieve all data from the "book_details" table
@@ -315,7 +313,7 @@ public class Database_manager {
             e.printStackTrace();
         }
     }
-    // Return all User data
+    // Return All User Data
     public Object[][] ReturnAllUsers(){
         List<Object[]> dataList = new ArrayList<>();
 
@@ -352,8 +350,7 @@ public class Database_manager {
         // Convert the list to a 2D array
         return dataList.toArray(new Object[0][0]);
     }
-
-
+    // Return Top 3 Books
     public String[] ReturnTopThreeBooks() {
         String[] topBookIds = new String[3];
         int count = 0;
@@ -568,7 +565,66 @@ public class Database_manager {
 
         return booksArray;
     }
+    // Query Builder
+    public List<Object[]> searchBookUsingQuery(String query) {
+        List<Object[]> result = new ArrayList<>();
 
+        try (Connection connection = DriverManager.getConnection(this.data_location)) {
+            String retrieveDetailsSQL = "SELECT * FROM book_details " + query;
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(retrieveDetailsSQL)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    Object[] bookDetails = new Object[9];
+                    bookDetails[0] = resultSet.getInt("book_id");
+                    bookDetails[1] = resultSet.getString("title");
+                    bookDetails[2] = returnBookDescriptionById(resultSet.getInt("book_id"));
+                    bookDetails[3] = resultSet.getString("image_link");
+                    bookDetails[4] = resultSet.getString("genre");
+                    bookDetails[5] = resultSet.getInt("author_id");
+                    bookDetails[6] = resultSet.getBoolean("availability");
+                    bookDetails[7] = resultSet.getDouble("book_price");
+                    bookDetails[8] = resultSet.getInt("book_sold");
+
+                    result.add(bookDetails);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
+    //-------------Login System-------------//
+    public int ReturnUserIdByLogIn(String enteredEmail, String enteredPassword) {
+        int userId = -1; // Default value for authentication failure
+
+        try (Connection connection = DriverManager.getConnection(this.data_location)) {
+            String query = "SELECT id FROM user_data WHERE email = ? AND password = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, enteredEmail);
+                preparedStatement.setString(2, enteredPassword);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        // If a record is found, set the userId to the retrieved ID
+                        userId = resultSet.getInt("id");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userId;
+    }
 
 
 

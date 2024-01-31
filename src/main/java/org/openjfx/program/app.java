@@ -6,12 +6,16 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.openjfx.program.security.Login_manager;
+
 import java.io.IOException;
 
 
 public class app extends Application {
     public static Database_manager db = new Database_manager();
-    @Override 
+    public static Login_manager lm = new Login_manager();
+
+    @Override
     public void start(Stage stage) throws IOException {
         String location = "jdbc:sqlite:./src/main/java/org/openjfx/program/test.db";
 
@@ -22,7 +26,7 @@ public class app extends Application {
 
         scene_loader.loadFonts();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage/mainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         // Center Screen
