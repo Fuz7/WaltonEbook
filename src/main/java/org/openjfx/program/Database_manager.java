@@ -11,6 +11,7 @@ public class Database_manager {
     public String data_location;
 
 
+
     //-------------Intialization-------------//
     // Initialize databse Location
     public void init (String data_location) {
@@ -71,6 +72,7 @@ public class Database_manager {
             e.printStackTrace();}
 
     }
+
 
 
 
@@ -373,7 +375,6 @@ public class Database_manager {
 
 
 
-
     //-------------Specific Return-------------//
     // Return Specific Book Details
     public List<Object> ReturnBookDetailsById(int bookId){
@@ -602,7 +603,10 @@ public class Database_manager {
     }
 
 
+
+
     //-------------Login System-------------//
+    // Check IF username and Password Matches
     public int ReturnUserIdByLogIn(String enteredEmail, String enteredPassword) {
         int userId = -1; // Default value for authentication failure
 
@@ -625,6 +629,49 @@ public class Database_manager {
 
         return userId;
     }
+
+
+
+
+
+    //-------------Checker-------------//
+    // Check IF Name Arleady Exist
+    public boolean CheckIfUserNameAlreadyExist(String username) {
+        String query = "SELECT COUNT(*) FROM user_data WHERE username = ?";
+        try (Connection connection = DriverManager.getConnection(this.data_location);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    // Check If Username Already Exist
+    public boolean CheckIfEmailAlreadyExist(String email) {
+        String query = "SELECT COUNT(*) FROM user_data WHERE email = ?";
+        try (Connection connection = DriverManager.getConnection(this.data_location);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 
 
 

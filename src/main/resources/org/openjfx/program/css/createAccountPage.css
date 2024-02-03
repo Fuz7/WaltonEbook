@@ -13,12 +13,21 @@
 }
 
 .userInput,
+.emailInput,
 .passwordInput{
     -fx-border-color: black;
     -fx-border-radius: 3;
 }
 
+.userInput--error,
+.emailInput--error,
+.passwordInput--error{
+    -fx-border-color: red;
+    -fx-border-radius: 3;
+}
+
 .userLabel,
+.emailLabel,
 .passwordLabel{
     -fx-font-family: 'Kotta One';
 }
