@@ -13,9 +13,11 @@
 .topChoice__imageContainer{
     -fx-background-radius: 6;
     -fx-padding: 6;
+
 }
 .topChoice__imageCard{
     -fx-image: url("../images/books/b1.jpg");
+    -fx-cursor: hand;
 }
 
 .topChoice__imageTitle{
@@ -150,4 +152,24 @@
 
 .test{
     -fx-image: url('../images/books/b3.jpg');
+}
+
+.mainPage__scrollContainer > .scroll-bar:vertical .thumb{
+    -fx-background-color : #383838;
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2em;
+}
+
+.mainPage__scrollContainer > .scroll-bar:vertical .track{
+     -fx-border-color: rgba(0, 0, 0, 0.4);
+     -fx-border-radius: 10;
+     -fx-border-width: 1;
+ }
+
+.mainPage__scrollContainer > .scroll-bar:vertical .decrement-arrow,
+.mainPage__scrollContainer > .scroll-bar:vertical .increment-arrow{
+    -fx-border-color: #000000;
+}
+.mainPage__scrollContainer{
+
 }
