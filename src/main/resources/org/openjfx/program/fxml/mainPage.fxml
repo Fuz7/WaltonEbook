@@ -25,10 +25,10 @@
 
 <BorderPane stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.mainPageController">
    <center>
-      <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" minViewportHeight="900.0" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1716.0" styleClass="mainPage__scrollContainer" vbarPolicy="ALWAYS" vmax="800.0" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" minViewportHeight="900.0" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer" vmax="1400.0" BorderPane.alignment="CENTER">
          <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1701.0">
             <children>
-               <VBox cacheShape="false" prefHeight="1610.0" prefWidth="1701.0" stylesheets="@../css/mainPage.css">
+               <VBox cacheShape="false" prefHeight="1610.0" prefWidth="1700.0" stylesheets="@../css/mainPage.css">
                   <HBox prefHeight="300.0" prefWidth="1614.0" styleClass="topChoiceContainer">
                      <VBox.margin>
                         <Insets left="100.0" right="59.0" top="50.0" />
