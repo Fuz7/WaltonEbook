@@ -81,7 +81,7 @@ public class loginPageController implements Initializable {
     }
 
     private void switchToMainScene() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPages/mainPage__homePage.fxml"));
         Scene mainScene = new Scene(fxmlLoader.load());
 
         Stage currentStage = (Stage) login__emailInput.getScene().getWindow();

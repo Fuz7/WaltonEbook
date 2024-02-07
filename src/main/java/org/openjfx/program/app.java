@@ -26,7 +26,7 @@ public class app extends Application {
 
         scene_loader.loadFonts();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPages/mainPage__homePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         // Center Screen

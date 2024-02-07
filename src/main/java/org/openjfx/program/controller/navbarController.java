@@ -9,7 +9,7 @@ public class navbarController {
     public void Home_button(ActionEvent event)
     {
 
-        scene_loader.loadScene("mainPage.fxml", "Log In", (Stage) ((Node) event.getSource()).getScene().getWindow());
+        scene_loader.loadScene("mainPage__homePage.fxml", "Log In", (Stage) ((Node) event.getSource()).getScene().getWindow());
     }
 
     public void Search_button(ActionEvent event)

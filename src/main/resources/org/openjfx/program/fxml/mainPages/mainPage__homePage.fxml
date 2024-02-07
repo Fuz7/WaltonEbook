@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-focus-color: transparent" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.mainPageController">
+   <stylesheets>
+      <URL value="@../../css/mainPage.css" />
+      <URL value="@../../css/popup.css" />
+   </stylesheets>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" minViewportHeight="900.0" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer" vmax="1400.0">
+               <fx:include source="../centerPages/homePage.fxml"/>
+            </ScrollPane>
+            <VBox fx:id="popup__myBooks" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="270.0" styleClass="popup__myBooks">
+               <effect>
+                  <DropShadow blurType="TWO_PASS_BOX" height="15.14" offsetX="4.0" offsetY="4.0" radius="9.27" spread="0.02" width="23.94">
+                     <color>
+                        <Color opacity="0.28244274854660034" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <children>
+                  <StackPane fx:id="popup__booksPending1" prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer1">
+                     <children>
+                        <Label styleClass="popup__myBooks__booksButtonText" text="Books Pending">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer2">
+                     <children>
+                        <Label styleClass="popup__myBooks__booksButtonsText" text="Books Published">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <Separator maxWidth="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="270.0" styleClass="popup__myBooks__separator" valignment="BOTTOM">
+                           <effect>
+                              <Blend>
+                                 <topInput>
+                                    <InnerShadow height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.41999998688697815" green="0.41999998688697815" blue="0.41999998688697815" />
+                                       </color>
+                                    </InnerShadow>
+                                 </topInput>
+                              </Blend>
+                           </effect>
+                           <StackPane.margin>
+                              <Insets bottom="97.0" />
+                           </StackPane.margin>
+                        </Separator>
+                     </children>
+                  </StackPane>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="700.0" right="275.0" />
+               </StackPane.margin>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+   <top>
+       <fx:include source="../navbar.fxml" />
+   </top>
+</BorderPane>
