@@ -30,18 +30,55 @@ public class mainPageController implements Initializable {
     @FXML
     private VBox popup__myBooks;
 
+    @FXML
+    private Button navbar__myBookButton;
+    @FXML
+    private ImageView navbar__myBooks__arrow;
+    private boolean myBooks__animating = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        popup__myBooks.setMouseTransparent(true);
+        popup__myBooks.setVisible(false);
+    }
 
-        popup__myBooks.setMouseTransparent(false);
+    @FXML
+    private void toggleNavbar__myBooksButton(){
+
+        if(!myBooks__animating && !navbar__myBooks__arrow.getStyleClass().contains("upside")){
+            navbar__myBooks__arrow.getStyleClass().add("upside");
+            myBooks__animating = true;
+            RotateTransition rotateUpwards = new RotateTransition(Duration.millis(300),navbar__myBooks__arrow);
+            rotateUpwards.setFromAngle(0);
+            rotateUpwards.setToAngle(180);
+
+            rotateUpwards.setOnFinished(actionEvent -> {
+                myBooks__animating = false;
+            });
+
+            rotateUpwards.play();
+            dropAnimation();
+        } else if (!myBooks__animating && navbar__myBooks__arrow.getStyleClass().contains("upside")) {
+            navbar__myBooks__arrow.getStyleClass().remove("upside");
+            myBooks__animating = true;
+            RotateTransition rotateDownwards = new RotateTransition(Duration.millis(200),navbar__myBooks__arrow);
+            rotateDownwards.setFromAngle(180);
+            rotateDownwards.setToAngle(0);
+
+            rotateDownwards.play();
+            returnAnimation();
+            rotateDownwards.setOnFinished(actionEvent -> {
+                myBooks__animating = false;
+            });
+
+        }
     }
 
     @FXML
     private void dropAnimation(){
-
-        TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(400),popup__myBooks);
-        FadeTransition fadeInAnimation = new FadeTransition(Duration.millis(400),popup__myBooks);
+        popup__myBooks.setVisible(true);
+        TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(300),popup__myBooks);
+        FadeTransition fadeInAnimation = new FadeTransition(Duration.millis(300),popup__myBooks);
         fadeInAnimation.setFromValue(0);
         fadeInAnimation.setToValue(1);
         fadeInAnimation.setInterpolator(EASE_IN);
@@ -52,6 +89,7 @@ public class mainPageController implements Initializable {
 
         translateAnimation.setOnFinished(actionEvent -> {
             popup__myBooks.setMouseTransparent(false);
+
         });
 
         translateAnimation.play();
@@ -62,8 +100,8 @@ public class mainPageController implements Initializable {
 
     @FXML
     private void returnAnimation(){
-        TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(300),popup__myBooks);
-        FadeTransition fadeInAnimation = new FadeTransition(Duration.millis(300),popup__myBooks);
+        TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(200),popup__myBooks);
+        FadeTransition fadeInAnimation = new FadeTransition(Duration.millis(200),popup__myBooks);
         fadeInAnimation.setFromValue(1);
         fadeInAnimation.setToValue(0);
         fadeInAnimation.setInterpolator(EASE_IN);
