@@ -29,17 +29,63 @@ public class mainPageController implements Initializable {
 
     @FXML
     private VBox popup__myBooks;
-
+    @FXML
+    private VBox popup__account;
     @FXML
     private Button navbar__myBookButton;
     @FXML
     private ImageView navbar__myBooks__arrow;
     private boolean myBooks__animating = false;
-
+    private boolean account__animating = false;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         popup__myBooks.setMouseTransparent(true);
         popup__myBooks.setVisible(false);
+        popup__account.setMouseTransparent(true);
+        popup__account.setVisible(false);
+    }
+
+
+    @FXML
+    private void toggleNavbar__accountButton(){
+        if(!account__animating && !popup__account.isVisible()){
+            account__animating = true;
+            popup__account.setVisible(true);
+            TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(150),popup__account);
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(150),popup__account);
+            fadeIn.setFromValue(0);
+            fadeIn.setToValue(1);
+            fadeIn.setInterpolator(EASE_IN);
+            translateAnimation.setFromY(-100f);
+            translateAnimation.setToY(0f);
+            translateAnimation.setInterpolator(EASE_IN);
+
+            translateAnimation.setOnFinished(actionEvent -> {
+                popup__account.setMouseTransparent(false);
+                account__animating = false;
+            });
+            translateAnimation.play();
+            fadeIn.play();
+
+        } else if (!account__animating && popup__account.isVisible()) {
+            account__animating = true;
+            TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(150),popup__account);
+            FadeTransition fadeInAnimation = new FadeTransition(Duration.millis(150),popup__account);
+            fadeInAnimation.setFromValue(1);
+            fadeInAnimation.setToValue(0);
+            fadeInAnimation.setInterpolator(EASE_IN);
+            translateAnimation.setFromY(0);
+            translateAnimation.setToY(-100f);
+            translateAnimation.setInterpolator(EASE_IN);
+
+            translateAnimation.setOnFinished(actionEvent -> {
+                popup__account.setVisible(false);
+                account__animating = false;
+            });
+            translateAnimation.play();
+            fadeInAnimation.play();
+            popup__account.setMouseTransparent(true);
+        }
     }
 
     @FXML

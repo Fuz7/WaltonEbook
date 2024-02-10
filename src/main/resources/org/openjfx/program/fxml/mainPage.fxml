@@ -79,6 +79,54 @@
                   <Insets bottom="700.0" right="275.0" />
                </StackPane.margin>
             </VBox>
+            <VBox fx:id="popup__account" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="170.0" styleClass="popup__account">
+               <StackPane.margin>
+                  <Insets bottom="775.0" left="1470.0" />
+               </StackPane.margin>
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer1">
+                     <children>
+                        <Label styleClass="popup__myBooks__accountButtonText" text="Account">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer2">
+                     <children>
+                        <Separator maxWidth="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="270.0" styleClass="popup__myBooks__separator">
+                           <effect>
+                              <Blend>
+                                 <topInput>
+                                    <InnerShadow height="255.0" radius="127.0" width="255.0">
+                                       <color>
+                                          <Color red="0.17105263471603394" green="0.17105263471603394" blue="0.17105263471603394" />
+                                       </color>
+                                    </InnerShadow>
+                                 </topInput>
+                              </Blend>
+                           </effect>
+                           <StackPane.margin>
+                              <Insets bottom="54.0" />
+                           </StackPane.margin>
+                        </Separator>
+                        <Label styleClass="popup__myBooks__accountButtonText" text="Logout">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
+               <effect>
+                  <DropShadow offsetY="2.0">
+                     <color>
+                        <Color opacity="0.7862595319747925" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </VBox>
          </children>
       </StackPane>
    </center>
@@ -96,7 +144,7 @@
          <children>
             <ImageView fitHeight="63.0" fitWidth="64.0" styleClass="logo">
                <HBox.margin>
-                  <Insets left="40.0" right="20.0" top="8.0" />
+                  <Insets left="40.0" right="10.0" top="10.0" />
                </HBox.margin>
                <image>
                   <Image url="@../images/logo.png" />
@@ -167,9 +215,9 @@
                   </ImageView>
                </children>
             </StackPane>
-            <ImageView styleClass="profileLogo">
+            <ImageView onMouseClicked="#toggleNavbar__accountButton" styleClass="profileLogo">
                <HBox.margin>
-                  <Insets left="35.0" top="10.0" />
+                  <Insets left="28.0" top="13.0" />
                </HBox.margin>
                <effect>
                   <DropShadow>
