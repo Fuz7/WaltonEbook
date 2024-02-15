@@ -53,8 +53,12 @@ public class homePageController implements Initializable {
 
 
     private static boolean fadeAnimating;
+    public mainPageController mainPageController;
 
-
+    public void setMainPageController(mainPageController mainPageController) {
+        this.mainPageController = mainPageController;
+        this.mainPageController.hidePopups();
+    }
     @Override
     public void initialize(URL locations, ResourceBundle resources) {
         setUserDataForRadioButtons();

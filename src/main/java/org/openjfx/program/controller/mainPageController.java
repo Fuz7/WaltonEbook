@@ -2,6 +2,7 @@ package org.openjfx.program.controller;
 
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -18,6 +20,10 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
+
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,6 +31,7 @@ import java.util.ResourceBundle;
 import static javafx.animation.Interpolator.EASE_IN;
 
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class mainPageController implements Initializable {
 
     @FXML
@@ -35,19 +42,25 @@ public class mainPageController implements Initializable {
     private Button navbar__myBookButton;
     @FXML
     private ImageView navbar__myBooks__arrow;
+    @FXML
+    private ScrollPane scrollContainer;
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        hidePopups();
+    }
+
+    public void hidePopups(){
         popup__myBooks.setMouseTransparent(true);
         popup__myBooks.setVisible(false);
         popup__account.setMouseTransparent(true);
         popup__account.setVisible(false);
     }
-
-
     @FXML
-    private void toggleNavbar__accountButton(){
+    public void toggleNavbar__accountButton(){
         if(!account__animating && !popup__account.isVisible()){
             account__animating = true;
             popup__account.setVisible(true);
@@ -89,7 +102,7 @@ public class mainPageController implements Initializable {
     }
 
     @FXML
-    private void toggleNavbar__myBooksButton(){
+    public void toggleNavbar__myBooksButton(){
 
         if(!myBooks__animating && !navbar__myBooks__arrow.getStyleClass().contains("upside")){
             navbar__myBooks__arrow.getStyleClass().add("upside");
@@ -120,6 +133,8 @@ public class mainPageController implements Initializable {
         }
     }
 
+
+
     @FXML
     private void dropAnimation(){
         popup__myBooks.setVisible(true);
@@ -144,6 +159,7 @@ public class mainPageController implements Initializable {
 
     }
 
+
     @FXML
     private void returnAnimation(){
         TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(200),popup__myBooks);
@@ -164,5 +180,31 @@ public class mainPageController implements Initializable {
         fadeInAnimation.play();
         popup__myBooks.setMouseTransparent(true);
     }
+
+    @FXML
+    public void navbar__renderSearchButton(){
+
+    }
+
+    public void replaceCenterPageContent(URL fxmlResource, Class<?> controllerClass) {
+    try {
+        FXMLLoader loader = new FXMLLoader(fxmlResource);
+        AnchorPane newContent = loader.load();
+        Object controllerInstance = loader.getController();
+        Method setMainPageControllerMethod = controllerClass.getMethod("setMainPageController", mainPageController.class);
+        setMainPageControllerMethod.invoke(controllerInstance, this);
+
+        // Set the new content as the CenterPage content
+        scrollContainer.setContent(newContent);
+    } catch (IOException e) {
+        e.printStackTrace();
+        // Handle exception if loading FXML fails
+    } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+        throw new RuntimeException(e);
+    }
+    }
+
+
+
 
 }

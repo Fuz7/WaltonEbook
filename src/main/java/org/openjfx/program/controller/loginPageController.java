@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.openjfx.program.app;
 
@@ -81,11 +83,14 @@ public class loginPageController implements Initializable {
     }
 
     private void switchToMainScene() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPages/mainPage__homePage.fxml"));
-        Scene mainScene = new Scene(fxmlLoader.load());
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage.fxml"));
+        BorderPane root = fxmlLoader.load();
+        mainPageController mainPageController = fxmlLoader.getController();
+        mainPageController.replaceCenterPageContent(app.class.getResource("fxml/centerPages/homePage.fxml"),homePageController.class);
 
         Stage currentStage = (Stage) login__emailInput.getScene().getWindow();
-        currentStage.setScene(mainScene);
+        Scene scene = new Scene(root);
+        currentStage.setScene(scene);
         currentStage.setTitle("Main Page");
 
 
