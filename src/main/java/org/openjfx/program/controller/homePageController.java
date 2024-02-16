@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 
 
+
 public class homePageController implements Initializable {
 
 
@@ -58,9 +59,10 @@ public class homePageController implements Initializable {
     public void setMainPageController(mainPageController mainPageController) {
         this.mainPageController = mainPageController;
         this.mainPageController.hidePopups();
+        renderInitialization();
     }
-    @Override
-    public void initialize(URL locations, ResourceBundle resources) {
+
+    public void renderInitialization(){
         setUserDataForRadioButtons();
         radioButton1.getStyleClass().add("radioButton--active");
         radioButton1.getStyleClass().add("active");
@@ -72,6 +74,12 @@ public class homePageController implements Initializable {
             renderPopularContent(cards[i],bookId);
             renderPopularAnimation(cards[i]);
         }
+    }
+
+
+    @Override
+    public void initialize(URL locations, ResourceBundle resources) {
+
 
 
     }
@@ -114,23 +122,10 @@ public class homePageController implements Initializable {
         return fadeOut;
     }
 
-    private BookData getBookData(int book_id){
-        List<Object> value = app.db.ReturnBookDetailsById(book_id);
-        String title = (String) value.get(1);
-        String description = (String) value.get(2);
-        String formattedDescription = description.replaceAll("\\n", " ");
-        String imageLink = (String) value.get(3);
-        String correctPath = String.valueOf(app.class.getResource("images/" + imageLink));
 
-        Image image = new Image(correctPath);
-        String genre = "Tags: " + value.get(4);
-        int bookSold = (int) value.get(8);
-        double price = (double)value.get(7);
-        return new BookData(title, formattedDescription,image,genre, bookSold,price);
-    }
     private void renderTopChoiceContent(int id){
 
-        BookData topChoiceBook = getBookData(id);
+        BookData topChoiceBook = this.mainPageController.getBookData(id);
         String authorName = app.db.ReturnAuthorNameById(id);
         topChoice__title.setText(topChoiceBook.title);
         topChoice__description.setText(topChoiceBook.formattedDescription);
@@ -168,11 +163,11 @@ public class homePageController implements Initializable {
 
     }
     private void renderPopularContent(HBox hbox,int id){
-        BookData cardBookData = getBookData(id);
+        BookData cardBookData = this.mainPageController.getBookData(id);
         String authorName = app.db.ReturnAuthorNameById(id);
         String ellipsesDescription = limitWithEllipsis(cardBookData.formattedDescription,320);
         String formattedPrice = String. format("%.2f$",cardBookData.price);
-
+        hbox.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(id));
         for (javafx.scene.Node node : hbox.getChildren()) {
             if (node instanceof ImageView imageContainer) {
                 imageContainer.setImage(cardBookData.image);

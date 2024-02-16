@@ -44,6 +44,12 @@ public class mainPageController implements Initializable {
     private ImageView navbar__myBooks__arrow;
     @FXML
     private ScrollPane scrollContainer;
+    @FXML
+    private ImageView checkBook__bookImage;
+    @FXML
+    private StackPane popup__checkBook;
+    @FXML
+    private StackPane checkBook__closeButton;
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
 
@@ -58,6 +64,23 @@ public class mainPageController implements Initializable {
         popup__myBooks.setVisible(false);
         popup__account.setMouseTransparent(true);
         popup__account.setVisible(false);
+        popup__checkBook.setMouseTransparent(true);
+        popup__checkBook.setVisible(false);
+    }
+
+    public BookData getBookData(int book_id){
+        List<Object> value = app.db.ReturnBookDetailsById(book_id);
+        String title = (String) value.get(1);
+        String description = (String) value.get(2);
+        String formattedDescription = description.replaceAll("\\n", " ");
+        String imageLink = (String) value.get(3);
+        String correctPath = String.valueOf(app.class.getResource("images/" + imageLink));
+
+        Image image = new Image(correctPath);
+        String genre = "Tags: " + value.get(4);
+        int bookSold = (int) value.get(8);
+        double price = (double)value.get(7);
+        return new BookData(title, formattedDescription,image,genre, bookSold,price);
     }
     @FXML
     public void toggleNavbar__accountButton(){
@@ -181,9 +204,35 @@ public class mainPageController implements Initializable {
         popup__myBooks.setMouseTransparent(true);
     }
 
+
+    private void slideInCheckBook(){
+        TranslateTransition slideInAnimation = new TranslateTransition(Duration.millis(400),popup__checkBook);
+        slideInAnimation.setFromX(700);
+        slideInAnimation.setToX(0);
+        slideInAnimation.setInterpolator(EASE_IN);
+        slideInAnimation.setOnFinished(actionEvent -> {
+            popup__checkBook.setMouseTransparent(false);
+        });
+        slideInAnimation.play();
+        popup__checkBook.setVisible(true);
+    }
+
+    @FXML
+    public void renderCheckBook(int id){
+        popup__checkBook.setMouseTransparent(true);
+        BookData bookDetails = getBookData(id);
+        checkBook__bookImage.setImage(bookDetails.image);
+        slideInCheckBook();
+    }
     @FXML
     public void navbar__renderSearchButton(){
 
+    }
+
+    @FXML
+    private void closeCheckBook(){
+        popup__checkBook.setVisible(false);
+        popup__checkBook.setMouseTransparent(true);
     }
 
     public void replaceCenterPageContent(URL fxmlResource, Class<?> controllerClass) {

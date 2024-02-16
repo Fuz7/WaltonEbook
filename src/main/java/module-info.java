@@ -8,5 +8,6 @@ module org.openjfx.demo {
     exports org.openjfx.program;
     exports org.openjfx.program.controller;
     exports org.openjfx.program.security;
+    exports org.openjfx.program.model;
     opens org.openjfx.program.controller to javafx.fxml;
 }

@@ -31,14 +31,28 @@
          <children>
             <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minViewportHeight="900.0" minWidth="-Infinity" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer" vmax="1400.0">
             </ScrollPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="585.0" style="-fx-background-color: transparent;">
+            <StackPane fx:id="popup__checkBook" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="585.0" style="-fx-background-color: transparent;">
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
                <children>
-                  <ScrollPane fx:id="popup__checkBook" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
+                  <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
                      <content>
-                        <AnchorPane prefHeight="754.0" prefWidth="571.0" styleClass="checkBookContainer__card" />
+                        <AnchorPane prefHeight="754.0" prefWidth="571.0" styleClass="checkBookContainer__card">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="827.0" prefWidth="571.0">
+                                 <children>
+                                    <ImageView fx:id="checkBook__bookImage" fitHeight="285.0" fitWidth="195.0">
+                                       <image>
+                                          <Image url="@../images/books/b1.jpg" />
+                                       </image>
+                                       <VBox.margin>
+                                          <Insets top="40.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
                      </content>
                      <effect>
                         <DropShadow height="12.21" radius="5.605" width="12.21">
@@ -48,7 +62,7 @@
                         </DropShadow>
                      </effect>
                   </ScrollPane>
-                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="42.0" prefWidth="42.0" styleClass="checkBookContainer__closeButton">
+                  <StackPane fx:id="checkBook__closeButton" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeCheckBook" prefHeight="42.0" prefWidth="42.0" styleClass="checkBookContainer__closeButton">
                      <children>
                         <Label alignment="CENTER" text="X">
                            <font>

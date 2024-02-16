@@ -18,4 +18,8 @@ public class BookData {
         this.bookSold = bookSold;
         this.price = price;
     }
+
 }
+
+
+
