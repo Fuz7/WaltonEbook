@@ -206,7 +206,7 @@ public class mainPageController implements Initializable {
 
 
     private void slideInCheckBook(){
-        TranslateTransition slideInAnimation = new TranslateTransition(Duration.millis(400),popup__checkBook);
+        TranslateTransition slideInAnimation = new TranslateTransition(Duration.millis(200),popup__checkBook);
         slideInAnimation.setFromX(700);
         slideInAnimation.setToX(0);
         slideInAnimation.setInterpolator(EASE_IN);
@@ -233,6 +233,16 @@ public class mainPageController implements Initializable {
     private void closeCheckBook(){
         popup__checkBook.setVisible(false);
         popup__checkBook.setMouseTransparent(true);
+    }
+
+
+    @FXML
+    private void switchToMainPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/homePage.fxml"), homePageController.class);
+    }
+    @FXML
+    private void switchToSearchPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class);
     }
 
     public void replaceCenterPageContent(URL fxmlResource, Class<?> controllerClass) {

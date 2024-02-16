@@ -195,12 +195,12 @@
                   <Image url="@../images/logo.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" styleClass="navButton" text="Home">
+            <Button mnemonicParsing="false" onMouseClicked="#switchToMainPage" styleClass="navButton" text="Home">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" styleClass="navButton" text="Search">
+            <Button fx:id="navbar__searchButton" mnemonicParsing="false" onMouseClicked="#switchToSearchPage" styleClass="navButton" text="Search">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>
