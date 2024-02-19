@@ -67,10 +67,15 @@ public class homePageController implements Initializable {
         radioButton1.getStyleClass().add("radioButton--active");
         radioButton1.getStyleClass().add("active");
         renderTopChoiceContent(1);
-        String[] topThreeSoldBooks = app.db.ReturnTopThreeBooks();
+        String[] topThreeSoldBooks = app.db.Return.ReturnTopThreeBookTitle();
+        int[] topThreeSoldId = new int[3];
+        for(int i = 0;i < 3;i++){
+            topThreeSoldId[i] = app.db.Return.returnBookIdByTitle(topThreeSoldBooks[i]);
+        }
+
         HBox[] cards = {goldCard,silverCard,bronzeCard};
         for(int i = 0; i < cards.length;i++){
-            int bookId =  Integer.parseInt(topThreeSoldBooks[i]);
+            int bookId =  topThreeSoldId[i];
             renderPopularContent(cards[i],bookId);
             renderPopularAnimation(cards[i]);
         }
@@ -126,9 +131,9 @@ public class homePageController implements Initializable {
     private void renderTopChoiceContent(int id){
 
         BookData topChoiceBook = this.mainPageController.getBookData(id);
-        String authorName = app.db.ReturnAuthorNameById(id);
+        String authorName = app.db.Return.returnAuthorNameByID(id);
         topChoice__title.setText(topChoiceBook.title);
-        topChoice__description.setText(topChoiceBook.formattedDescription);
+        topChoice__description.setText(limitWithEllipsis(topChoiceBook.formattedDescription,360));
         topChoice__genre.setText(topChoiceBook.genre);
         topChoice__imageContainer.setImage(topChoiceBook.image);
         topChoice__author.setText("Author: " + authorName);
@@ -164,7 +169,7 @@ public class homePageController implements Initializable {
     }
     private void renderPopularContent(HBox hbox,int id){
         BookData cardBookData = this.mainPageController.getBookData(id);
-        String authorName = app.db.ReturnAuthorNameById(id);
+        String authorName = app.db.Return.returnAuthorNameByID(id);
         String ellipsesDescription = limitWithEllipsis(cardBookData.formattedDescription,320);
         String formattedPrice = String. format("%.2f$",cardBookData.price);
         hbox.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(id));

@@ -2,30 +2,28 @@ package org.openjfx.program;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.openjfx.program.controller.homePageController;
 import org.openjfx.program.controller.mainPageController;
+import org.openjfx.program.database.DatabaseManager;
 import org.openjfx.program.security.Login_manager;
 
 import java.io.IOException;
 
 
 public class app extends Application {
-    public static Database_manager db = new Database_manager();
+    static String location = "jdbc:sqlite:./src/main/java/org/openjfx/program/test.db";
+    public static DatabaseManager db = new DatabaseManager(location);
     public static Login_manager lm = new Login_manager();
 
     @Override
     public void start(Stage stage) throws IOException {
-        String location = "jdbc:sqlite:./src/main/java/org/openjfx/program/test.db";
 
         System.setProperty("prism.order", "sw");
 
-        db.init(location);
-        db.CreateTablesIfNoExist();
+        db.createTablesIfNotExist();
 
         scene_loader.loadFonts();
 

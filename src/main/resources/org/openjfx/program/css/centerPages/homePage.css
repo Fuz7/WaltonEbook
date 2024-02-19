@@ -16,7 +16,7 @@
 
 }
 .topChoice__imageCard{
-    -fx-image: url("../../images/books/b1.jpg");
+    -fx-image: url("../../images/books/EndersGame.jpeg");
     -fx-cursor: hand;
 }
 

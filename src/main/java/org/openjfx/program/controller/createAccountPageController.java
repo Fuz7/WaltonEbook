@@ -53,7 +53,7 @@ public class createAccountPageController implements Initializable {
 
 
         // Check if email already exist
-        if (app.db.CheckIfEmailAlreadyExist(email)){
+        if (app.db.Check.CheckIfEmailAlreadyExist(email)){
             // ADD CSS MAGIC HERE
             showError("Email Already Exist");
             createEmail.getStyleClass().add("emailInput--error");
@@ -68,7 +68,7 @@ public class createAccountPageController implements Initializable {
         }
 
         // Check if username already exist
-        if (app.db.CheckIfUserNameAlreadyExist(name)) {
+        if (app.db.Check.CheckIfUserNameAlreadyExist(name)) {
             // ADD CSS MAGIC HERE
             showError("Username Already Exist");
             createName.getStyleClass().add("userInput--error");
@@ -82,7 +82,7 @@ public class createAccountPageController implements Initializable {
         }
 
         // Register the account (ADJUST DEFAULT BALANCE {SUBJECT TO CHANGE})
-        app.db.InsertNewUser(email, name, password, false, 5000, "");
+        app.db.Insert.InsertNewUser(email, name, password, false, 5000);
         clearText();
         // Switch
         switchToLogInScene();

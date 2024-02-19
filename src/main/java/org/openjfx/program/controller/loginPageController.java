@@ -58,7 +58,7 @@ public class loginPageController implements Initializable {
         String password = login__passwordInput.getText();
 
         try {
-            int userId = app.db.ReturnUserIdByLogIn(email, password);
+            int userId = app.db.Login.ReturnUserIdByLogIn(email, password);
 
             if (userId > 0) {
                 // Insert data in login manager

@@ -69,17 +69,17 @@ public class mainPageController implements Initializable {
     }
 
     public BookData getBookData(int book_id){
-        List<Object> value = app.db.ReturnBookDetailsById(book_id);
-        String title = (String) value.get(1);
-        String description = (String) value.get(2);
+        String[] value = app.db.Return.returnBookDataById(book_id);
+        String title = (String) value[1];
+        String description = (String) value[2];
         String formattedDescription = description.replaceAll("\\n", " ");
-        String imageLink = (String) value.get(3);
-        String correctPath = String.valueOf(app.class.getResource("images/" + imageLink));
+        String imageLink = (String) value[3];
+        String correctPath = String.valueOf(app.class.getResource("images/books/" + imageLink));
 
         Image image = new Image(correctPath);
-        String genre = "Tags: " + value.get(4);
-        int bookSold = (int) value.get(8);
-        double price = (double)value.get(7);
+        String genre = "Tags: " + value[4];
+        int bookSold = Integer.parseInt(value[8]);
+        double price = Double.parseDouble(value[7]);
         return new BookData(title, formattedDescription,image,genre, bookSold,price);
     }
     @FXML
