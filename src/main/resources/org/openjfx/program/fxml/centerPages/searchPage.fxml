@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1095.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
+<AnchorPane prefHeight="1095.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
    <children>
-      <VBox prefHeight="1296.0" prefWidth="861.0">
+      <VBox alignment="TOP_CENTER" prefHeight="1296.0" prefWidth="1685.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="1073.0" prefWidth="792.0" text="Button" />
+            <StackPane prefWidth="1685.0">
+               <VBox.margin>
+                  <Insets top="120.0" />
+               </VBox.margin>
+               <children>
+                  <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" right="69.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="6.34" offsetX="1.0" offsetY="2.0" radius="3.405" width="9.28">
+                           <color>
+                              <Color opacity="0.5114504098892212" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" preserveRatio="true" styleClass="searchPage__searchBarLogo">
+                     <image>
+                        <Image url="@../../images/largeSearchIcon.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="660.0" />
+                     </StackPane.margin>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane fx:id="searchPage__advanceSearchButton" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" styleClass="searchPage__advanceSearchButton">
+               <VBox.margin>
+                  <Insets left="531.0" top="14.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="29.0" fitWidth="200.0" focusTraversable="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/AdvanceSearch.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="200.0" preserveRatio="true" styleClass="searchPage__advanceSearchButton--underline">
+                     <image>
+                        <Image url="@../../images/AdvanceSearch--underline.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </children>
+            </StackPane>
          </children></VBox>
    </children>
 </AnchorPane>

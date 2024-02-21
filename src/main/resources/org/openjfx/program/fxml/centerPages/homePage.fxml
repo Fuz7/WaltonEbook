@@ -72,7 +72,7 @@
                               <Insets left="50.0" top="25.0" />
                            </HBox.margin>
                            <image>
-                              <Image url="@../../images/books/Ender’s%20Game.jpeg" />
+                              <Image url="@../../images/books/EndersGame.jpeg" />
                            </image>
                         </ImageView>
                         <VBox prefHeight="300.0" prefWidth="769.0">

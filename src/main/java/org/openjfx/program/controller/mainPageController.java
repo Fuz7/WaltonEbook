@@ -254,6 +254,7 @@ public class mainPageController implements Initializable {
         setMainPageControllerMethod.invoke(controllerInstance, this);
 
         // Set the new content as the CenterPage content
+        scrollContainer.setVvalue(0);
         scrollContainer.setContent(newContent);
     } catch (IOException e) {
         e.printStackTrace();
