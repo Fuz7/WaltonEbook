@@ -15,17 +15,20 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="1336.0" prefWidth="1685.0">
+      <VBox alignment="TOP_CENTER" prefHeight="1776.0" prefWidth="1685.0">
          <children>
             <StackPane prefWidth="1685.0">
                <VBox.margin>
@@ -258,12 +261,24 @@
                         </CheckBox>
                      </children>
                      <VBox.margin>
-                        <Insets left="40.0" top="35.0" />
+                        <Insets left="40.0" top="20.0" />
                      </VBox.margin>
                   </GridPane>
+                  <Separator prefWidth="200.0">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color opacity="0.5267175436019897" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Separator>
                   <Button mnemonicParsing="false" styleClass="advanceSearchCard__advanceSearchButton" text="Advance Search">
                      <VBox.margin>
-                        <Insets left="410.0" top="40.0" />
+                        <Insets left="410.0" top="12.0" />
                      </VBox.margin>
                      <font>
                         <Font size="20.0" />
@@ -277,7 +292,256 @@
                      </effect>
                   </Button>
                </children>
+               <effect>
+                  <DropShadow height="9.28" offsetX="2.0" offsetY="2.0" radius="4.14" width="9.28">
+                     <color>
+                        <Color opacity="0.4465648829936981" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </VBox>
+            <Separator prefHeight="7.0" prefWidth="1685.0">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <effect>
+                  <InnerShadow height="18.07" radius="7.07" width="12.21">
+                     <color>
+                        <Color opacity="0.8893129825592041" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Separator>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="48.0" prefWidth="237.0" spacing="20.0" styleClass="searchPage__showOwnedButton">
+               <children>
+                  <Label styleClass="showOwnedButton__text" text="Show Owned">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="showOwnedButton__box">
+                     <children>
+                        <Rectangle height="24.0" stroke="BLACK" strokeMiterLimit="7.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="showOwnedButton__box__content" width="24.0" />
+                     </children>
+                  </StackPane>
+               </children>
+               <VBox.margin>
+                  <Insets right="1200.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <FlowPane hgap="40.0" prefHeight="458.0" prefWidth="1685.0" vgap="44.0">
+               <children>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="searchPage__bookContainer__title" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" styleClass="searchPage__bookContainer__price" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                           <children>
+                              <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <image>
+                                    <Image url="@../../images/books/b3.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cant Hurt Me By David Walton Ele Goggins David " wrappingWidth="197.13671875">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="18.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Label layoutX="205.0" layoutY="333.0" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="120.0" />
+               </padding>
+            </FlowPane>
          </children>
       </VBox>
    </children>

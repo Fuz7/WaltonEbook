@@ -86,5 +86,49 @@
 .advanceSearchCard__advanceSearchButton:hover{
 
     -fx-background-color: #c2c2c2;
+}
 
+.searchPage__showOwnedButton{
+    -fx-cursor: hand;
+}
+
+.showOwnedButton__text{
+    -fx-text-fill: black;
+    -fx-font-size: 30;
+    -fx-font-family: 'Karma';
+}
+
+.showOwnedButton__box{
+    -fx-border-width: 1;
+    -fx-background-color: white;
+    -fx-border-color: black;
+}
+
+.showOwnedButton__box > .showOwnedButton__box__content{
+    visibility: hidden;
+}
+
+.showOwnedButton__box--visible > .showOwnedButton__box__content{
+    visibility: visible;
+}
+
+.searchPage__bookContainer{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.searchPage__bookContainer:hover{
+    -fx-background-color: #d7d7d7;
+}
+
+.searchPage__bookContainer__title{
+    -fx-font-family: 'Poppins';
+    -fx-font-size: 13;
+    -fx-text-fill: black;
+}
+
+.searchPage__bookContainer__price{
+    -fx-font-family: 'Gentium Book Plus';
+    -fx-font-size: 20;
+    -fx-text-fill: black;
 }
