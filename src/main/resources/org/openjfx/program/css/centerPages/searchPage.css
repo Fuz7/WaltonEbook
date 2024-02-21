@@ -18,3 +18,73 @@
     visibility: visible;
 }
 
+.searchPage__advanceSearchCard{
+    -fx-background-color: #E4E4E4;
+    -fx-background-radius: 5;
+}
+
+.advanceSearchCard__searchByText,
+.advanceSearchCard__genreText{
+    -fx-text-fill: black;
+    -fx-font-family: 'Karma';
+    -fx-font-size: 36;
+}
+
+.advanceSearchCard__searchByButtons{
+    -fx-text-fill: #1c1c1c;
+    -fx-font-family: 'Karma';
+    -fx-font-size: 28;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.advanceSearchCard__searchByButtons .radio{
+    -fx-border-width: 2;
+    -fx-border-color: black;
+    -fx-border-radius: 15;
+    -fx-padding: 3;
+    -fx-background-color:white;
+    -fx-background-insets: 1;
+}
+
+.advanceSearchCard__searchByButtons:selected > .radio .dot{
+    -fx-background-color: black;
+    -fx-background-insets: 0;
+}
+
+.advanceSearchCard__checkBox{
+    -fx-font-size: 18;
+    -fx-font-family: 'Karma-Regular';
+    -fx-text-fill: black;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.advanceSearchCard__checkBox .box{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-insets: 1;
+    -fx-background-color: white;
+}
+
+.advanceSearchCard__checkBox:selected .mark{
+    -fx-background-color: black;
+}
+
+.advanceSearchCard__advanceSearchButton{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+    -fx-font-family: 'Karma';
+    -fx-background-color: linear-gradient(to top right, rgba(201,201,201,1) 0%, rgba(241,241,241,1) 100%);
+    -fx-background-radius: 30;
+}
+
+.advanceSearchCard__advanceSearchButton:hover{
+
+    -fx-background-color: #c2c2c2;
+
+}

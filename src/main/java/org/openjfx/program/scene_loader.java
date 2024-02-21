@@ -51,6 +51,8 @@ public class scene_loader {
         Font.loadFont(app.class.getResourceAsStream("fonts/Kanit-Bold.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/Buenard-Regular.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/Buenard-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Karma-Regular.ttf"), 16);
+
 
     }
 

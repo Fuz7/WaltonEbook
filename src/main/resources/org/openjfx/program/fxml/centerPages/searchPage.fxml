@@ -2,23 +2,34 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1095.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
+<AnchorPane stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="1296.0" prefWidth="1685.0">
+      <VBox alignment="TOP_CENTER" prefHeight="1336.0" prefWidth="1685.0">
          <children>
             <StackPane prefWidth="1685.0">
                <VBox.margin>
-                  <Insets top="120.0" />
+                  <Insets top="80.0" />
                </VBox.margin>
                <children>
                   <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
@@ -48,7 +59,7 @@
             </StackPane>
             <StackPane fx:id="searchPage__advanceSearchButton" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" styleClass="searchPage__advanceSearchButton">
                <VBox.margin>
-                  <Insets left="531.0" top="14.0" />
+                  <Insets left="537.0" top="15.0" />
                </VBox.margin>
                <children>
                   <ImageView fitHeight="29.0" fitWidth="200.0" focusTraversable="true" preserveRatio="true">
@@ -69,6 +80,205 @@
                   </ImageView>
                </children>
             </StackPane>
-         </children></VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="657.0" prefWidth="1063.0" styleClass="searchPage__advanceSearchCard">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <children>
+                  <Label styleClass="advanceSearchCard__searchByText" text="Search By">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="39.0" prefWidth="1063.0" spacing="108.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" selected="true" styleClass="advanceSearchCard__searchByButtons" text="Book Name">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="searchBy" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" styleClass="advanceSearchCard__searchByButtons" text="Author" toggleGroup="$searchBy">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" styleClass="advanceSearchCard__searchByButtons" text="Description" toggleGroup="$searchBy">
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color opacity="0.5267175436019897" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label styleClass="advanceSearchCard__genreText" text="Genre">
+                     <VBox.margin>
+                        <Insets left="40.0" top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <GridPane prefWidth="942.0" vgap="50.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Action">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Adventure" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Business" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Comedy" GridPane.columnIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Drama" GridPane.columnIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Education" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Entertainment" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Fiction" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="History" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Horror" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Memoir" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Mystery" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Non Fiction" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Politics" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Psychological" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Thriller" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Self-Help" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Travel" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Philosophy" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Romance" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="40.0" top="35.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <Button mnemonicParsing="false" styleClass="advanceSearchCard__advanceSearchButton" text="Advance Search">
+                     <VBox.margin>
+                        <Insets left="410.0" top="40.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <effect>
+                        <DropShadow height="6.35" offsetX="3.0" offsetY="3.0" radius="2.6725" width="6.34">
+                           <color>
+                              <Color opacity="0.7022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
