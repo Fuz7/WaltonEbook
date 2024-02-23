@@ -8,8 +8,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -50,6 +53,9 @@ public class mainPageController implements Initializable {
     private StackPane popup__checkBook;
     @FXML
     private StackPane checkBook__closeButton;
+    @FXML
+    private TextField navbar__searchBar;
+
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
 
@@ -245,6 +251,12 @@ public class mainPageController implements Initializable {
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class);
     }
 
+    @FXML
+    private void switchToSearchPageBySearchBar(){
+        renderCenterPageContentFromSearch(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class,navbar__searchBar.getText());
+    }
+
+
     public void replaceCenterPageContent(URL fxmlResource, Class<?> controllerClass) {
     try {
         FXMLLoader loader = new FXMLLoader(fxmlResource);
@@ -252,7 +264,7 @@ public class mainPageController implements Initializable {
         Object controllerInstance = loader.getController();
         Method setMainPageControllerMethod = controllerClass.getMethod("setMainPageController", mainPageController.class);
         setMainPageControllerMethod.invoke(controllerInstance, this);
-
+        navbar__searchBar.setText("");
         // Set the new content as the CenterPage content
         scrollContainer.setVvalue(0);
         scrollContainer.setContent(newContent);
@@ -264,7 +276,33 @@ public class mainPageController implements Initializable {
     }
     }
 
+    @FXML
+    public void renderCenterPageContentFromSearch(URL fxmlResource, Class<?> controllerClass,String searchText){
+        try {
+            FXMLLoader loader = new FXMLLoader(fxmlResource);
+            AnchorPane newContent = loader.load();
+            Object controllerInstance = loader.getController();
+            Method setSearchBarText = controllerClass.getMethod("setSearchBarText", String.class);
+            Method setMainPageControllerMethod = controllerClass.getMethod("setMainPageController", mainPageController.class);
+            setSearchBarText.invoke(controllerInstance,searchText);
+            setMainPageControllerMethod.invoke(controllerInstance, this);
 
+            // Set the new content as the CenterPage content
+            scrollContainer.setVvalue(0);
+            scrollContainer.setContent(newContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception if loading FXML fails
+        } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @FXML
+    private void renderBooksOnEnterFromSearchBar(KeyEvent ev){
+        if(ev.getCode() == KeyCode.ENTER) switchToSearchPageBySearchBar();
+    }
 
 
 }

@@ -8,8 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
@@ -152,6 +155,12 @@ public class searchPageController implements Initializable {
         if(showOwnedButton__box.getStyleClass().contains("showOwnedButton__box")) return false;
         return showOwnedButton__box.getStyleClass().contains("showOwnedButton__box--visible");
     }
+
+    @FXML
+    private void renderSearchedBooksByFxml(){
+        renderSearchedBooks();
+    }
+
     private void renderSearchedBooks(){
         String searchQuery =  searchPage__searchBar.getText();
         List<Integer> bookIds = app.db.Return.returnSearch(returnSearchByValue(),returnSelectedGenre(),searchQuery,returnShowOwnedState(),1);
@@ -175,12 +184,13 @@ public class searchPageController implements Initializable {
         Text titleElement = new Text();
         titleElement.getStyleClass().add("searchPage__bookContainer__title");
         titleElement.setWrappingWidth(197.13);
+        titleElement.setTextAlignment(TextAlignment.CENTER);
         titleElement.setText(title);
         VBox imageAndTitleContainer = new VBox();
         VBox.setMargin(image, new javafx.geometry.Insets(20, 0, 0, 0));
         VBox.setMargin(titleElement, new javafx.geometry.Insets(18,0,0,0));
         imageAndTitleContainer.setMinWidth(246);
-        imageAndTitleContainer.setMinHeight(31  5);
+        imageAndTitleContainer.setMinHeight(315);
         imageAndTitleContainer.setAlignment(Pos.TOP_CENTER);
         imageAndTitleContainer.getChildren().addAll(image,titleElement);
         String priceTag = String.format("%.2f$",bookData.price);
@@ -195,10 +205,22 @@ public class searchPageController implements Initializable {
         AnchorPane.setBottomAnchor(priceElement, 7.0);
         AnchorPane.setLeftAnchor(priceElement,179.0);
         AnchorPane.setRightAnchor(priceElement,0.0);
+        searchBookContainer.setOnMouseClicked(mouseEvent -> {
+            this.mainPageController.renderCheckBook(bookId);
+        });
         searchBookContainer.getStyleClass().add("searchPage__bookContainer");
         searchBookContainer.getChildren().addAll(imageAndTitleContainer,priceElement);
 
         return searchBookContainer;
     }
 
+
+    @FXML
+    private void renderBooksOnEnter(KeyEvent ev){
+        if(ev.getCode() == KeyCode.ENTER) renderSearchedBooks();
+    }
+
+    public void setSearchBarText(String text){
+        searchPage__searchBar.setText(text);
+    }
 }

@@ -231,7 +231,7 @@
                   <Insets bottom="2.0" />
                </padding>
                <children>
-                  <TextField prefHeight="50.0" prefWidth="359.0" promptText="Enter Book Name">
+                  <TextField fx:id="navbar__searchBar" onKeyPressed="#renderBooksOnEnterFromSearchBar" prefHeight="50.0" prefWidth="359.0" promptText="Enter Book Name">
                      <font>
                         <Font size="24.0" />
                      </font>

@@ -35,7 +35,7 @@
                   <Insets top="80.0" />
                </VBox.margin>
                <children>
-                  <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
+                  <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#renderBooksOnEnter" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -83,9 +83,9 @@
                   </ImageView>
                </children>
             </StackPane>
-            <VBox fx:id="searchPage__advanceSearchCard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="657.0" prefWidth="1063.0" styleClass="searchPage__advanceSearchCard">
+            <VBox fx:id="searchPage__advanceSearchCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="1063.0" styleClass="searchPage__advanceSearchCard">
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets top="30.0" />
                </VBox.margin>
                <children>
                   <Label styleClass="advanceSearchCard__searchByText" text="Search By">
@@ -276,9 +276,9 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Separator>
-                  <Button mnemonicParsing="false" styleClass="advanceSearchCard__advanceSearchButton" text="Advance Search">
+                  <Button mnemonicParsing="false" onMouseClicked="#renderSearchedBooksByFxml" styleClass="advanceSearchCard__advanceSearchButton" text="Advance Search">
                      <VBox.margin>
-                        <Insets left="410.0" top="12.0" />
+                        <Insets left="410.0" top="7.0" />
                      </VBox.margin>
                      <font>
                         <Font size="20.0" />
@@ -333,7 +333,7 @@
                <children>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="355.0" prefWidth="246.0" styleClass="searchPage__bookContainer">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="252.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <ImageView fitHeight="233.0" fitWidth="516.0" pickOnBounds="true" preserveRatio="true">
                                  <VBox.margin>
@@ -353,7 +353,7 @@
                               </Text>
                            </children>
                         </VBox>
-                        <Label layoutX="205.0" layoutY="333.0" styleClass="searchPage__bookContainer__price" text="5.50$" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
+                        <Label layoutX="205.0" layoutY="333.0" styleClass="searchPage__bookContainer__price" text="5.50$" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="318.0">
                            <font>
                               <Font size="20.0" />
                            </font>
