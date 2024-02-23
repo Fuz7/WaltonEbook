@@ -33,7 +33,7 @@
 .advanceSearchCard__searchByButtons{
     -fx-text-fill: #1c1c1c;
     -fx-font-family: 'Karma';
-    -fx-font-size: 28;
+    -fx-font-size: 24;
     -fx-focus-color: transparent ;
     -fx-faint-focus-color: black ;
     -fx-focus-traversable: false;

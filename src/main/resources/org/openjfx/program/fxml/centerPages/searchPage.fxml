@@ -32,7 +32,7 @@
          <children>
             <StackPane prefWidth="1685.0">
                <VBox.margin>
-                  <Insets top="80.0" />
+                  <Insets top="40.0" />
                </VBox.margin>
                <children>
                   <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#renderBooksOnEnter" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
@@ -100,7 +100,7 @@
                      <children>
                         <RadioButton mnemonicParsing="false" selected="true" styleClass="advanceSearchCard__searchByButtons" text="Book Name">
                            <font>
-                              <Font size="28.0" />
+                              <Font size="24.0" />
                            </font>
                            <toggleGroup>
                               <ToggleGroup fx:id="searchBy" />
@@ -108,12 +108,12 @@
                         </RadioButton>
                         <RadioButton mnemonicParsing="false" styleClass="advanceSearchCard__searchByButtons" text="Author" toggleGroup="$searchBy">
                            <font>
-                              <Font size="28.0" />
+                              <Font size="24.0" />
                            </font>
                         </RadioButton>
                         <RadioButton mnemonicParsing="false" styleClass="advanceSearchCard__searchByButtons" text="Description" toggleGroup="$searchBy">
                            <font>
-                              <Font size="28.0" />
+                              <Font size="24.0" />
                            </font>
                         </RadioButton>
                      </children>
@@ -121,7 +121,7 @@
                         <Insets left="40.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
                   <Separator prefWidth="200.0">
