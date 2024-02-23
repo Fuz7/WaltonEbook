@@ -171,7 +171,7 @@ public class homePageController implements Initializable {
         BookData cardBookData = this.mainPageController.getBookData(id);
         String authorName = app.db.Return.returnAuthorNameByID(id);
         String ellipsesDescription = limitWithEllipsis(cardBookData.formattedDescription,320);
-        String formattedPrice = String. format("%.2f$",cardBookData.price);
+        String formattedPrice = String.format("%.2f$",cardBookData.price);
         hbox.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(id));
         for (javafx.scene.Node node : hbox.getChildren()) {
             if (node instanceof ImageView imageContainer) {
