@@ -98,7 +98,8 @@
     -fx-font-family: 'Karma';
 }
 
-.showOwnedButton__box{
+.showOwnedButton__box,
+.showOwnedButton__box--visible{
     -fx-border-width: 1;
     -fx-background-color: white;
     -fx-border-color: black;

@@ -35,7 +35,7 @@
                   <Insets top="80.0" />
                </VBox.margin>
                <children>
-                  <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
+                  <TextField fx:id="searchPage__searchBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="751.0" styleClass="searchPage__searchBar">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -60,7 +60,7 @@
                   </ImageView>
                </children>
             </StackPane>
-            <StackPane fx:id="searchPage__advanceSearchButton" alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="24.0" prefWidth="200.0" styleClass="searchPage__advanceSearchButton">
+            <StackPane fx:id="searchPage__advanceSearchButton" alignment="TOP_CENTER" maxWidth="-Infinity" onMouseClicked="#animateAdvanceSearchCard" prefHeight="24.0" prefWidth="200.0" styleClass="searchPage__advanceSearchButton">
                <VBox.margin>
                   <Insets left="537.0" top="15.0" />
                </VBox.margin>
@@ -83,7 +83,7 @@
                   </ImageView>
                </children>
             </StackPane>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="657.0" prefWidth="1063.0" styleClass="searchPage__advanceSearchCard">
+            <VBox fx:id="searchPage__advanceSearchCard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="657.0" prefWidth="1063.0" styleClass="searchPage__advanceSearchCard">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
@@ -312,14 +312,14 @@
                   </InnerShadow>
                </effect>
             </Separator>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="48.0" prefWidth="237.0" spacing="20.0" styleClass="searchPage__showOwnedButton">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#toggleShowOwnedButton" prefHeight="48.0" prefWidth="237.0" spacing="20.0" styleClass="searchPage__showOwnedButton">
                <children>
                   <Label styleClass="showOwnedButton__text" text="Show Owned">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="showOwnedButton__box">
+                  <StackPane fx:id="showOwnedButton__box" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="40.0" styleClass="showOwnedButton__box">
                      <children>
                         <Rectangle height="24.0" stroke="BLACK" strokeMiterLimit="7.0" strokeType="INSIDE" strokeWidth="0.0" styleClass="showOwnedButton__box__content" width="24.0" />
                      </children>
