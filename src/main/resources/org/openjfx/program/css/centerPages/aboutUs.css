@@ -21,3 +21,14 @@
     -fx-text-fill: black;
     -fx-font-size: 48;
 }
+
+.aboutUsPage__founderOfTheProjectTitle{
+    -fx-font-family: 'Inter Medium';
+    -fx-text-fill: black;
+    -fx-font-size: 40;
+
+}
+
+.aboutUsPage__founderOfTheProjectContainer{
+    -fx-background-color: #ffffff;
+}
