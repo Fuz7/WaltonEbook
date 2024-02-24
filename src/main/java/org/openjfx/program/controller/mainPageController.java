@@ -20,6 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
@@ -271,6 +272,11 @@ public class mainPageController implements Initializable {
         Method setMainPageControllerMethod = controllerClass.getMethod("setMainPageController", mainPageController.class);
         setMainPageControllerMethod.invoke(controllerInstance, this);
         navbar__searchBar.setText("");
+        navbar__myBooks__arrow.getStyleClass().remove("upside");
+        RotateTransition rotateDownwards = new RotateTransition(Duration.millis(10),navbar__myBooks__arrow);
+        rotateDownwards.setToAngle(0);
+        rotateDownwards.play();
+        popup__myBooks.setVisible(false);
         // Set the new content as the CenterPage content
         scrollContainer.setVvalue(0);
         scrollContainer.setContent(newContent);
@@ -292,7 +298,11 @@ public class mainPageController implements Initializable {
             Method setMainPageControllerMethod = controllerClass.getMethod("setMainPageController", mainPageController.class);
             setSearchBarText.invoke(controllerInstance,searchText);
             setMainPageControllerMethod.invoke(controllerInstance, this);
-
+            navbar__myBooks__arrow.getStyleClass().remove("upside");
+            RotateTransition rotateDownwards = new RotateTransition(Duration.millis(10),navbar__myBooks__arrow);
+            rotateDownwards.setToAngle(0);
+            rotateDownwards.play();
+            popup__myBooks.setVisible(false);
             // Set the new content as the CenterPage content
             scrollContainer.setVvalue(0);
             scrollContainer.setContent(newContent);

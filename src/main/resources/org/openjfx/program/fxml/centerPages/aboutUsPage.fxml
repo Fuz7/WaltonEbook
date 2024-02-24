@@ -2,21 +2,25 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2791.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/aboutUs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.aboutUsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="4102.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/aboutUs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.aboutUsController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="7.0" layoutY="1.0" prefHeight="2628.0" prefWidth="1685.0">
+      <VBox alignment="TOP_CENTER" layoutX="-1.0" layoutY="18.0" prefHeight="4074.0" prefWidth="1685.0">
          <children>
             <Label styleClass="aboutUsPage__aboutUsTitle" text="About Us">
                <font>
@@ -74,7 +78,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
                <VBox.margin>
-                  <Insets top="400.0" />
+                  <Insets top="300.0" />
                </VBox.margin>
             </Label>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="1449.0" styleClass="aboutUsPage__founderOfTheProjectContainer">
@@ -89,9 +93,263 @@
                   </DropShadow>
                </effect>
                <children>
-                  <StackPane prefHeight="575.0" prefWidth="1415.0" />
+                  <StackPane prefHeight="615.0" prefWidth="1454.0">
+                     <children>
+                        <HBox fx:id="aboutUsPage__iconicContainer" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="615.0" prefWidth="535.0">
+                                 <children>
+                                    <ImageView fx:id="aboutUsPage__iconicWalton" fitHeight="414.0" fitWidth="411.0" styleClass="aboutUsPage__iconicWalton">
+                                       <image>
+                                          <Image url="@../../images/iconicWalton.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="aboutUsPage__founderName" styleClass="aboutUsPage__founderName" text="Walton Alfante">
+                                       <font>
+                                          <Font size="48.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="aboutUsPage__founderSmallTitles" styleClass="aboutUsPage__founderSmallTitles" text="CEO | Mascot">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets top="40.0" />
+                                 </HBox.margin>
+                              </VBox>
+                              <Text fx:id="aboutUsPage__founderBio" lineSpacing="21.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="aboutUsPage__founderBio" text="             Meet Walton Alfante, the brain behind WaltonEbook. He had a big dream: to create an app where anyone could easily find and enjoy their favorite books online. With a passion for both technology and literature, Walton set out to make this dream a reality. He worked tirelessly to develop WaltonEbook, ensuring it's simple, user-friendly, and full of great reads. But Walton isn't just a tech whiz – he also loves to curl up with a good book. His goal is to share that love of reading with the world, one download at a time. So, let's give a big shoutout to Walton Alfante for creating WaltonEbook and making reading more accessible to everyone!" wrappingWidth="828.2733154296875">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="50.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="aboutUsPage__gojoContainer" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <ImageView fx:id="aboutUsPage__gojoImage" fitHeight="499.0" fitWidth="512.0">
+                                 <image>
+                                    <Image url="@../../images/gojoWalton.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="150.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                              <VBox alignment="TOP_CENTER" prefHeight="608.0" prefWidth="613.0">
+                                 <children>
+                                    <Label fx:id="aboutUsPage__founderBigTitle1" styleClass="aboutUsPage__founderBigTitles" text="CEO">
+                                       <font>
+                                          <Font name="System Bold" size="136.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="100.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Separator prefHeight="6.0" prefWidth="613.0">
+                                       <effect>
+                                          <InnerShadow choke="1.0" height="255.0" radius="119.79249999999999" width="226.17" />
+                                       </effect>
+                                       <VBox.margin>
+                                          <Insets top="30.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <Label fx:id="aboutUsPage__founderBigTitle2" styleClass="aboutUsPage__founderBigTitles" text="Mascot">
+                                       <font>
+                                          <Font name="System Bold" size="136.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="100.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children></StackPane>
                </children>
             </HBox>
+            <Label styleClass="aboutUsPage__contributorsTitleName" text="Contributors">
+               <VBox.margin>
+                  <Insets top="300.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1248.0" prefWidth="1163.0" vgap="90.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+               <children>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="575.0" prefWidth="432.0" styleClass="aboutUsPage__contributorsCard">
+                     <effect>
+                        <DropShadow height="12.21" offsetY="2.0" radius="5.605" width="12.21">
+                           <color>
+                              <Color opacity="0.5381679534912109" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin>
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="348.0">
+                           <image>
+                              <Image url="@../../images/jorge.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Jorge Macabenta">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Backend Developer">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="575.0" prefWidth="432.0" styleClass="aboutUsPage__contributorsCard" GridPane.columnIndex="1">
+                     <effect>
+                        <DropShadow height="12.21" offsetY="2.0" radius="5.605" width="12.21">
+                           <color>
+                              <Color opacity="0.5381679534912109" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="348.0">
+                           <image>
+                              <Image url="@../../images/jayrald.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Jayrald Dionaldo">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Frontend Developer">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="575.0" prefWidth="432.0" styleClass="aboutUsPage__contributorsCard" GridPane.rowIndex="1">
+                     <effect>
+                        <DropShadow height="12.21" offsetY="2.0" radius="5.605" width="12.21">
+                           <color>
+                              <Color opacity="0.5381679534912109" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="348.0">
+                           <image>
+                              <Image url="@../../images/bords.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="April Bords Nerosa">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Designer">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="575.0" prefWidth="432.0" styleClass="aboutUsPage__contributorsCard" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <effect>
+                        <DropShadow height="12.21" offsetY="2.0" radius="5.605" width="12.21">
+                           <color>
+                              <Color opacity="0.5381679534912109" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <children>
+                        <ImageView fitHeight="351.0" fitWidth="348.0">
+                           <image>
+                              <Image url="@../../images/jv.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Jan Vincent Oclarit">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Data Manager">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin>
+                  </VBox>
+               </children>
+            </GridPane>
          </children>
       </VBox>
    </children>

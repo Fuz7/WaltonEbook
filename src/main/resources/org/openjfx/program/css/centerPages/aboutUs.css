@@ -22,7 +22,8 @@
     -fx-font-size: 48;
 }
 
-.aboutUsPage__founderOfTheProjectTitle{
+.aboutUsPage__founderOfTheProjectTitle,
+.aboutUsPage__contributorsTitleName{
     -fx-font-family: 'Inter Medium';
     -fx-text-fill: black;
     -fx-font-size: 40;
@@ -30,5 +31,42 @@
 }
 
 .aboutUsPage__founderOfTheProjectContainer{
-    -fx-background-color: #ffffff;
+    -fx-background-color: #fcfcfc;
+}
+
+.aboutUsPage__founderBigTitles{
+    -fx-font-size: 136;
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: Black;
+}
+
+.aboutUsPage__founderName,
+.aboutUsPage__founderSmallTitles{
+    -fx-text-fill: black;
+}
+
+.aboutUsPage__founderSmallTitles{
+    -fx-text-fill: #575757;
+}
+
+.aboutUsPage__founderBio{
+    -fx-text-fill: black;
+    -fx-font-size: 26;
+    -fx-font-family: 'Inter';
+}
+
+.aboutUsPage__contributorsCard{
+    -fx-background-color: #FCFCFCFF;
+}
+
+.aboutUsPage__contributorsName{
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 44;
+}
+
+.aboutUsPage__contributorsTitle{
+    -fx-text-fill: #505050;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 24;
 }
