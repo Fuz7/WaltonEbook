@@ -172,6 +172,7 @@ public class searchPageController implements Initializable {
         for(AnchorPane bookCard: bookCards){
             searchPage__bookLayout.getChildren().add(bookCard);
         }
+
     }
 
     private AnchorPane createBook(int bookId){

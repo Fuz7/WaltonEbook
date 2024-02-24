@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2279.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/aboutUs.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.aboutUsController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="7.0" layoutY="1.0" prefHeight="1075.0" prefWidth="1685.0">
+         <children>
+            <Label styleClass="aboutUsPage__aboutUsTitle" text="About Us">
+               <font>
+                  <Font name="System Bold" size="56.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="55.0" />
+               </VBox.margin>
+            </Label>
+            <Label styleClass="aboutUsPage__ourMissionTitle" text="Our Mission">
+               <VBox.margin>
+                  <Insets right="1220.0" top="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="494.0" prefWidth="1685.0" spacing="90.0">
+               <children>
+                  <Text lineSpacing="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="aboutUsPage__ourMissionBody" text="            At WaltonEbook, we're on a mission to change how people read books. We're making it easy for everyone to buy and enjoy e-books online. Our goal is simple: we want to give you access to a wide range of books, no matter where you are or what you like to read. We believe technology can make reading easier and more fun for everyone. That's why we're always working to improve our app and make it simple to use. Come join us as we help more people discover the joy of reading through our app." wrappingWidth="830.1368312835693">
+                     <font>
+                        <Font size="2267.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="127.0" top="15.0" />
+                     </HBox.margin>
+                  </Text>
+                  <ImageView fitHeight="500.0" fitWidth="548.0" styleClass="aboutUsPage__ourMissionImage">
+                     <image>
+                        <Image url="@../../images/ourMissionImage.png" />
+                     </image>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color opacity="0.2099236696958542" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+            <Label styleClass="aboutUsPage__peopleBehindTitle" text="The People Behind The Project">
+               <VBox.margin>
+                  <Insets right="770.0" top="250.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

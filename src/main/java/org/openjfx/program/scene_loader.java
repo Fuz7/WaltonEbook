@@ -55,6 +55,10 @@ public class scene_loader {
         Font.loadFont(app.class.getResourceAsStream("fonts/Poppins-Regular.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/GentiumBookPlus-Regular.ttf"), 16);
         Font.loadFont(app.class.getResourceAsStream("fonts/GentiumBookPlus-Bold.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Inter-Regular.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Inter-Medium.ttf"), 16);
+        Font.loadFont(app.class.getResourceAsStream("fonts/Inter-Bold.ttf"), 16);
+
 
 
     }

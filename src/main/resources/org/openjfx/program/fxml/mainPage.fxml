@@ -221,7 +221,7 @@
                   </ImageView>
                </children>
             </StackPane>
-            <Button mnemonicParsing="false" styleClass="navButton" text="About Us">
+            <Button mnemonicParsing="false" onMouseClicked="#switchToAboutUsPage" styleClass="navButton" text="About Us">
                <HBox.margin>
                   <Insets top="15.0" />
                </HBox.margin>

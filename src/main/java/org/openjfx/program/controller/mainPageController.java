@@ -46,7 +46,7 @@ public class mainPageController implements Initializable {
     @FXML
     private ImageView navbar__myBooks__arrow;
     @FXML
-    private ScrollPane scrollContainer;
+    public ScrollPane scrollContainer;
     @FXML
     private ImageView checkBook__bookImage;
     @FXML
@@ -249,6 +249,12 @@ public class mainPageController implements Initializable {
     @FXML
     private void switchToSearchPage(){
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class);
+    }
+
+    @FXML
+    private void switchToAboutUsPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/aboutUsPage.fxml"), aboutUsController.class);
+
     }
 
     @FXML

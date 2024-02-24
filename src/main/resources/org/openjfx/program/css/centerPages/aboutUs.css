@@ -1,0 +1,23 @@
+.aboutUsPage__aboutUsTitle{
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+    -fx-font-size: 56;
+}
+
+.aboutUsPage__ourMissionTitle{
+    -fx-font-family: 'Inter Medium';
+    -fx-text-fill: black;
+    -fx-font-size: 40;
+}
+
+.aboutUsPage__ourMissionBody{
+    -fx-font-family: 'Inter Semi Bold';
+    -fx-text-fill: black;
+    -fx-font-size: 26;
+}
+
+.aboutUsPage__peopleBehindTitle{
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+    -fx-font-size: 48;
+}
