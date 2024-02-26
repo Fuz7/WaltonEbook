@@ -1,15 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.program.controller.accountPageController"
-            stylesheets="@../../css/centerPages/accountPage.css"
-            prefHeight="1200.0" prefWidth="1685.0">
 
+<AnchorPane prefHeight="1200.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/accountPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.accountPageController">
+   <children>
+      <HBox fx:id="accountPage__detailsContainer" prefHeight="400.0" prefWidth="800.0" styleClass="accountPage__detailsContainer" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="150.0">
+         <effect>
+            <DropShadow height="7.81" offsetX="1.0" offsetY="1.0" radius="3.0374999999999996" width="6.34">
+               <color>
+                  <Color opacity="0.37022900581359863" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <ImageView fx:id="detailsContainer__image" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" styleClass="detailsContainer__image">
+               <HBox.margin>
+                  <Insets left="50.0" top="90.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../images/books/1984.jpeg" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="409.0" prefWidth="493.0">
+               <padding>
+                  <Insets top="25.0" />
+               </padding>
+               <children>
+                  <Label styleClass="detailsContainer__accountInfo" text="Account Information:">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="detailsContainer__email" prefHeight="47.0" prefWidth="493.0" styleClass="detailsContainer__email" text="Email: waltonebok@gmail.com">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="detailsContainer__name" prefHeight="47.0" prefWidth="492.0" styleClass="detailsContainer__name" text="Name: Walton Alfante">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="detailsContainer__balance" prefHeight="47.0" prefWidth="492.0" styleClass="detailsContainer__balance" text="Balance: 202.24$">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

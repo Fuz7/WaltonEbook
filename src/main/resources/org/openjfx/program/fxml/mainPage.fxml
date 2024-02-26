@@ -128,7 +128,7 @@
                   <Insets bottom="775.0" left="1450.0" />
                </StackPane.margin>
                <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer1">
+                  <StackPane onMouseClicked="#switchToAccountPage" prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer1">
                      <children>
                         <Label styleClass="popup__myBooks__accountButtonText" text="Account">
                            <font>

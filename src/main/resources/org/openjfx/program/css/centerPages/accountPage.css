@@ -1,0 +1,28 @@
+.accountPage__detailsContainer{
+    -fx-background-color: linear-gradient(to bottom right, rgba(241,241,241,1) 0%, rgba(143,139,139,1) 100%);
+    -fx-background-radius: 30;
+}
+
+.detailsContainer__image{
+    -fx-cursor: hand;
+}
+
+.detailsContainer__accountInfo{
+    -fx-text-fill: black;
+    -fx-font-size: 40;
+    -fx-font-family: 'Buenard-Bold';
+}
+
+.detailsContainer__email,
+.detailsContainer__name{
+    -fx-font-family: 'Buenard';
+    -fx-font-size: 30;
+    -fx-text-fill: black;
+}
+
+
+.detailsContainer__balance{
+    -fx-font-family: 'Buenard-Bold';
+    -fx-font-size: 30;
+    -fx-text-fill: black;
+}

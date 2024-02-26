@@ -5,12 +5,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +21,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -253,6 +258,11 @@ public class mainPageController implements Initializable {
     }
 
     @FXML
+    private void switchToAccountPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/accountPage.fxml"),accountPageController.class);
+    }
+
+    @FXML
     private void switchToAboutUsPage(){
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/aboutUsPage.fxml"), aboutUsController.class);
 
@@ -277,6 +287,9 @@ public class mainPageController implements Initializable {
         rotateDownwards.setToAngle(0);
         rotateDownwards.play();
         popup__myBooks.setVisible(false);
+        popup__myBooks.setMouseTransparent(true);
+        popup__account.setVisible(false);
+        popup__account.setMouseTransparent(true);
         // Set the new content as the CenterPage content
         scrollContainer.setVvalue(0);
         scrollContainer.setContent(newContent);
@@ -320,5 +333,25 @@ public class mainPageController implements Initializable {
         if(ev.getCode() == KeyCode.ENTER) switchToSearchPageBySearchBar();
     }
 
+    public void setRoundedImage(ImageView container, String imageLink){
+        Image im = new Image(imageLink,false);
+        container.setImage(im);
+
+        Rectangle clip = new Rectangle();
+        clip.setWidth(200.0);
+        clip.setHeight(200.0);
+
+        clip.setArcHeight(15);
+        clip.setArcWidth(15);
+        clip.setStroke(Color.BLACK);
+        container.setClip(clip);
+
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        WritableImage image = container.snapshot(parameters,null);
+        container.setClip(null);
+        container.setEffect(new DropShadow(10, Color.LIGHTGRAY));
+        container.setImage(image);
+    }
 
 }
