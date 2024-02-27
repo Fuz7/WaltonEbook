@@ -10,19 +10,46 @@
 .detailsContainer__accountInfo{
     -fx-text-fill: black;
     -fx-font-size: 40;
-    -fx-font-family: 'Buenard-Bold';
+    -fx-font-family: 'Gentium Book Plus Bold';
 }
 
 .detailsContainer__email,
 .detailsContainer__name{
-    -fx-font-family: 'Buenard';
+    -fx-font-family: 'Gentium Book Plus ';
     -fx-font-size: 30;
     -fx-text-fill: black;
 }
 
 
 .detailsContainer__balance{
-    -fx-font-family: 'Buenard-Bold';
+    -fx-font-family: 'Gentium Book Plus Bold';
     -fx-font-size: 30;
     -fx-text-fill: black;
+}
+
+.detailsContainer_balanceField{
+    -fx-background-radius: 6;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: transparent ;
+    -fx-focus-traversable: false;
+    -fx-font-size: 24;
+    -fx-font-family: 'Poppins';
+    -fx-text-fill: black;
+}
+
+.detailsContainer_balanceFieldIcon{
+    -fx-cursor: text;
+}
+
+.detailsContainer__cashInButton{
+    -fx-text-fill: black;
+    -fx-font-size: 28;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-background-radius: 5;
+    -fx-background-color: linear-gradient(to bottom, rgba(147,147,147,1) 0%, rgba(241,241,241,1) 100%);
+    -fx-cursor: hand;
+}
+
+.detailsContainer__cashInButton:hover{
+    -fx-background-color:linear-gradient(to bottom, rgba(147,147,147,1) 0%, rgb(194, 194, 194) 100%);
 }
