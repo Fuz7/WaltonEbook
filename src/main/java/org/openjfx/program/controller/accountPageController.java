@@ -7,14 +7,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import org.openjfx.program.app;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -37,7 +38,7 @@ public class accountPageController {
 
     public mainPageController mainPageController;
 
-    public void setMainPageController(mainPageController mainPageController) {
+    public void setMainPageController(mainPageController mainPageController) throws MalformedURLException {
         this.mainPageController = mainPageController;
         renderImageRoundedCorners();
         forceTextFieldToBeNumeric();
@@ -45,8 +46,8 @@ public class accountPageController {
         updateBalance();
     }
 
-    private void renderImageRoundedCorners(){
-        this.mainPageController.setRoundedImage(detailsContainer__image,String.valueOf(app.class.getResource("images/profile/defaultIcon.jpg")));
+    private void renderImageRoundedCorners() throws MalformedURLException {
+        this.mainPageController.setAccountRoundedImage(detailsContainer__image,this.mainPageController.returnAccountImage());
         BoxBlur boxBlur = new BoxBlur();
         boxBlur.setHeight(3);
         boxBlur.setWidth(3);
@@ -57,6 +58,7 @@ public class accountPageController {
         detailsContainer__image.setOnMouseExited(mouseEvent -> {
             detailsContainer__image.setEffect(null);
         });
+
     }
 
     private void forceTextFieldToBeNumeric(){
@@ -86,6 +88,8 @@ public class accountPageController {
         detailsContainer__balance.setText("Balance: " + formattedBalance);
     }
 
+
+
     @FXML
     private void cashIn(){
         if(!Objects.equals(detailsContainer_balanceField.getText(), "")){
@@ -109,37 +113,63 @@ public class accountPageController {
     @FXML
     private void chooseFileProfile() throws URISyntaxException {
 
-//        FileChooser fileChooser = new FileChooser();
-//
-//        // Set a filter to allow only image files
-//        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp");
-//        fileChooser.getExtensionFilters().add(imageFilter);
-//
-//        Path to;
-//        Path from;
-//
-//        // Show open file dialog
-//        File selectedFile = fileChooser.showOpenDialog(null);
-//
-//        if (selectedFile != null) {
-//            System.out.println("Selected Image: " + selectedFile.getAbsolutePath());
-//            from = Paths.get(selectedFile.toURI());
-//            to= Paths.get(app.class.getResource("images/profile/").toURI()).resolve(app.lm.getSessionId() +".jpg");
-//
-//            // Get the absolute path in string form
-//            String absolutePathAsString = to.toAbsolutePath().toString();
-//            try {
-//                if(Files.exists(from)){
-//                    CopyOption[] options = new CopyOption[]{
-//                            StandardCopyOption.REPLACE_EXISTING,
-//                    };
-//                    Files.move(from,to,StandardCopyOption.REPLACE_EXISTING);
-//                    System.out.print("file Copied to: " + absolutePathAsString);
-//                }
-//            } catch (IOException | SecurityException e) {
-//                throw new RuntimeException(e);
-//            }
-//            // Add your logic for handling the selected image file
-//        }
+        FileChooser fileChooser = new FileChooser();
+
+        // Set a filter to allow only image files
+        FileChooser.ExtensionFilter imageFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.jpeg");
+        fileChooser.getExtensionFilters().add(imageFilter);
+
+        Path to;
+        Path from;
+
+        // Show open file dialog
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            System.out.println("Selected Image: " + selectedFile.getAbsolutePath());
+            from = Paths.get(selectedFile.toURI());
+
+            String extension = "jpg";
+
+
+            Path sourceDirectory = Paths.get("src/main/resources/org/openjfx/program/images/profile/");
+
+            to= sourceDirectory.resolve(app.lm.getSessionId() + "." + extension);
+
+            try {
+                if(Files.exists(from)){
+                    copyFileUsingStream(from.toFile(),to.toFile());
+                    System.out.print("file Copied;");
+                    renderImageRoundedCorners();
+                    this.mainPageController.setNavbarRoundedImage(this.mainPageController.profileLogo,this.mainPageController.returnAccountImage());
+                }
+            } catch (IOException | SecurityException e) {
+                throw new RuntimeException(e);
+            }
+            // Add your logic for handling the selected image file
+        }
     }
+
+    private void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+
+
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            assert is != null;
+            is.close();
+            assert os != null;
+            os.close();
+        }
+    }
+
 }
+

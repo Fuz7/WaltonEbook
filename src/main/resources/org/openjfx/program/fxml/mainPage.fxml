@@ -259,7 +259,7 @@
                   </ImageView>
                </children>
             </StackPane>
-            <ImageView onMouseClicked="#toggleNavbar__accountButton" styleClass="profileLogo">
+            <ImageView fx:id="profileLogo" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#toggleNavbar__accountButton" styleClass="profileLogo">
                <HBox.margin>
                   <Insets left="21.0" top="13.0" />
                </HBox.margin>
@@ -271,7 +271,7 @@
                   </DropShadow>
                </effect>
                <image>
-                  <Image url="@../images/profileLogo.png" />
+                  <Image url="@../images/profile/defaultIcon.jpg" />
                </image>
             </ImageView>
          </children>

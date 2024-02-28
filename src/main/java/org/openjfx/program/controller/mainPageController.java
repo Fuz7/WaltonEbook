@@ -30,10 +30,15 @@ import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -61,6 +66,8 @@ public class mainPageController implements Initializable {
     private StackPane checkBook__closeButton;
     @FXML
     private TextField navbar__searchBar;
+    @FXML
+    public ImageView profileLogo;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -69,6 +76,11 @@ public class mainPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hidePopups();
+        try {
+            setNavbarRoundedImage(profileLogo,returnAccountImage());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void hidePopups(){
@@ -333,7 +345,7 @@ public class mainPageController implements Initializable {
         if(ev.getCode() == KeyCode.ENTER) switchToSearchPageBySearchBar();
     }
 
-    public void setRoundedImage(ImageView container, String imageLink){
+    public void setAccountRoundedImage(ImageView container, String imageLink){
         Image im = new Image(imageLink,false);
         container.setImage(im);
 
@@ -352,6 +364,46 @@ public class mainPageController implements Initializable {
         container.setClip(null);
         container.setEffect(new DropShadow(10, Color.LIGHTGRAY));
         container.setImage(image);
+    }
+
+    public void setNavbarRoundedImage(ImageView container, String imageLink){
+        Image im = new Image(imageLink,false);
+        container.setImage(im);
+
+        Rectangle clip = new Rectangle();
+        clip.setWidth(59.0);
+        clip.setHeight(60.0);
+
+        clip.setArcHeight(60);
+        clip.setArcWidth(60);
+        clip.setStroke(Color.TRANSPARENT);
+        container.setClip(clip);
+
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        WritableImage image = container.snapshot(parameters,null);
+        container.setClip(null);
+        DropShadow shadow = new DropShadow(7,Color.BLACK);
+
+        container.setEffect(shadow);
+        container.setImage(image);
+    }
+
+    public String returnAccountImage() throws MalformedURLException {
+        Path imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/"+ app.lm.getSessionId() +".jpg");
+        if(!isExistingFile(imageUrl)){
+            imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/defaultIcon.jpg");
+        }
+        Path absolutePath = Paths.get(System.getProperty("user.dir"), imageUrl.toString());
+        File imageFile = new File(absolutePath.toString());
+        String absoluteImageUrl = imageFile.toURI().toURL().toString();
+
+
+        return absoluteImageUrl;
+    }
+
+    private static boolean isExistingFile(Path path) {
+        return Files.exists(path) && Files.isRegularFile(path);
     }
 
 }
