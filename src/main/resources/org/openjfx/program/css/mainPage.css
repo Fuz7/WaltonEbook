@@ -18,3 +18,69 @@
 
 }
 
+.checkBook__bookTitle{
+    -fx-text-fill: black;
+    -fx-font-size: 30;
+    -fx-font-family: 'Inter Bold';
+
+}
+
+.checkBook__bookAuthor{
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 20;
+}
+
+.checkBook__bookRating{
+    -fx-text-fill: #313131;
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+}
+
+.checkBook__descriptionTitle{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-font-family: 'Inter Bold';
+
+}
+
+.checkBook__descriptionBody{
+    -fx-text-fill: black;
+    -fx-font-size: 15;
+    -fx-font-family: 'Inter';
+}
+
+.checkBook__genreTitle{
+    -fx-font-size: 15;
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+}
+
+.checkBook__genreBody{
+    -fx-font-size: 14;
+    -fx-font-family: 'Inter';
+    -fx-text-fill: black;
+}
+
+.checkBook__purchaseButton,
+.checkBook__purchaseButton--bought{
+    -fx-text-fill: black;
+    -fx-background-color:  linear-gradient(to bottom left, rgb(75, 180, 37) 0%, rgba(39,216,46,1) 33%, rgb(81, 168, 9) 100%);
+    -fx-background-radius: 10;
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 22;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.checkBook__purchaseButton--bought{
+    -fx-background-color: linear-gradient(to bottom left, rgba(116,116,116,1) 0%, rgba(209,209,209,1) 33%, rgb(124, 124, 124) 100%);
+}
+
+.checkBook__purchaseButton:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(54, 140, 24) 0%, rgb(35, 190, 40) 33%, rgb(71, 143, 10) 100%);
+}
+

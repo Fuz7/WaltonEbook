@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane style="-fx-focus-color: transparent" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.mainPageController">
    <stylesheets>
@@ -35,20 +36,107 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
+               <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="0.86">
                   <content>
                      <AnchorPane prefHeight="754.0" prefWidth="571.0" styleClass="checkBookContainer__card">
                         <children>
-                           <VBox alignment="TOP_CENTER" prefHeight="827.0" prefWidth="571.0">
+                           <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="571.0">
                               <children>
                                  <ImageView fx:id="checkBook__bookImage" fitHeight="285.0" fitWidth="195.0">
                                     <image>
                                        <Image url="@../images/books/b1.jpg" />
                                     </image>
                                     <VBox.margin>
-                                       <Insets top="40.0" />
+                                       <Insets top="60.0" />
                                     </VBox.margin>
+                                    <effect>
+                                       <DropShadow height="20.14" offsetX="0.5" offsetY="0.5" radius="9.57" width="20.14">
+                                          <color>
+                                             <Color opacity="0.5114503502845764" />
+                                          </color>
+                                       </DropShadow>
+                                    </effect>
                                  </ImageView>
+                                 <Label fx:id="checkBook__bookTitle" styleClass="checkBook__bookTitle" text="Atomic Habits">
+                                    <font>
+                                       <Font size="30.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="13.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <Label fx:id="checkBook__bookAuthor" styleClass="checkBook__bookAuthor" text="James Clear" underline="true">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="3.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <Label fx:id="checkBook__bookRating" styleClass="checkBook__bookRating" text="Ratings: 4.21">
+                                    <font>
+                                       <Font name="System Bold" size="18.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="15.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <Separator prefHeight="11.0" prefWidth="571.0">
+                                    <VBox.margin>
+                                       <Insets top="50.0" />
+                                    </VBox.margin>
+                                    <effect>
+                                       <InnerShadow height="53.615" radius="12.90375" width="0.0">
+                                          <color>
+                                             <Color red="0.5882353186607361" green="0.5882353186607361" blue="0.5882353186607361" />
+                                          </color>
+                                       </InnerShadow>
+                                    </effect>
+                                 </Separator>
+                                 <Label styleClass="checkBook__descriptionTitle" text="Description:">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets right="360.0" top="20.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <Text fx:id="checkBook__descriptionBody" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__descriptionBody" text="         Meet Walton Alfante, the brain behind WaltonEbook. He had a big dream: to create an app where anyone could easily find and enjoy their favorite books online. With a passion for both technology and literature, Walton set out to make this dream a reality. He worked tirelessly to develop WaltonEbook, ensuring it's simple, user-friendly, and full of great reads" wrappingWidth="465.5155029296875">
+                                    <font>
+                                       <Font size="15.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="30.0" />
+                                    </VBox.margin>
+                                 </Text>
+                                 <HBox maxWidth="-Infinity" prefHeight="42.0" prefWidth="474.0">
+                                    <children>
+                                       <Label prefHeight="21.0" prefWidth="105.0" styleClass="checkBook__genreTitle" text="Genre/Tags: ">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                       </Label>
+                                       <Text fx:id="checkBook__genreBody" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__genreBody" text="Adventure, Action, Self-Improvement, Business, Entrepreneur, Memoir" wrappingWidth="368.13671875">
+                                          <font>
+                                             <Font size="14.0" />
+                                          </font>
+                                          <HBox.margin>
+                                             <Insets top="2.0" />
+                                          </HBox.margin>
+                                       </Text>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="80.0" />
+                                    </VBox.margin>
+                                 </HBox>
+                                 <Button fx:id="checkBook__purchaseButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" styleClass="checkBook__purchaseButton" text="Purchase">
+                                    <font>
+                                       <Font size="22.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="70.0" />
+                                    </VBox.margin>
+                                 </Button>
                               </children>
                            </VBox>
                         </children>
@@ -71,7 +159,7 @@
                      </Label>
                   </children>
                   <StackPane.margin>
-                     <Insets bottom="494.0" right="532.0" />
+                     <Insets bottom="494.0" right="533.0" />
                   </StackPane.margin>
                </StackPane>
             </StackPane>
