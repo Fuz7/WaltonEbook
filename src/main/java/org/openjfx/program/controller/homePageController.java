@@ -136,6 +136,7 @@ public class homePageController implements Initializable {
         topChoice__description.setText(limitWithEllipsis(topChoiceBook.formattedDescription,360));
         topChoice__genre.setText(topChoiceBook.genre);
         topChoice__imageContainer.setImage(topChoiceBook.image);
+        topChoice__imageContainer.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(id));
         topChoice__author.setText("Author: " + authorName);
     }
 

@@ -48,7 +48,7 @@
                                        <Image url="@../images/books/b1.jpg" />
                                     </image>
                                     <VBox.margin>
-                                       <Insets top="60.0" />
+                                       <Insets top="45.0" />
                                     </VBox.margin>
                                     <effect>
                                        <DropShadow height="20.14" offsetX="0.5" offsetY="0.5" radius="9.57" width="20.14">
@@ -66,7 +66,7 @@
                                        <Insets top="13.0" />
                                     </VBox.margin>
                                  </Label>
-                                 <Label fx:id="checkBook__bookAuthor" styleClass="checkBook__bookAuthor" text="James Clear" underline="true">
+                                 <Label fx:id="checkBook__bookAuthor" styleClass="checkBook__bookAuthor" text="James Clear" textAlignment="CENTER" underline="true">
                                     <font>
                                        <Font size="20.0" />
                                     </font>
@@ -74,7 +74,7 @@
                                        <Insets top="3.0" />
                                     </VBox.margin>
                                  </Label>
-                                 <Label fx:id="checkBook__bookRating" styleClass="checkBook__bookRating" text="Ratings: 4.21">
+                                 <Label fx:id="checkBook__bookRating" styleClass="checkBook__bookRating" text="Ratings: 4.21" textAlignment="CENTER">
                                     <font>
                                        <Font name="System Bold" size="18.0" />
                                     </font>
@@ -82,7 +82,7 @@
                                        <Insets top="15.0" />
                                     </VBox.margin>
                                  </Label>
-                                 <Label fx:id="checkBook__soldCount" styleClass="checkBook__soldCount" text="Sold : 20" textFill="#252525">
+                                 <Label fx:id="checkBook__soldCount" styleClass="checkBook__soldCount" text="Sold : 20" textFill="#252525" wrapText="true">
                                     <font>
                                        <Font name="System Bold Italic" size="18.0" />
                                     </font>
@@ -186,7 +186,7 @@
                                        <Insets left="16.0" top="20.0" />
                                     </VBox.margin>
                                     <children>
-                                       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="200.0" spacing="7.0">
+                                       <HBox fx:id="checkBook__ratingStarContainer" alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="200.0" spacing="7.0" styleClass="checkBook__ratingStarContainer">
                                           <children>
                                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
                                              <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
@@ -198,7 +198,7 @@
                                              <Insets left="2.0" />
                                           </HBox.margin>
                                        </HBox>
-                                       <Button fx:id="checkBook__reviewBookButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="154.0" styleClass="checkBook__reviewBookButton" text="Review Book">
+                                       <Button fx:id="checkBook__reviewBookButton" mnemonicParsing="false" onMouseClicked="#reviewBookOnClick" prefHeight="44.0" prefWidth="154.0" styleClass="checkBook__reviewBookButton" text="Review Book">
                                           <font>
                                              <Font size="20.0" />
                                           </font>
@@ -207,7 +207,7 @@
                                  </HBox>
                                  <StackPane minHeight="-Infinity" prefHeight="205.0" prefWidth="571.0">
                                     <children>
-                                       <VBox fx:id="checkBook__reviewTextAreaContainer" prefHeight="183.0" prefWidth="571.0" styleClass="checkBook__reviewTextAreaContainer">
+                                       <VBox fx:id="checkBook__reviewTextAreaContainer" prefHeight="183.0" prefWidth="571.0" styleClass="checkBook__reviewTextAreaContainer" visible="false">
                                           <children>
                                              <TextArea fx:id="checkBook__reviewTextArea" maxWidth="-Infinity" prefHeight="147.0" prefWidth="380.0" styleClass="checkBook__reviewTextArea">
                                                 <VBox.margin>
@@ -219,7 +219,7 @@
                                              </TextArea>
                                              <HBox prefHeight="48.0" prefWidth="571.0" spacing="16.0">
                                                 <children>
-                                                   <Button fx:id="checkBook_reviewCancelButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" styleClass="checkBook_reviewCancelButton" text="Cancel">
+                                                   <Button fx:id="checkBook_reviewCancelButton" mnemonicParsing="false" onMouseClicked="#reviewCancelTextAreaOnClick" prefHeight="35.0" prefWidth="84.0" styleClass="checkBook_reviewCancelButton" text="Cancel">
                                                       <font>
                                                          <Font size="16.0" />
                                                       </font>
@@ -236,15 +236,11 @@
                                              </HBox>
                                           </children>
                                        </VBox>
-                                       <HBox fx:id="checkBook__currentReviewContainer" maxWidth="-Infinity" prefHeight="166.0" prefWidth="460.0" styleClass="checkBook__currentReviewContainer" visible="false">
+                                       <HBox fx:id="checkBook__currentReviewContainer" maxWidth="-Infinity" prefHeight="166.0" prefWidth="460.0" styleClass="checkBook__currentReviewContainer">
                                           <children>
                                              <VBox prefHeight="200.0" prefWidth="100.0">
                                                 <children>
-                                                   <ImageView fx:id="checkBook__currentReviewImage" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__currentReviewImage">
-                                                      <image>
-                                                         <Image url="@../images/profile/defaultIcon.jpg" />
-                                                      </image>
-                                                   </ImageView>
+                                                   <ImageView fx:id="checkBook__currentReviewImage" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" styleClass="checkBook__currentReviewImage" />
                                                    <Text fx:id="checkBook__currentReviewUsername" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewUsername" text="Walton Alfante" wrappingWidth="136.6708984375">
                                                       <font>
                                                          <Font size="15.0" />
@@ -255,7 +251,7 @@
                                                    </Text>
                                                 </children>
                                              </VBox>
-                                             <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewBody" wrappingWidth="321.13671875">
+                                             <Text fx:id="checkBook__currentReviewBody" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewBody" wrappingWidth="321.13671875">
                                                 <font>
                                                    <Font size="15.0" />
                                                 </font>
@@ -427,9 +423,9 @@
                   </DropShadow>
                </effect>
                <children>
-                  <StackPane fx:id="popup__booksPending1" prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer1">
+                  <StackPane fx:id="popup__booksOwned" onMouseClicked="#switchToBookOwnedPage" prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer1">
                      <children>
-                        <Label styleClass="popup__myBooks__booksButtonText" text="Books Pending">
+                        <Label styleClass="popup__myBooks__booksButtonText" text="Books Owned">
                            <font>
                               <Font size="28.0" />
                            </font>

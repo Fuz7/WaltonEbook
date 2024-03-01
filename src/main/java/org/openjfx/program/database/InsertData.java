@@ -11,6 +11,8 @@ public class InsertData {
     public String dataLocation;
     public CheckData check;
     public ReturnData Return;
+    public UpdateData Update;
+
 
 
 
@@ -24,6 +26,11 @@ public class InsertData {
         this.check = check;
         this.Return = Return;
 
+    }
+
+
+    public void InsertDataAfter(UpdateData Update){
+        this.Update = Update;
     }
 
     /**
@@ -296,7 +303,105 @@ public class InsertData {
             logger.log(Level.SEVERE, "Error inserting data into author table", e);
         }
     }
+    public void insertOrUpdateBookReview(int bookId, int userId, int rating, String review, boolean is_owned) {
+        boolean if_exist = this.check.checkIfReviewExist(bookId, userId);
+        if (if_exist){
+            System.out.println("it Exist, THEREFORE UPDATING IT");
+            this.Update.updateReview(bookId, userId, rating, review, is_owned);
+            return;
+        }
 
+        Logger logger = Logger.getLogger("insertOrUpdateBookReview");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String insertOrUpdateBookReviewSQL = "INSERT INTO book_reviews (book_id, user_id, rating, review, is_owned) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertOrUpdateBookReviewSQL)) {
+                preparedStatement.setInt(1, bookId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setInt(3, rating);
+                preparedStatement.setString(4, review);
+                preparedStatement.setBoolean(5, is_owned);
+
+
+                // Execute the SQL statement to insert or update data
+                preparedStatement.executeUpdate();
+
+                System.out.println("Data inserted or updated in book_reviews table successfully");
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error inserting or updating data in book_reviews table", e);
+        }
+    }
+
+    public void createEmptyReviewRow(int bookId, int userId){
+        Logger logger = Logger.getLogger("createEmptyReviewRow");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            // SQL statement to insert data into the "book_reviews" table
+            String insertBookReviewSQL = "INSERT INTO book_reviews (book_id, user_id) VALUES (?, ?);";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookReviewSQL)) {
+                preparedStatement.setInt(1, bookId);
+                preparedStatement.setInt(2, userId);
+                // Execute the SQL statement to insert data
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error createEmptyReviewRow", e);
+        }
+    }
+
+    public void InsertBookRating(int bookId, int userId, int rating){
+
+        if (check.checkIfRatingExist(bookId, userId)){
+            System.out.println("Rating Row Already Exist Therefore Updating it");
+            Update.updateRating(bookId, userId, rating);
+            return;
+        }
+
+        Logger logger = Logger.getLogger("InsertBookRating");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String insertBookReviewSQL = "INSERT INTO book_rating (book_id, user_id, rating) VALUES (?, ?, ?);";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookReviewSQL)) {
+                preparedStatement.setInt(1, bookId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setInt(3, rating);
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error InsertBookRating", e);
+        }
+    }
+
+
+    public void InsertBookReviewText(int bookId, int userId, String review){
+
+        if (check.checkIfReviewTextExist(bookId, userId)){
+            System.out.println("Review Row Already Exist Therefore Updating it");
+            Update.updateReviewText(bookId, userId, review);
+            return;
+        }
+
+        Logger logger = Logger.getLogger("InsertBookReview");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String insertBookReviewSQL = "INSERT INTO book_text_review (book_id, user_id, review) VALUES (?, ?, ?);";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookReviewSQL)) {
+                preparedStatement.setInt(1, bookId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setString(3, review);
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error InsertBookReview", e);
+        }
+    }
 
 
 }

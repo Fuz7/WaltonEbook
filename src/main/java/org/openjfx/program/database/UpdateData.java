@@ -114,6 +114,74 @@ public class UpdateData {
         }
         return false;
     }
+    public void updateReview(int bookId, int userId, int rating, String review, boolean is_owned) {
+        System.out.println("UPDATING");
+        Logger logger = Logger.getLogger("updateReview");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            // SQL statement to update data in the "book_reviews" table
+            String update = "UPDATE book_reviews " +
+                    "SET rating = ?, review = ?, is_owned = ? " +
+                    "WHERE book_id = ? AND user_id = ?";
 
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                // Set the parameters for the prepared statement
+                preparedStatement.setInt(1, rating);
+                preparedStatement.setString(2, review);
+                preparedStatement.setBoolean(3, is_owned);
+                preparedStatement.setInt(4, bookId);
+                preparedStatement.setInt(5, userId);
+
+                // Execute the SQL statement to update data
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateReview", e);
+        }
+    }
+
+    public void updateRating(int bookId, int userId, int rating) {
+        Logger logger = Logger.getLogger("updateRating");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            // SQL statement to update data in the "book_reviews" table
+            String update = "UPDATE book_rating " +
+                    "SET rating = ?" +
+                    "WHERE book_id = ? AND user_id = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                // Set the parameters for the prepared statement
+                preparedStatement.setInt(1, rating);
+                preparedStatement.setInt(2, bookId);
+                preparedStatement.setInt(3, userId);
+
+                // Execute the SQL statement to update data
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateRating", e);
+        }
+    }
+
+
+    public void updateReviewText(int bookId, int userId, String review) {
+        Logger logger = Logger.getLogger("updateReviewText");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            // SQL statement to update data in the "book_reviews" table
+            String update = "UPDATE book_text_review " +
+                    "SET review = ?" +
+                    "WHERE book_id = ? AND user_id = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                // Set the parameters for the prepared statement
+                preparedStatement.setString(1, review);
+                preparedStatement.setInt(2, bookId);
+                preparedStatement.setInt(3, userId);
+
+                // Execute the SQL statement to update data
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateReviewText", e);
+        }
+    }
 
 }

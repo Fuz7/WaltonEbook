@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 public class CheckData {
     public String dataLocation;
+    public CheckData Check;
 
     /**
      * Constructs a CheckData object with the specified data location.
@@ -121,6 +122,66 @@ public class CheckData {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "CheckIfBookWasBought error", e);
+        }
+        return false;
+    }
+
+    public boolean checkIfReviewExist(int bookId, int userId){
+        Logger logger = Logger.getLogger("checkIfExist");
+        String query = "SELECT COUNT(*) FROM book_reviews WHERE book_id = ? AND user_id = ?";
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, bookId);
+            preparedStatement.setInt(2, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "checkIfExist error", e);
+        }
+        return false;
+    }
+
+    public boolean checkIfRatingExist(int bookId, int userId){
+        Logger logger = Logger.getLogger("checkIfRatingExist");
+        String query = "SELECT COUNT(*) FROM book_rating WHERE book_id = ? AND user_id = ?";
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, bookId);
+            preparedStatement.setInt(2, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "checkIfRatingExist error", e);
+        }
+        return false;
+    }
+
+    public boolean checkIfReviewTextExist(int bookId, int userId){
+        Logger logger = Logger.getLogger("checkIfReviewTextExist");
+        String query = "SELECT COUNT(*) FROM book_text_review WHERE book_id = ? AND user_id = ?";
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, bookId);
+            preparedStatement.setInt(2, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "checkIfReviewTextExist error", e);
         }
         return false;
     }

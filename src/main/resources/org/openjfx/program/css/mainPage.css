@@ -114,9 +114,17 @@
     -fx-cursor: hand;
 }
 
+.checkBook__ratingStar:hover{
+    -fx-image: url("../images/grayStar.png");
+}
+
 .checkBook__ratingStar--rated{
     -fx-image: url('../images/goldStar.png');
     -fx-cursor: hand;
+}
+
+.checkBook__ratingStar--rated:hover{
+    -fx-image: url('../images/goldStar.png');
 }
 
 .checkBook__ratingStar--rated.checkBook__ratingStar--bought{
@@ -124,10 +132,13 @@
     -fx-cursor: hand;
 }
 
+.checkBook__ratingStar--rated.checkBook__ratingStar--bought:hover{
+    -fx-image: url('../images/purpleStar.png');
+}
 
 .checkBook__reviewBookButton{
     -fx-text-fill: black;
-    -fx-background-color:  linear-gradient(to bottom left, rgb(116, 116, 116) 0%, rgba(209,209,209,1) 53%, rgb(116, 116, 116) 100%);
+    -fx-background-color:  linear-gradient(to bottom left, rgb(75, 180, 37) 0%, rgba(39,216,46,1) 33%, rgb(81, 168, 9) 100%);
     -fx-background-radius: 25;
     -fx-font-family: 'Buenard';
     -fx-font-size: 20;
@@ -138,8 +149,16 @@
 }
 
 .checkBook__reviewBookButton:hover{
-    -fx-background-color:  linear-gradient(to bottom left, rgb(84, 84, 84) 0%, rgb(164, 164, 164) 53%, rgb(100, 100, 100) 100%);
+    -fx-background-color:   linear-gradient(to bottom left, rgb(54, 140, 24) 0%, rgb(35, 190, 40) 33%, rgb(71, 143, 10) 100%);
+}
 
+.checkBook__reviewBookButton--reviewed{
+    -fx-background-color: linear-gradient(to bottom left, rgb(116, 116, 116) 0%, rgba(209,209,209,1) 53%, rgb(116, 116, 116) 100%);
+    -fx-cursor: default;
+}
+
+.checkBook__reviewBookButton--reviewed:hover{
+    -fx-background-color: linear-gradient(to bottom left, rgb(116, 116, 116) 0%, rgba(209,209,209,1) 53%, rgb(116, 116, 116) 100%);
 }
 
 .checkBook__reviewTextArea{

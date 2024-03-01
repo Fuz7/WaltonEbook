@@ -163,7 +163,7 @@ public class searchPageController implements Initializable {
 
     private void renderSearchedBooks(){
         String searchQuery =  searchPage__searchBar.getText();
-        List<Integer> bookIds = app.db.Return.returnSearch(returnSearchByValue(),returnSelectedGenre(),searchQuery,returnShowOwnedState(),1);
+        List<Integer> bookIds = app.db.Return.returnSearch(returnSearchByValue(),returnSelectedGenre(),searchQuery,returnShowOwnedState(),app.lm.getSessionId());
         List<AnchorPane> bookCards = new ArrayList<AnchorPane>();
         searchPage__bookLayout.getChildren().clear();
         for (Integer bookId : bookIds) {

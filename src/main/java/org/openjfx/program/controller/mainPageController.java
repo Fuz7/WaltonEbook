@@ -6,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -88,6 +85,24 @@ public class mainPageController implements Initializable {
     private Button checkBook__purchaseButton;
     @FXML
     private Label checkBook__priceTag;
+    @FXML
+    private HBox checkBook__ratingStarContainer;
+    @FXML
+    private Button checkBook__reviewBookButton;
+    @FXML
+    private VBox checkBook__reviewTextAreaContainer;
+    @FXML
+    private HBox checkBook__currentReviewContainer;
+    @FXML
+    private TextArea checkBook__reviewTextArea;
+    @FXML
+    private ImageView checkBook__currentReviewImage;
+    @FXML
+    private Text checkBook__currentReviewBody;
+    @FXML
+    private Text checkBook__currentReviewUsername;
+    @FXML
+    private Button checkBook_reviewSubmitButton;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -276,7 +291,12 @@ public class mainPageController implements Initializable {
         renderPurchaseButton(id);
         checkBook__purchaseButton.setOnMouseClicked(mouseEvent ->  purchaseButtonOnClick(id));
         checkBook__priceTag.setText(String.format("%.2f$",bookDetails.price));
+        renderRatingStarsEvents(id,app.lm.getSessionId());
+        renderRatingStarsClass(id,app.lm.getSessionId());
+        checkBook_reviewSubmitButton.setOnMouseClicked(mouseEvent ->  renderReviewSubmitTextArea(id,app.lm.getSessionId()));
         slideInCheckBook();
+        renderReviewText(id,app.lm.getSessionId());
+
     }
 
     private void renderPurchaseButton(int bookId){
@@ -305,6 +325,121 @@ public class mainPageController implements Initializable {
             }
         }
     }
+    private ImageView getChildAtIndex(StackPane parent, int index) {
+        // Retrieve the child at the specified index
+        if (index >= 0 && index < parent.getChildren().size()) {
+            return (ImageView) parent.getChildren().get(index);
+        } else {
+            return null; // Index out of bounds
+        }
+    }
+
+    private void renderRatingStarsEvents(int bookId, int userId){
+        checkBook__ratingStarContainer.getChildren().forEach(node ->{
+            if(node instanceof ImageView imageView){
+               imageView.setOnMouseClicked(mouseEvent -> handleRatingStarClick(mouseEvent,bookId,userId));
+            }
+        });
+    }
+
+    private void renderRatingStarsClass(int bookId, int userId){
+        checkBook__ratingStarContainer.getChildren().forEach(node ->{
+            if(node instanceof ImageView imageView){
+                imageView.getStyleClass().remove("checkBook__ratingStar--rated");
+                imageView.getStyleClass().remove("checkBook__ratingStar--bought");
+                if(app.db.Check.CheckIfBookWasBought(bookId,userId)){
+                    imageView.getStyleClass().add("checkBook__ratingStar--bought");
+                }
+            }
+
+        });
+
+        if(app.db.Check.checkIfRatingExist(bookId,userId)){
+            int ratingScore = app.db.Return.returnReviewRating(userId,bookId);
+            for(int i = 0;i < ratingScore;i++){
+                ImageView currStar = (ImageView) checkBook__ratingStarContainer.getChildren().get(i);
+                currStar.getStyleClass().add("checkBook__ratingStar--rated");
+            }
+        }
+
+    }
+
+    private void handleRatingStarClick(MouseEvent ev,int bookId, int userId) {
+        // Retrieve the index of the clicked child
+        ImageView star = (ImageView) ev.getSource();
+        HBox parent = (HBox) star.getParent();
+        int index = parent.getChildren().indexOf(star);
+        int ratingScore = index + 1;
+        for(int i = 0;i < 5;i++){
+            ImageView currStar = (ImageView) parent.getChildren().get(i);
+            currStar.getStyleClass().remove("checkBook__ratingStar--rated");
+        }
+        for(int i = 0;i < ratingScore;i++){
+            ImageView currStar = (ImageView) parent.getChildren().get(i);
+            currStar.getStyleClass().add("checkBook__ratingStar--rated");
+        }
+        if(app.db.Check.checkIfRatingExist(bookId,userId)){
+            app.db.Update.updateRating(bookId,userId,ratingScore);
+        }else{
+            app.db.Insert.InsertBookRating(bookId,userId,ratingScore);
+        }
+    }
+
+    private void renderReviewText(int bookId,int userId) {
+        if(app.db.Check.checkIfReviewTextExist(bookId,userId)){
+            checkBook__reviewTextAreaContainer.setVisible(false);
+            checkBook__currentReviewContainer.setVisible(true);
+            checkBook__reviewBookButton.setText("Reviewed");
+            try {
+                setReviewRoundedCorner(checkBook__currentReviewImage,returnUserImage(userId));
+
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            checkBook__currentReviewUsername.setText(app.db.Return.returnAuthorNameByID(app.lm.getSessionId()));
+            checkBook__currentReviewBody.setText(app.db.Return.returnReviewText(userId,bookId));
+            checkBook__reviewBookButton.getStyleClass().add("checkBook__reviewBookButton--reviewed");
+
+        }else{
+            checkBook__reviewBookButton.setText("Review Book");
+            checkBook__reviewTextAreaContainer.setVisible(false);
+            checkBook__currentReviewContainer.setVisible(false);
+            checkBook__reviewTextArea.setText("");
+            checkBook__reviewBookButton.getStyleClass().remove("checkBook__reviewBookButton--reviewed");
+        }
+    }
+
+    @FXML
+    private void reviewBookOnClick(){
+        if(!checkBook__reviewBookButton.getStyleClass().contains("checkBook__reviewBookButton--reviewed")){
+            checkBook__reviewTextAreaContainer.setVisible(true);
+        }
+
+    }
+
+    @FXML
+    private void reviewCancelTextAreaOnClick(){
+        checkBook__reviewTextAreaContainer.setVisible(false);
+        checkBook__reviewTextArea.setText("");
+    }
+
+    private void renderReviewSubmitTextArea(int bookId, int userId){
+        checkBook__reviewTextAreaContainer.setVisible(false);
+        app.db.Insert.InsertBookReviewText(bookId,userId,checkBook__reviewTextArea.getText());
+        checkBook__currentReviewContainer.setVisible(true);
+        checkBook__reviewTextArea.setText("");
+        try {
+            setReviewRoundedCorner(checkBook__currentReviewImage,returnAccountImage());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        checkBook__currentReviewUsername.setText(app.db.Return.returnAuthorNameByID(app.lm.getSessionId()));
+        checkBook__currentReviewBody.setText(app.db.Return.returnReviewText(userId,bookId));
+        checkBook__reviewBookButton.getStyleClass().add("checkBook__reviewBookButton--reviewed");
+        checkBook__reviewBookButton.setText("Reviewed");
+
+
+    }
 
     private String arrayListToStringWithSpace(List<String> genre){
         StringJoiner joiner = new StringJoiner(", ");
@@ -314,10 +449,7 @@ public class mainPageController implements Initializable {
         String concatenatedString = joiner.toString();
         return concatenatedString;
     }
-    @FXML
-    public void navbar__renderSearchButton(){
 
-    }
 
     @FXML
     private void closeCheckBook(){
@@ -347,9 +479,17 @@ public class mainPageController implements Initializable {
     }
 
     @FXML
+    private void switchToBookOwnedPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/bookOwnedPage.fxml"), bookOwnedController.class);
+
+    }
+
+    @FXML
     private void switchToSearchPageBySearchBar(){
         renderCenterPageContentFromSearch(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class,navbar__searchBar.getText());
     }
+
+
 
 
     public void replaceCenterPageContent(URL fxmlResource, Class<?> controllerClass) {
@@ -437,6 +577,26 @@ public class mainPageController implements Initializable {
         container.setEffect(new DropShadow(10, Color.LIGHTGRAY));
         container.setImage(image);
     }
+    public void setReviewRoundedCorner(ImageView container, String imageLink){
+        Image im = new Image(imageLink,false);
+        container.setImage(im);
+
+        Rectangle clip = new Rectangle();
+        clip.setWidth(51.0);
+        clip.setHeight(51.0);
+
+        clip.setArcHeight(50);
+        clip.setArcWidth(50);
+        clip.setStroke(Color.TRANSPARENT);
+        container.setClip(clip);
+
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        WritableImage image = container.snapshot(parameters,null);
+        container.setClip(null);
+        container.setEffect(new DropShadow(10, Color.LIGHTGRAY));
+        container.setImage(image);
+    }
 
     public void setNavbarRoundedImage(ImageView container, String imageLink){
         Image im = new Image(imageLink,false);
@@ -463,6 +623,19 @@ public class mainPageController implements Initializable {
 
     public String returnAccountImage() throws MalformedURLException {
         Path imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/"+ app.lm.getSessionId() +".jpg");
+        if(!isExistingFile(imageUrl)){
+            imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/defaultIcon.jpg");
+        }
+        Path absolutePath = Paths.get(System.getProperty("user.dir"), imageUrl.toString());
+        File imageFile = new File(absolutePath.toString());
+        String absoluteImageUrl = imageFile.toURI().toURL().toString();
+
+
+        return absoluteImageUrl;
+    }
+
+    public String returnUserImage(int id) throws MalformedURLException {
+        Path imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/"+ id +".jpg");
         if(!isExistingFile(imageUrl)){
             imageUrl = Paths.get("src/main/resources/org/openjfx/program/images/profile/defaultIcon.jpg");
         }

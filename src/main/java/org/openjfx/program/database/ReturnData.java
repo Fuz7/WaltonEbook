@@ -8,14 +8,17 @@ import java.util.logging.Logger;
 public class ReturnData {
 
     public String dataLocation;
+    public CheckData Check;
 
     /**
      * Constructs a ReturnData object with the specified data location.
      *
      * @param dataLocation The location where the data is stored.
      */
-    public ReturnData(String dataLocation) {
+    public ReturnData(String dataLocation,CheckData Check) {
         this.dataLocation = dataLocation;
+        this.Check = Check;
+
     }
 
     /**
@@ -791,12 +794,18 @@ public class ReturnData {
         List<Integer> bookIds = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
             String sql = "SELECT bd.id, bd.title FROM book_details bd";
+            boolean first = true;
 
             // Check If genre Exist
             if (!genre.isEmpty()) {
                 for (String g : genre) {
-                    System.out.println(g);
-                    sql += String.format(" WHERE bd.title IN (SELECT title FROM book_genre WHERE genre = '%s')", g);
+                    if (first) {
+                        sql += String.format(" WHERE bd.title IN (SELECT title FROM book_genre WHERE genre = '%s')", g);
+                        first = false;
+                    }
+                    else{
+                        sql += String.format(" AND bd.title IN (SELECT title FROM book_genre WHERE genre = '%s')", g);
+                    }
                     need_AND = true;
                 }
             }
@@ -809,8 +818,6 @@ public class ReturnData {
                     sql += String.format(" AND bd.id NOT IN (SELECT book_id FROM book_owned WHERE user_id = %d)", UserId);
                 }
             }
-
-            System.out.println(sql);
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
                  ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -851,29 +858,86 @@ public class ReturnData {
 
         return bookGenres;
     }
+    public List<String[]> returnAllBookReviewsById(int bookId) {
+        Logger logger = Logger.getLogger("returnAllBookReviewsById");
+        List<String[]> bookReviews = new ArrayList<>();
 
-    public boolean isBookOwnedByUser(int userId,int bookId){
-        Logger logger = Logger.getLogger("isBookOwnedByUser");
+        String sql = "SELECT user_id, review, rating, is_owned " +
+                "FROM book_reviews " +
+                "WHERE book_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, bookId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String[] review = new String[4];
+                review[0] = resultSet.getString("user_id");
+                review[1] = resultSet.getString("review");
+                review[2] = String.valueOf(resultSet.getInt("rating"));
+                review[3] = resultSet.getBoolean("is_owned") ? "Owned" : "Not Owned";
+                bookReviews.add(review);
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning book reviews", e);
+        }
+
+        return bookReviews;
+    }
+
+    public int returnReviewRating(int userId, int bookId){
+        Logger logger = Logger.getLogger("returnReviewRating");
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
-            String sql = "SELECT is_owned FROM book_owned WHERE user_id = ? AND book_id = ?";
+            String sql = "SELECT rating FROM book_rating WHERE user_id = ? and book_id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, userId);
-                preparedStatement.setInt(2,bookId);
+                preparedStatement.setInt(2, bookId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
-                        return resultSet.getBoolean("is_owned");
+                        return resultSet.getInt("rating");
                     }
-                } catch (SQLException e) {
-                    logger.log(Level.SEVERE, "Error retrieving author ID", e);
                 }
             }
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error connecting to database", e);
+            logger.log(Level.SEVERE, "Error returnReviewRating", e);
         }
-
-        return false; // or any other appropriate default value
+        return -1;
     }
+
+    public String returnReviewText(int userId, int bookId){
+        Logger logger = Logger.getLogger("returnReviewRating");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT review FROM book_text_review WHERE user_id = ? and book_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, userId);
+                preparedStatement.setInt(2, bookId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("review");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returnReviewRating", e);
+        }
+        return null;
+    }
+
+    public String[] returnBookReviewDetails(int userId, int bookId){
+        String[] details = new String[3];
+        details[0] = String.valueOf(returnReviewRating(userId, bookId));
+        details[1] = returnReviewText(userId, bookId);
+        details[2] = String.valueOf(Check.CheckIfBookWasBought(bookId, userId));
+
+        return details;
+    }
+
+
 
 
 

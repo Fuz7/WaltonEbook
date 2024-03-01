@@ -32,9 +32,10 @@ public class DatabaseManager {
     public DatabaseManager(String dataLocation) {
         this.dataLocation = dataLocation;
         this.Check = new CheckData(this.dataLocation);
-        this.Return = new ReturnData(this.dataLocation);
+        this.Return = new ReturnData(this.dataLocation,this.Check);
         this.Insert = new InsertData(this.dataLocation, this.Check, this.Return);
         this.Update = new UpdateData(this.dataLocation, this.Return, this.Insert);
+        this.Insert.InsertDataAfter(this.Update);
         this.Login = new LoginData(this.dataLocation);
     }
 
@@ -98,15 +99,31 @@ public class DatabaseManager {
                     + ");";
 
             String createReviewTableSQL = "CREATE TABLE IF NOT EXISTS book_reviews ("
-                    + "review_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "book_id INTEGER,"
                     + "user_id INTEGER,"
-                    + "rating INTEGER,"
+                    + "rating INTGER,"
                     + "review TEXT,"
                     + "is_owned BOOLEAN,"
                     + "FOREIGN KEY (book_id) REFERENCES book_details (id),"
                     + "FOREIGN KEY (user_id) REFERENCES users (id)"
                     + ");";
+
+            String createRatingTableSQL = "CREATE TABLE IF NOT EXISTS book_rating ("
+                    + "book_id INT,"
+                    + "user_id INT,"
+                    + "rating INT,"
+                    + "FOREIGN KEY (book_id) REFERENCES book_details(id),"
+                    + "FOREIGN KEY (user_id) REFERENCES users(id)"
+                    + ")";
+
+            String createBookReviewTableSQL = "CREATE TABLE IF NOT EXISTS book_text_review ("
+                    + "book_id INT,"
+                    + "user_id INT,"
+                    + "review TEXT,"
+                    + "FOREIGN KEY (book_id) REFERENCES book_details(id),"
+                    + "FOREIGN KEY (user_id) REFERENCES users(id)"
+                    + ")";
+
 
             String createOwnedTableSQL = "CREATE TABLE IF NOT EXISTS book_owned ("
                     + "book_id INTEGER,"
@@ -124,6 +141,10 @@ public class DatabaseManager {
             statement.execute(createAuthorTableSQL);
             statement.execute(createReviewTableSQL);
             statement.execute(createOwnedTableSQL);
+            statement.execute(createRatingTableSQL);
+            statement.execute(createBookReviewTableSQL);
+
+
 
             System.out.println("Tables created successfully");
 
