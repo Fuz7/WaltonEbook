@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
@@ -36,9 +37,9 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="0.86">
+               <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
                   <content>
-                     <AnchorPane prefHeight="754.0" prefWidth="571.0" styleClass="checkBookContainer__card">
+                     <AnchorPane prefHeight="1996.0" prefWidth="571.0" styleClass="checkBookContainer__card">
                         <children>
                            <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="571.0">
                               <children>
@@ -81,9 +82,17 @@
                                        <Insets top="15.0" />
                                     </VBox.margin>
                                  </Label>
+                                 <Label fx:id="checkBook__soldCount" styleClass="checkBook__soldCount" text="Sold : 20" textFill="#252525">
+                                    <font>
+                                       <Font name="System Bold Italic" size="18.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="55.0" />
+                                    </VBox.margin>
+                                 </Label>
                                  <Separator prefHeight="11.0" prefWidth="571.0">
                                     <VBox.margin>
-                                       <Insets top="50.0" />
+                                       <Insets top="5.0" />
                                     </VBox.margin>
                                     <effect>
                                        <InnerShadow height="53.615" radius="12.90375" width="0.0">
@@ -129,14 +138,260 @@
                                        <Insets top="80.0" />
                                     </VBox.margin>
                                  </HBox>
-                                 <Button fx:id="checkBook__purchaseButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" styleClass="checkBook__purchaseButton" text="Purchase">
-                                    <font>
-                                       <Font size="22.0" />
-                                    </font>
+                                 <HBox alignment="CENTER">
                                     <VBox.margin>
                                        <Insets top="70.0" />
                                     </VBox.margin>
-                                 </Button>
+                                    <children>
+                                       <Button fx:id="checkBook__purchaseButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="157.0" styleClass="checkBook__purchaseButton" text="Purchase">
+                                          <font>
+                                             <Font size="22.0" />
+                                          </font>
+                                          <HBox.margin>
+                                             <Insets left="70.0" />
+                                          </HBox.margin>
+                                       </Button>
+                                       <Label fx:id="checkBook__priceTag" styleClass="checkBook__priceTag" text="12.49$">
+                                          <HBox.margin>
+                                             <Insets left="15.0" top="4.0" />
+                                          </HBox.margin>
+                                          <font>
+                                             <Font size="18.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </HBox>
+                                 <Separator prefHeight="11.0" prefWidth="571.0">
+                                    <effect>
+                                       <InnerShadow height="53.615" radius="12.90375" width="0.0">
+                                          <color>
+                                             <Color red="0.5882353186607361" green="0.5882353186607361" blue="0.5882353186607361" />
+                                          </color>
+                                       </InnerShadow>
+                                    </effect>
+                                    <VBox.margin>
+                                       <Insets top="40.0" />
+                                    </VBox.margin>
+                                 </Separator>
+                                 <Label styleClass="checkBook__whatDoYouThinkTitle" text="What Do You Think?">
+                                    <font>
+                                       <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="15.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <HBox maxWidth="-Infinity" prefHeight="44.0" prefWidth="436.0" spacing="50.0">
+                                    <VBox.margin>
+                                       <Insets left="16.0" top="20.0" />
+                                    </VBox.margin>
+                                    <children>
+                                       <HBox alignment="CENTER_LEFT" prefHeight="47.0" prefWidth="200.0" spacing="7.0">
+                                          <children>
+                                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
+                                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
+                                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
+                                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
+                                             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__ratingStar" />
+                                          </children>
+                                          <HBox.margin>
+                                             <Insets left="2.0" />
+                                          </HBox.margin>
+                                       </HBox>
+                                       <Button fx:id="checkBook__reviewBookButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="154.0" styleClass="checkBook__reviewBookButton" text="Review Book">
+                                          <font>
+                                             <Font size="20.0" />
+                                          </font>
+                                       </Button>
+                                    </children>
+                                 </HBox>
+                                 <StackPane minHeight="-Infinity" prefHeight="205.0" prefWidth="571.0">
+                                    <children>
+                                       <VBox fx:id="checkBook__reviewTextAreaContainer" prefHeight="183.0" prefWidth="571.0" styleClass="checkBook__reviewTextAreaContainer">
+                                          <children>
+                                             <TextArea fx:id="checkBook__reviewTextArea" maxWidth="-Infinity" prefHeight="147.0" prefWidth="380.0" styleClass="checkBook__reviewTextArea">
+                                                <VBox.margin>
+                                                   <Insets left="100.0" />
+                                                </VBox.margin>
+                                                <font>
+                                                   <Font size="15.0" />
+                                                </font>
+                                             </TextArea>
+                                             <HBox prefHeight="48.0" prefWidth="571.0" spacing="16.0">
+                                                <children>
+                                                   <Button fx:id="checkBook_reviewCancelButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" styleClass="checkBook_reviewCancelButton" text="Cancel">
+                                                      <font>
+                                                         <Font size="16.0" />
+                                                      </font>
+                                                   </Button>
+                                                   <Button fx:id="checkBook_reviewSubmitButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="82.0" styleClass="checkBook_reviewSubmitButton" text="Submit">
+                                                      <font>
+                                                         <Font size="16.0" />
+                                                      </font>
+                                                   </Button>
+                                                </children>
+                                                <padding>
+                                                   <Insets left="295.0" top="4.0" />
+                                                </padding>
+                                             </HBox>
+                                          </children>
+                                       </VBox>
+                                       <HBox fx:id="checkBook__currentReviewContainer" maxWidth="-Infinity" prefHeight="166.0" prefWidth="460.0" styleClass="checkBook__currentReviewContainer" visible="false">
+                                          <children>
+                                             <VBox prefHeight="200.0" prefWidth="100.0">
+                                                <children>
+                                                   <ImageView fx:id="checkBook__currentReviewImage" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" styleClass="checkBook__currentReviewImage">
+                                                      <image>
+                                                         <Image url="@../images/profile/defaultIcon.jpg" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Text fx:id="checkBook__currentReviewUsername" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewUsername" text="Walton Alfante" wrappingWidth="136.6708984375">
+                                                      <font>
+                                                         <Font size="15.0" />
+                                                      </font>
+                                                      <VBox.margin>
+                                                         <Insets top="5.0" />
+                                                      </VBox.margin>
+                                                   </Text>
+                                                </children>
+                                             </VBox>
+                                             <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewBody" wrappingWidth="321.13671875">
+                                                <font>
+                                                   <Font size="15.0" />
+                                                </font>
+                                             </Text>
+                                          </children>
+                                       </HBox>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="20.0" />
+                                    </VBox.margin>
+                                 </StackPane>
+                                 <Label styleClass="checkBook__ratingTitle" text="Ratings:" underline="true">
+                                    <VBox.margin>
+                                       <Insets right="395.0" top="100.0" />
+                                    </VBox.margin>
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label styleClass="checkBook__ratingSecondaryTitles" text="Shopper Ratings:">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                          <HBox.margin>
+                                             <Insets left="54.0" />
+                                          </HBox.margin>
+                                       </Label>
+                                       <HBox fx:id="checkBook__shopperRatingImageContainer" prefHeight="29.0" prefWidth="188.0" spacing="5.0" styleClass="checkBook__shopperRatingImageContainer">
+                                          <children>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/purpleStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/purpleStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/purpleStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/purpleStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/purpleStar.png" />
+                                                </image>
+                                             </ImageView>
+                                          </children>
+                                          <HBox.margin>
+                                             <Insets left="55.0" />
+                                          </HBox.margin>
+                                       </HBox>
+                                       <Label fx:id="checkBook__shopperRatingLabel" styleClass="checkBook__shopperRatingLabel" text="5.0">
+                                          <font>
+                                             <Font size="14.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="10.0" />
+                                    </VBox.margin>
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label styleClass="checkBook__ratingSecondaryTitles" text="Anonymous Ratings">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                          <padding>
+                                             <Insets left="54.0" />
+                                          </padding>
+                                       </Label>
+                                       <HBox fx:id="checkBook__anonymousRatingImageContainer" prefHeight="29.0" prefWidth="188.0" spacing="5.0" styleClass="checkBook__anonymousRatingImageContainer">
+                                          <children>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/goldStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/goldStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/goldStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/goldStar.png" />
+                                                </image>
+                                             </ImageView>
+                                             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                   <Image url="@../images/goldStar.png" />
+                                                </image>
+                                             </ImageView>
+                                          </children>
+                                          <HBox.margin>
+                                             <Insets left="35.0" />
+                                          </HBox.margin>
+                                       </HBox>
+                                       <Label fx:id="checkBook__anonynmousRatingLabel" prefWidth="22.0" styleClass="checkBook__anonymousRatingLabel" text="5.0">
+                                          <font>
+                                             <Font size="14.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="10.0" />
+                                    </VBox.margin>
+                                 </HBox>
+                                 <Label styleClass="checkBook__reviewsTitle" text="Reviews:" underline="true">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets right="392.0" top="70.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <VBox fx:id="checkBook__reviewContainer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="460.0" styleClass="checkBook__reviewContainer">
+                                    <VBox.margin>
+                                       <Insets right="7.0" />
+                                    </VBox.margin>
+                                 </VBox>
                               </children>
                            </VBox>
                         </children>
@@ -211,7 +466,7 @@
                   <Insets bottom="700.0" right="275.0" />
                </StackPane.margin>
             </VBox>
-            <VBox fx:id="popup__account" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="170.0" styleClass="popup__account">
+            <VBox fx:id="popup__account" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="170.0" styleClass="popup__account" visible="false">
                <StackPane.margin>
                   <Insets bottom="775.0" left="1450.0" />
                </StackPane.margin>

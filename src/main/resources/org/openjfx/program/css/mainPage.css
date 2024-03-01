@@ -84,3 +84,119 @@
     -fx-background-color:  linear-gradient(to bottom left, rgb(54, 140, 24) 0%, rgb(35, 190, 40) 33%, rgb(71, 143, 10) 100%);
 }
 
+
+.checkBook__priceTag{
+    -fx-text-fill: black;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-font-size: 18;
+
+}
+.checkBook__whatDoYouThinkTitle{
+    -fx-text-fill: black;
+    -fx-font-size: 24;
+    -fx-font-family: 'Buenard';
+}
+
+.checkBook__ratingStar,
+.checkBook__ratingStar--bought{
+    -fx-image: url('../images/grayStar.png');
+}
+
+.checkBook__ratingStar--rated{
+    -fx-image: url('../images/goldStar.png')
+}
+
+.checkBook__ratingStar--rated.checkBook__ratingStar--bought{
+    -fx-image: url('../images/purpleStar.png');
+}
+
+
+.checkBook__reviewBookButton{
+    -fx-text-fill: black;
+    -fx-background-color:  linear-gradient(to bottom left, rgb(116, 116, 116) 0%, rgba(209,209,209,1) 53%, rgb(116, 116, 116) 100%);
+    -fx-background-radius: 25;
+    -fx-font-family: 'Buenard';
+    -fx-font-size: 20;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.checkBook__reviewBookButton:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(84, 84, 84) 0%, rgb(164, 164, 164) 53%, rgb(100, 100, 100) 100%);
+
+}
+
+.checkBook__reviewTextArea{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: transparent ;
+    -fx-focus-traversable: false;
+}
+
+.checkBook__currentReviewUsername{
+    -fx-font-size: 15;
+    -fx-font-family: 'Inter';
+    -fx-text-fill: black;
+}
+
+.checkBook__currentReviewBody{
+    -fx-font-size: 15;
+    -fx-font-family: 'Inter';
+    -fx-text-fill: black;
+}
+
+.checkBook_reviewCancelButton{
+    -fx-font-size: 16;
+    -fx-font-family: 'Inter';
+    -fx-text-fill: black;
+    -fx-focus-color: transparent ;
+    -fx-background-radius: 20;
+    -fx-faint-focus-color: transparent ;
+    -fx-focus-traversable: false;
+    -fx-background-color:  linear-gradient(to bottom left, rgb(138, 138, 138) 0%, rgba(209,209,209,1) 73%, rgb(134, 134, 134) 100%);
+    -fx-cursor: hand;
+}
+
+.checkBook_reviewCancelButton:hover{
+    -fx-background-color: linear-gradient(to bottom left, rgb(141, 141, 141) 0%, rgb(180, 180, 180) 73%, rgb(141, 141, 141) 100%);;
+}
+
+.checkBook_reviewSubmitButton{
+    -fx-font-size: 16;
+    -fx-font-family: 'Inter';
+    -fx-text-fill: black;
+    -fx-focus-color: transparent ;
+    -fx-background-radius: 20;
+    -fx-faint-focus-color: transparent ;
+    -fx-focus-traversable: false;
+    -fx-background-color: linear-gradient(to bottom left, rgb(65, 197, 22) 0%, rgb(36, 217, 42) 33%, rgb(91, 190, 9) 100%);
+    -fx-cursor: hand;
+}
+
+.checkBook_reviewSubmitButton:hover{
+    -fx-background-color: linear-gradient(to bottom left, rgb(56, 155, 23) 0%, rgb(30, 190, 34) 33%, rgb(72, 152, 5) 100%);
+
+}
+
+.checkBook__ratingTitle,
+.checkBook__reviewsTitle{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-font-family: 'Inter';
+}
+
+.checkBook__ratingSecondaryTitles{
+    -fx-font-size: 15;
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+}
+
+.checkBook__shopperRatingLabel,
+.checkBook__anonymousRatingLabel{
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 13;
+}

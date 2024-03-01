@@ -68,6 +68,8 @@ public class mainPageController implements Initializable {
     private TextField navbar__searchBar;
     @FXML
     public ImageView profileLogo;
+    @FXML
+    private ScrollPane popup__scrollCheckBook;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -243,6 +245,7 @@ public class mainPageController implements Initializable {
 
     @FXML
     public void renderCheckBook(int id){
+        popup__scrollCheckBook.setVvalue(0);
         popup__checkBook.setMouseTransparent(true);
         BookData bookDetails = getBookData(id);
         checkBook__bookImage.setImage(bookDetails.image);
