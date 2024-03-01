@@ -78,10 +78,21 @@
 
 .checkBook__purchaseButton--bought{
     -fx-background-color: linear-gradient(to bottom left, rgba(116,116,116,1) 0%, rgba(209,209,209,1) 33%, rgb(124, 124, 124) 100%);
+    -fx-cursor: default;
 }
 
 .checkBook__purchaseButton:hover{
     -fx-background-color:  linear-gradient(to bottom left, rgb(54, 140, 24) 0%, rgb(35, 190, 40) 33%, rgb(71, 143, 10) 100%);
+}
+
+.checkBook__purchaseButton--bought:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgba(116,116,116,1) 0%, rgba(209,209,209,1) 33%, rgb(124, 124, 124) 100%);
+}
+.checkBook__purchaseButton--insufficient{
+    -fx-background-color: linear-gradient(to bottom left, rgb(140, 24, 24) 0%, rgb(190, 35, 35) 33%, rgb(143, 10, 10) 100%);;
+}
+.checkBook__purchaseButton--insufficient:hover{
+    -fx-background-color: linear-gradient(to bottom left, rgb(140, 24, 24) 0%, rgb(190, 35, 35) 33%, rgb(143, 10, 10) 100%);;
 }
 
 
@@ -100,14 +111,17 @@
 .checkBook__ratingStar,
 .checkBook__ratingStar--bought{
     -fx-image: url('../images/grayStar.png');
+    -fx-cursor: hand;
 }
 
 .checkBook__ratingStar--rated{
-    -fx-image: url('../images/goldStar.png')
+    -fx-image: url('../images/goldStar.png');
+    -fx-cursor: hand;
 }
 
 .checkBook__ratingStar--rated.checkBook__ratingStar--bought{
     -fx-image: url('../images/purpleStar.png');
+    -fx-cursor: hand;
 }
 
 

@@ -827,7 +827,53 @@ public class ReturnData {
 
         return bookIds;
     }
+    public List<String> returnAllGenreById(int book_id){
+        Logger logger = Logger.getLogger("returnAllGenreById");
+        List<String> bookGenres = new ArrayList<>();
 
+        String sql = "SELECT genre " +
+                "FROM book_genre " +
+                "WHERE title = (SELECT title FROM book_details WHERE id = ?)";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, book_id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                bookGenres.add(resultSet.getString("genre"));
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning genre", e);
+        }
+
+        return bookGenres;
+    }
+
+    public boolean isBookOwnedByUser(int userId,int bookId){
+        Logger logger = Logger.getLogger("isBookOwnedByUser");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT is_owned FROM book_owned WHERE user_id = ? AND book_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, userId);
+                preparedStatement.setInt(2,bookId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getBoolean("is_owned");
+                    }
+                } catch (SQLException e) {
+                    logger.log(Level.SEVERE, "Error retrieving author ID", e);
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error connecting to database", e);
+        }
+
+        return false; // or any other appropriate default value
+    }
 
 
 

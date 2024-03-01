@@ -39,8 +39,10 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.StringJoiner;
 
 import static javafx.animation.Interpolator.EASE_IN;
 
@@ -70,6 +72,22 @@ public class mainPageController implements Initializable {
     public ImageView profileLogo;
     @FXML
     private ScrollPane popup__scrollCheckBook;
+    @FXML
+    private Label checkBook__bookTitle;
+    @FXML
+    private Label checkBook__bookAuthor;
+    @FXML
+    private Label checkBook__bookRating;
+    @FXML
+    private Label checkBook__soldCount;
+    @FXML
+    private Text checkBook__descriptionBody;
+    @FXML
+    private Text checkBook__genreBody;
+    @FXML
+    private Button checkBook__purchaseButton;
+    @FXML
+    private Label checkBook__priceTag;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -232,6 +250,7 @@ public class mainPageController implements Initializable {
 
 
     private void slideInCheckBook(){
+        popup__scrollCheckBook.setVvalue(0);
         TranslateTransition slideInAnimation = new TranslateTransition(Duration.millis(200),popup__checkBook);
         slideInAnimation.setFromX(700);
         slideInAnimation.setToX(0);
@@ -245,11 +264,55 @@ public class mainPageController implements Initializable {
 
     @FXML
     public void renderCheckBook(int id){
-        popup__scrollCheckBook.setVvalue(0);
         popup__checkBook.setMouseTransparent(true);
         BookData bookDetails = getBookData(id);
         checkBook__bookImage.setImage(bookDetails.image);
+        checkBook__bookTitle.setText(bookDetails.title);
+        checkBook__bookAuthor.setText(app.db.Return.returnAuthorNameByID(id));
+        checkBook__soldCount.setText("Sold: " + bookDetails.bookSold);
+        checkBook__descriptionBody.setText(bookDetails.formattedDescription);
+        String stringGenre = arrayListToStringWithSpace(app.db.Return.returnAllGenreById(id));
+        checkBook__genreBody.setText(stringGenre);
+        renderPurchaseButton(id);
+        checkBook__purchaseButton.setOnMouseClicked(mouseEvent ->  purchaseButtonOnClick(id));
+        checkBook__priceTag.setText(String.format("%.2f$",bookDetails.price));
         slideInCheckBook();
+    }
+
+    private void renderPurchaseButton(int bookId){
+        checkBook__purchaseButton.getStyleClass().remove("checkBook__purchaseButton--insufficient");
+        checkBook__purchaseButton.getStyleClass().remove("checkBook__purchaseButton--bought");
+        checkBook__purchaseButton.setText("Purchase");
+        if(app.db.Check.CheckIfBookWasBought(bookId,app.lm.getSessionId())){
+            checkBook__purchaseButton.getStyleClass().add("checkBook__purchaseButton--bought");
+            checkBook__purchaseButton.setText("Bought");
+        }else{
+            checkBook__purchaseButton.getStyleClass().remove("checkBook__purchaseButton--bought");
+            checkBook__purchaseButton.setText("Purchase");
+
+        }
+    }
+
+    private void purchaseButtonOnClick(int bookId){
+        if(!checkBook__purchaseButton.getStyleClass().contains("checkBook__purchaseButton--bought")){
+            if(!app.db.Update.buyBook(app.lm.getSessionId(), bookId)){
+                checkBook__purchaseButton.getStyleClass().add("checkBook__purchaseButton--insufficient");
+            }else{
+                popup__checkBook.setVisible(false);
+                checkBook__purchaseButton.getStyleClass().add("checkBook__purchaseButton--bought");
+                renderCheckBook(bookId);
+
+            }
+        }
+    }
+
+    private String arrayListToStringWithSpace(List<String> genre){
+        StringJoiner joiner = new StringJoiner(", ");
+        for (String element: genre){
+            joiner.add(element);
+        }
+        String concatenatedString = joiner.toString();
+        return concatenatedString;
     }
     @FXML
     public void navbar__renderSearchButton(){
@@ -303,6 +366,8 @@ public class mainPageController implements Initializable {
         rotateDownwards.play();
         popup__myBooks.setVisible(false);
         popup__myBooks.setMouseTransparent(true);
+        popup__checkBook.setVisible(false);
+        popup__checkBook.setMouseTransparent(true);
         popup__account.setVisible(false);
         popup__account.setMouseTransparent(true);
         // Set the new content as the CenterPage content
@@ -331,6 +396,10 @@ public class mainPageController implements Initializable {
             rotateDownwards.setToAngle(0);
             rotateDownwards.play();
             popup__myBooks.setVisible(false);
+            popup__checkBook.setVisible(false);
+            popup__checkBook.setMouseTransparent(true);
+            popup__account.setVisible(false);
+            popup__account.setMouseTransparent(true);
             // Set the new content as the CenterPage content
             scrollContainer.setVvalue(0);
             scrollContainer.setContent(newContent);
