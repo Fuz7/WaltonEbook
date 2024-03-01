@@ -525,7 +525,7 @@
             <DropShadow height="15.15" radius="7.0725" width="15.14" />
          </effect>
          <children>
-            <ImageView fitHeight="63.0" fitWidth="64.0" styleClass="logo">
+            <ImageView fitHeight="63.0" fitWidth="64.0" onMouseClicked="#switchToMainPage" styleClass="logo">
                <HBox.margin>
                   <Insets left="40.0" right="10.0" top="10.0" />
                </HBox.margin>

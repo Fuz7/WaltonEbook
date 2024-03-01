@@ -133,7 +133,7 @@
 }
 
 .latestCard{
-    -fx-background-color: #B22222;
+    -fx-background-color: #930f0f;
     -fx-background-radius: 6 6 4 4;
     -fx-cursor:hand;
 }
@@ -149,9 +149,6 @@
     -fx-font-family: 'Buenard';
 }
 
-.test{
-    -fx-image: url('../../images/books/b3.jpg');
-}
 
 .mainPage__scrollContainer > .scroll-bar:vertical .thumb{
     -fx-background-color : #383838;

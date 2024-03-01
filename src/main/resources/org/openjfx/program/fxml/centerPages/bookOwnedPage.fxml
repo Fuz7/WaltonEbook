@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.program.controller.bookOwnedController"
-            stylesheets="@../../css/centerPages/accountPage.css"
-            prefHeight="1200.0" prefWidth="1685.0">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 
+<AnchorPane prefHeight="1200.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/accountPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.bookOwnedController">
+   <children>
+      <VBox prefHeight="1200.0" prefWidth="1685.0" />
+   </children>
 </AnchorPane>

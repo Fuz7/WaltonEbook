@@ -4,16 +4,23 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.openjfx.program.app;
@@ -51,7 +58,8 @@ public class homePageController implements Initializable {
     private HBox silverCard;
     @FXML
     private HBox bronzeCard;
-
+    @FXML
+    private FlowPane homePage__LatestUploadContainer;
 
     private static boolean fadeAnimating;
     public mainPageController mainPageController;
@@ -60,6 +68,7 @@ public class homePageController implements Initializable {
         this.mainPageController = mainPageController;
         this.mainPageController.hidePopups();
         renderInitialization();
+
     }
 
     public void renderInitialization(){
@@ -79,6 +88,7 @@ public class homePageController implements Initializable {
             renderPopularContent(cards[i],bookId);
             renderPopularAnimation(cards[i]);
         }
+        renderLatestUpload();
     }
 
 
@@ -244,9 +254,46 @@ public class homePageController implements Initializable {
 
     }
 
-    public void generateLatestUpload(){
+    public void renderLatestUpload(){
+        int[] latestBooks = app.db.Return.returnTenLatestBooks();
+        for(int i = 0;i < 10; i++){
+            VBox bookCard = (VBox)homePage__LatestUploadContainer.getChildren().get(i);
+            renderLatestBookCard(bookCard,latestBooks[i]);
+
+        }
 
     }
 
+    public void renderLatestBookCard(VBox container,int bookId){
+        container.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(bookId));
+        BookData bookDetails = this.mainPageController.getBookData(bookId);
+        ImageView imageContainer = (ImageView)container.getChildren().getFirst();
+        setLatestEffectImage(imageContainer,bookDetails.image);
+        StackPane textContainer = (StackPane) container.getChildren().get(1);
+        Label titleElement = (Label)  textContainer.getChildren().getFirst();
+        titleElement.setText(bookDetails.title);
+
+    }
+    public void setLatestEffectImage(ImageView container, Image im){
+        container.setImage(im);
+
+        Rectangle clip = new Rectangle();
+        clip.setWidth(170.0);
+        clip.setHeight(261.0);
+
+        clip.setArcHeight(5);
+        clip.setArcWidth(5);
+        clip.setStroke(Color.TRANSPARENT);
+        container.setClip(clip);
+
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        WritableImage image = container.snapshot(parameters,null);
+        container.setClip(null);
+        InnerShadow shadow = new InnerShadow(7,Color.color(0,0,0,1));
+        shadow.setOffsetY(2);
+        container.setEffect(shadow);
+        container.setImage(image);
+    }
 
 }

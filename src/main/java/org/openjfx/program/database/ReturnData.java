@@ -6,19 +6,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReturnData {
-
     public String dataLocation;
     public CheckData Check;
+
 
     /**
      * Constructs a ReturnData object with the specified data location.
      *
      * @param dataLocation The location where the data is stored.
      */
-    public ReturnData(String dataLocation,CheckData Check) {
+    public ReturnData(String dataLocation, CheckData Check) {
+
         this.dataLocation = dataLocation;
         this.Check = Check;
-
     }
 
     /**
@@ -79,6 +79,7 @@ public class ReturnData {
 
         return topBookIds;
     }
+
 
     /**
      * Returns the ID of a book based on its title.
@@ -323,44 +324,6 @@ public class ReturnData {
             logger.log(Level.SEVERE, "Error Returning cash", e);
         }
         return -0.0;
-    }
-
-    public String returnUserEmail(int userId){
-        Logger logger = Logger.getLogger("InsertDataLogger");
-
-        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
-            String sql = "SELECT email FROM users WHERE id = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, userId);
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getString("email");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error Returning cash", e);
-        }
-        return "";
-    }
-
-    public String returnUserUserName(int userId){
-        Logger logger = Logger.getLogger("InsertDataLogger");
-
-        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
-            String sql = "SELECT username FROM users WHERE id = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                preparedStatement.setInt(1, userId);
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getString("username");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            logger.log(Level.SEVERE, "Error Returning cash", e);
-        }
-        return "";
     }
 
     /**
@@ -834,6 +797,119 @@ public class ReturnData {
 
         return bookIds;
     }
+
+
+    public int[] returnTenLatestBooks() {
+        Logger logger = Logger.getLogger("InsertDataLogger");
+        int[] topBookIds = new int[10];
+        String sql = "SELECT * FROM book_details " +
+                "ORDER BY id DESC " +
+                "LIMIT 10";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            for (int i = 0; i < 10; i++) {
+                if (resultSet.next()) {
+                    topBookIds[i] = resultSet.getInt("id");
+                }
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning top 10 books", e);
+        }
+
+        return topBookIds;
+    }
+
+
+
+    public List<Integer> returnOwnedBooks(int userId) {
+        Logger logger = Logger.getLogger("InsertDataLogger");
+        List<Integer> ownedBooks = new ArrayList<>();
+
+        String sql = "SELECT book_id FROM book_owned WHERE user_id = ?";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                ownedBooks.add(resultSet.getInt("book_id"));
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning owned books", e);
+        }
+
+        return ownedBooks;
+    }
+
+
+    public List<Integer> returnBookPublished(int userId) {
+        Logger logger = Logger.getLogger("InsertDataLogger");
+        List<Integer> ownedBooks = new ArrayList<>();
+
+        String sql = "SELECT id FROM book_details WHERE author_id = (SELECT id FROM author WHERE user_id = ?)";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                ownedBooks.add(resultSet.getInt("id"));
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning owned books", e);
+        }
+
+        return ownedBooks;
+    }
+
+    public String returnUserEmail(int userId){
+        Logger logger = Logger.getLogger("InsertDataLogger");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT email FROM users WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, userId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("email");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error Returning cash", e);
+        }
+        return "";
+    }
+
+    public String returnUserUserName(int userId){
+        Logger logger = Logger.getLogger("InsertDataLogger");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT username FROM users WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, userId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("username");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error Returning cash", e);
+        }
+        return "";
+    }
+
     public List<String> returnAllGenreById(int book_id){
         Logger logger = Logger.getLogger("returnAllGenreById");
         List<String> bookGenres = new ArrayList<>();
@@ -858,6 +934,7 @@ public class ReturnData {
 
         return bookGenres;
     }
+
     public List<String[]> returnAllBookReviewsById(int bookId) {
         Logger logger = Logger.getLogger("returnAllBookReviewsById");
         List<String[]> bookReviews = new ArrayList<>();
@@ -936,8 +1013,6 @@ public class ReturnData {
 
         return details;
     }
-
-
 
 
 

@@ -568,11 +568,11 @@
                   <Insets left="100.0" top="50.0" />
                </VBox.margin>
             </Text>
-            <FlowPane hgap="90.0" prefHeight="770.0" prefWidth="1701.0" vgap="60.0">
+            <FlowPane fx:id="homePage__LatestUploadContainer" hgap="90.0" prefHeight="770.0" prefWidth="1701.0" vgap="60.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -600,7 +600,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -628,7 +628,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -656,7 +656,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -684,7 +684,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -712,7 +712,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -740,7 +740,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -768,7 +768,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -796,7 +796,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
@@ -824,7 +824,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" prefHeight="328.0" prefWidth="225.0" styleClass="latestCard">
                      <children>
-                        <ImageView fitHeight="261.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" styleClass="test">
+                        <ImageView fitHeight="261.0" fitWidth="170.0" pickOnBounds="true" styleClass="test">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
