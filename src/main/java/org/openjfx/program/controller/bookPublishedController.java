@@ -1,8 +1,10 @@
 package org.openjfx.program.controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -21,40 +23,63 @@ import org.openjfx.program.model.BookData;
 
 import java.util.List;
 
-public class bookOwnedController {
+
+public class bookPublishedController {
 
     @FXML
-    private FlowPane book_owned__myBooksContainer;
+    private FlowPane booksPublished__publishedBooksContainer;
     @FXML
-    private Label book_owned__myBooksTitle;
+    private Label booksPublished__publishedBooksTitle;
+    @FXML
+    private FlowPane booksPublished__pendingBooksContainer;
+    @FXML
+    private Label booksPublished__pendingBooksTitle;
 
     public mainPageController mainPageController;
 
     public void setMainPageController(mainPageController mainPageController) {
         this.mainPageController = mainPageController;
-        renderBookOwned();
+        renderBooksPending();
+        renderBooksPublished();
     }
 
-    private void renderBookOwned(){
-        book_owned__myBooksContainer.getChildren().clear();
-        List<Integer> bookIds = app.db.Return.returnOwnedBooks(app.lm.getSessionId());
-        book_owned__myBooksTitle.setText("My Books : " + bookIds.size());
+    private void renderBooksPending(){
+       ObservableList<Node> children = booksPublished__pendingBooksContainer.getChildren();
+
+        for (int i = children.size() - 1; i > 0; i--) {
+            children.remove(i);
+        }
+        List<Integer> bookIds = app.db.Return.returnBookPending(app.lm.getSessionId());
+        booksPublished__pendingBooksTitle.setText("Books Pending : " + bookIds.size());
         for(int bookId: bookIds){
-            renderBookCard(book_owned__myBooksContainer,bookId);
+            renderBookCard(booksPublished__publishedBooksContainer,bookId,false);
+        }
+
+    }
+
+    private void renderBooksPublished(){
+        booksPublished__publishedBooksContainer.getChildren().clear();
+        List<Integer> bookIds = app.db.Return.returnBookPublished(app.lm.getSessionId());
+        booksPublished__publishedBooksTitle.setText("Books Published : " + bookIds.size());
+        for(int bookId: bookIds){
+            renderBookCard(booksPublished__publishedBooksContainer,bookId,true);
         }
     }
 
-    private void renderBookCard(FlowPane container,int bookId){
+
+    private void renderBookCard(FlowPane container, int bookId,boolean haveEvent){
         BookData bookData = this.mainPageController.getBookData(bookId);
         VBox bookCard = new VBox();
-        bookCard.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(bookId));
+        if(haveEvent){
+            bookCard.setOnMouseClicked(mouseEvent -> this.mainPageController.renderCheckBook(bookId));
+        }
         bookCard.setAlignment(Pos.TOP_CENTER);
-        bookCard.getStyleClass().add("book_owned__myBookCard");
+        bookCard.getStyleClass().add("booksPublished__bookCard");
         bookCard.prefWidth(235);
         bookCard.prefHeight(350);
         bookCard.maxWidth(235);
         bookCard.maxHeight(350);
-        bookCard.setEffect(new DropShadow(7,Color.color(0,0,0,0.55)));
+        bookCard.setEffect(new DropShadow(7, Color.color(0,0,0,0.55)));
         ImageView imageContainer = new ImageView();
         imageContainer.setPreserveRatio(false);
         imageContainer.setSmooth(true);
@@ -64,7 +89,7 @@ public class bookOwnedController {
         setLatestEffectImage(imageContainer,bookData.image);
         StackPane textContainer = new StackPane();
         textContainer.setAlignment(Pos.CENTER);
-        textContainer.getStyleClass().add("book_owned__myBooksTextContainer");
+        textContainer.getStyleClass().add("booksPublished__booksTextContainer");
         VBox.setMargin(textContainer, new Insets(15,0,0,0));
         textContainer.setPrefHeight(41);
         textContainer.setMaxHeight(41);
@@ -75,7 +100,7 @@ public class bookOwnedController {
         titleElement.prefWidth(210);
         titleElement.prefHeight(20);
         titleElement.maxWidth(210);
-        titleElement.getStyleClass().add("book_owned__myBooksText");
+        titleElement.getStyleClass().add("booksPublished__booksText");
         titleElement.setText(bookData.title);
         textContainer.getChildren().add(titleElement);
         bookCard.getChildren().addAll(imageContainer,textContainer);
@@ -85,8 +110,8 @@ public class bookOwnedController {
 
     }
 
-    public void setLatestEffectImage(ImageView container, Image im){
-        container.setImage(im);
+    public void setLatestEffectImage(ImageView container, Image ima){
+        container.setImage(ima);
 
         Rectangle clip = new Rectangle();
         clip.setWidth(179.0);

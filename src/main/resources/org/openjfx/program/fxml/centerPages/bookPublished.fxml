@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="1200.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/bookPublished.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.bookPublishedController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="1201.0" prefWidth="1685.0">
+         <children>
+            <Label fx:id="booksPublished__pendingBooksTitle" styleClass="booksPublished__pendingBooksTitle" text="Books Pending : ">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="1100.0" top="140.0" />
+               </VBox.margin>
+            </Label>
+            <Separator maxWidth="-Infinity" prefHeight="8.0" prefWidth="1429.0">
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color opacity="0.8206107020378113" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Separator>
+            <FlowPane fx:id="booksPublished__pendingBooksContainer" hgap="64.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1432.0" styleClass="booksPublished__pendingBooksContainer" vgap="54.0">
+               <children>
+                  <VBox fx:id="booksPublished__addBook" alignment="BOTTOM_CENTER" prefHeight="350.0" prefWidth="223.0" styleClass="booksPublished__addBook">
+                     <children>
+                        <ImageView fitHeight="164.0" fitWidth="164.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../images/addLogo.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets top="41.0" />
+                           </VBox.margin>
+                           <effect>
+                              <InnerShadow offsetY="2.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" opacity="0.3393893241882324" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </ImageView>
+                        <StackPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="41.0" prefWidth="180.0" styleClass="booksPublished__addBookStackPane">
+                           <VBox.margin>
+                              <Insets top="74.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="210.0" styleClass="booksPublished__addBookText" text="Add Book" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <DropShadow height="12.21" radius="5.5525" width="12.0">
+                           <color>
+                              <Color opacity="0.6603053212165833" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </FlowPane>
+            <Label fx:id="booksPublished__publishedBooksTitle" styleClass="booksPublished__publishedBooksTitle" text="Books Published: ">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="1090.0" top="100.0" />
+               </VBox.margin>
+            </Label>
+            <Separator maxWidth="-Infinity" prefHeight="8.0" prefWidth="1429.0">
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color opacity="0.8206107020378113" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Separator>
+            <FlowPane fx:id="booksPublished__publishedBooksContainer" hgap="64.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1432.0" styleClass="booksPublished__publishedBooksContainer" vgap="54.0">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="350.0" prefWidth="235.0" styleClass="booksPublished__bookCard">
+                     <children>
+                        <ImageView fitHeight="276.0" fitWidth="179.0" pickOnBounds="true">
+                           <VBox.margin>
+                              <Insets top="18.0" />
+                           </VBox.margin>
+                           <image>
+                              <Image url="@../../images/books/2001%20A%20Space%20Odyssey.jpeg" />
+                           </image>
+                        </ImageView>
+                        <StackPane fx:id="booksPublished__booksTextContainer" nodeOrientation="LEFT_TO_RIGHT" prefHeight="41.0" prefWidth="180.0" styleClass="booksPublished__booksTextContainer">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="20.0" prefWidth="210.0" styleClass="booksPublished__booksText" text="Harry Potter and The Sorccerer" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </VBox>
+               </children>
+            </FlowPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

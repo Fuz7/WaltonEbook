@@ -39,7 +39,7 @@ public class app extends Application {
         mainPageController.replaceCenterPageContent(app.class.getResource("fxml/centerPages/homePage.fxml"), homePageController.class);
         Scene scene = new Scene(root);
 
-        stage.setTitle("Hello!");   
+        stage.setTitle("Login Page");
         // Center Screen
         stage.setX(0);
         stage.setY(0);

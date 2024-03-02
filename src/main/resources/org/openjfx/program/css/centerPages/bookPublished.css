@@ -1,0 +1,44 @@
+.booksPublished__pendingBooksTitle,
+.booksPublished__publishedBooksTitle{
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-text-fill: black;
+    -fx-font-size: 36;
+}
+
+.booksPublished__addBook{
+    -fx-background-color: #bebebe;
+    -fx-background-radius: 4 4 2 2;
+    -fx-cursor:hand;
+}
+.booksPublished__addBook:hover{
+    -fx-background-color: linear-gradient(to right bottom, #202020, #3535a1, #4f4fde, #3232cc, #4f5151);
+}
+
+
+.booksPublished__addBookStackPane{
+    -fx-background-color: linear-gradient(to right bottom, #202020, #2b2b2c, #373838, #434444, #4f5151);
+    -fx-background-radius: 0 0 2 2;
+}
+
+.booksPublished__addBookText{
+    -fx-text-fill: white;
+    -fx-font-size:32;
+    -fx-font-family: 'Buenard';
+}
+
+.booksPublished__bookCard{
+    -fx-background-color: #930f0f;
+    -fx-background-radius: 6 6 4 4;
+    -fx-cursor:hand;
+}
+
+.booksPublished__booksTextContainer{
+    -fx-background-color: linear-gradient(to right bottom, #202020, #2b2b2c, #373838, #434444, #4f5151);
+    -fx-background-radius: 0 0 6 6;
+}
+
+.booksPublished__booksText{
+    -fx-text-fill: white;
+    -fx-font-size:16;
+    -fx-font-family: 'Buenard';
+}

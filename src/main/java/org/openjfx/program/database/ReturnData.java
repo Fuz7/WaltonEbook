@@ -854,7 +854,30 @@ public class ReturnData {
         Logger logger = Logger.getLogger("InsertDataLogger");
         List<Integer> ownedBooks = new ArrayList<>();
 
-        String sql = "SELECT id FROM book_details WHERE author_id = (SELECT id FROM author WHERE user_id = ?)";
+        String sql = "SELECT id FROM book_details WHERE author_id = (SELECT id FROM author WHERE user_id = ?) AND is_available = 1";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                ownedBooks.add(resultSet.getInt("id"));
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning owned books", e);
+        }
+
+        return ownedBooks;
+    }
+
+    public List<Integer> returnBookPending(int userId) {
+        Logger logger = Logger.getLogger("InsertDataLogger");
+        List<Integer> ownedBooks = new ArrayList<>();
+
+        String sql = "SELECT id FROM book_details WHERE author_id = (SELECT id FROM author WHERE user_id = ?) AND is_available = 0";
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation);
              PreparedStatement statement = connection.prepareStatement(sql)) {

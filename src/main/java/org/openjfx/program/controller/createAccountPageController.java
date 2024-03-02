@@ -82,7 +82,8 @@ public class createAccountPageController implements Initializable {
         }
 
         // Register the account (ADJUST DEFAULT BALANCE {SUBJECT TO CHANGE})
-        app.db.Insert.InsertNewUser(email, name, password, false, 5000);
+        app.db.Insert.InsertNewUser(email, name, password, false, 0);
+        app.db.Insert.insertAuthor(app.db.Return.returnLatestUserId(),"");
         clearText();
         // Switch
         switchToLogInScene();
@@ -120,6 +121,9 @@ public class createAccountPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createAccount__errorText.setVisible(false);
+        createEmail.setText("");
+        createPassword.setText("");
+        createName.setText("");
 
         createEmail.setOnKeyPressed(ev -> {
             if (ev.getCode() == KeyCode.ENTER) {

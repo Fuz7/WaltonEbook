@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
@@ -27,6 +28,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
@@ -692,6 +694,20 @@ public class mainPageController implements Initializable {
 
 
     @FXML
+    private void logout() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage currentStage = (Stage) navbar__myBooks__arrow.getScene().getWindow();
+        currentStage.setTitle("Login Page");
+        // Center Screen
+        currentStage.setX(0);
+        currentStage.setY(0);
+        app.lm.setSessionId(0);
+        currentStage.setScene(scene);
+        currentStage.show();
+    }
+
+    @FXML
     private void switchToMainPage(){
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/homePage.fxml"), homePageController.class);
     }
@@ -714,6 +730,12 @@ public class mainPageController implements Initializable {
     @FXML
     private void switchToBookOwnedPage(){
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/bookOwnedPage.fxml"), bookOwnedController.class);
+
+    }
+
+    @FXML
+    private void switchToBookPublishedPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/bookPublished.fxml"), bookPublishedController.class);
 
     }
 

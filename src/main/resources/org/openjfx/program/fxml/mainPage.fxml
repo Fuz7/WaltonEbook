@@ -37,7 +37,7 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="2.0">
+               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="1.0">
                   <content>
                      <AnchorPane prefHeight="1996.0" prefWidth="571.0" styleClass="checkBookContainer__card">
                         <children>
@@ -395,12 +395,12 @@
                                           <children>
                                              <VBox prefHeight="101.0" prefWidth="137.0">
                                                 <children>
-                                                   <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                                   <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true">
                                                       <image>
                                                          <Image url="@../images/jorge.png" />
                                                       </image>
                                                    </ImageView>
-                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jorge Macabenta" wrappingWidth="137.0">
+                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__reviewerName" text="Jorge Macabenta" wrappingWidth="137.0">
                                                       <font>
                                                          <Font size="16.0" />
                                                       </font>
@@ -445,7 +445,7 @@
                                                          <Insets top="10.0" />
                                                       </VBox.margin>
                                                    </Separator>
-                                                   <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" wrappingWidth="316.13671875">
+                                                   <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__reviewText" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" wrappingWidth="317.0">
                                                       <VBox.margin>
                                                          <Insets bottom="30.0" top="3.0" />
                                                       </VBox.margin>
@@ -454,6 +454,9 @@
                                                       </font>
                                                    </Text>
                                                 </children>
+                                                <padding>
+                                                   <Insets left="4.0" />
+                                                </padding>
                                              </VBox>
                                           </children>
                                        </HBox>
@@ -503,7 +506,7 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer2">
+                  <StackPane onMouseClicked="#switchToBookPublishedPage" prefHeight="100.0" prefWidth="270.0" styleClass="popup__myBooks__buttonContainer2">
                      <children>
                         <Label styleClass="popup__myBooks__booksButtonsText" text="Books Published">
                            <font>
@@ -547,7 +550,7 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer2">
+                  <StackPane onMouseClicked="#logout" prefHeight="150.0" prefWidth="200.0" styleClass="popup__account__buttonContainer2">
                      <children>
                         <Separator maxWidth="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="270.0" styleClass="popup__myBooks__separator">
                            <effect>

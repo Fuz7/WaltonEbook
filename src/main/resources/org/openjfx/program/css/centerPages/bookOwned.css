@@ -1,0 +1,25 @@
+.book_owned__myBooksTitle{
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-text-fill: black;
+    -fx-font-size: 36;
+}
+
+.book_owned__myBookCard{
+    -fx-background-color: #930f0f;
+    -fx-background-radius: 6 6 4 4;
+    -fx-cursor:hand;;
+}
+
+.book_owned__myBooksTextContainer{
+    -fx-background-color: linear-gradient(to right bottom, #202020, #2b2b2c, #373838, #434444, #4f5151);
+    -fx-background-radius: 0 0 6 6;
+}
+
+
+
+.book_owned__myBooksText{
+    -fx-text-fill: white;
+    -fx-font-size:16;
+    -fx-font-family: 'Buenard';
+}
+

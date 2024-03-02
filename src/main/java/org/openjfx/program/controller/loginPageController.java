@@ -30,6 +30,8 @@ public class loginPageController implements Initializable {
 
     public void initialize(URL locations, ResourceBundle resources) {
         login__errorText.setVisible(false);
+        login__emailInput.setText("");
+        login__passwordInput.setText("");
         login__emailInput.setOnKeyPressed(ev -> {
             if (ev.getCode() == KeyCode.ENTER) {
                 loginButtonOnclickHandler();
@@ -83,6 +85,7 @@ public class loginPageController implements Initializable {
     }
 
     private void switchToMainScene() throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage.fxml"));
         BorderPane root = fxmlLoader.load();
         mainPageController mainPageController = fxmlLoader.getController();
