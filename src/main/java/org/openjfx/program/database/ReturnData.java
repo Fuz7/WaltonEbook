@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReturnData {
+
     public String dataLocation;
     public CheckData Check;
 
@@ -939,8 +940,8 @@ public class ReturnData {
         Logger logger = Logger.getLogger("returnAllBookReviewsById");
         List<String[]> bookReviews = new ArrayList<>();
 
-        String sql = "SELECT user_id, review, rating, is_owned " +
-                "FROM book_reviews " +
+        String sql = "SELECT user_id, review " +
+                "FROM book_text_review " +
                 "WHERE book_id = ?";
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation);
@@ -953,8 +954,6 @@ public class ReturnData {
                 String[] review = new String[4];
                 review[0] = resultSet.getString("user_id");
                 review[1] = resultSet.getString("review");
-                review[2] = String.valueOf(resultSet.getInt("rating"));
-                review[3] = resultSet.getBoolean("is_owned") ? "Owned" : "Not Owned";
                 bookReviews.add(review);
             }
 
@@ -982,7 +981,29 @@ public class ReturnData {
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error returnReviewRating", e);
         }
-        return -1;
+        return 0;
+    }
+
+    public  List<int[]> returnBookReviewRatings(int bookId){
+        Logger logger = Logger.getLogger("returnReviewRating");
+        List<int[]> bookRatings = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT user_id,rating FROM book_rating WHERE book_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, bookId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        int[] idAndRating = new int[2];
+                        idAndRating[0] = resultSet.getInt("user_id");
+                        idAndRating[1] = resultSet.getInt("rating");
+                        bookRatings.add(idAndRating);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returnReviewRating", e);
+        }
+        return bookRatings;
     }
 
     public String returnReviewText(int userId, int bookId){
@@ -1013,6 +1034,62 @@ public class ReturnData {
 
         return details;
     }
+    public String[] returnBookRating(int userId, int bookId){
+        String[] details = new String[3];
+        details[0] = String.valueOf(returnReviewRating(userId, bookId));
+        details[1] = returnReviewText(userId, bookId);
+        details[2] = String.valueOf(Check.CheckIfBookWasBought(bookId, userId));
+
+        return details;
+    }
+
+    public List<String[]> returnBookOwnedOrNot(int userId, boolean owned) {
+        Logger logger = Logger.getLogger("returnOwnedBookRating");
+        List<String[]> bookReviews = new ArrayList<>();
+        String sql;
+
+        if (owned) {
+            sql = "SELECT rating, book_id " +
+                    "FROM book_rating " +
+                    "WHERE book_id IN ( " +
+                    "SELECT book_id " +
+                    "FROM book_owned " +
+                    "WHERE is_owned = 1 " +
+                    "AND user_id = ? " +
+                    ")";
+        } else {
+            sql = "SELECT rating, book_id " +
+                    "FROM book_rating " +
+                    "WHERE book_id IN ( " +
+                    "SELECT book_id " +
+                    "FROM book_owned " +
+                    "WHERE is_owned = 0 " +
+                    "AND user_id = ? " +
+                    ")";
+        }
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String[] review = new String[2];
+
+                review[0] = String.valueOf(resultSet.getInt("rating"));
+                review[1] = String.valueOf(resultSet.getInt("book_id"));
+                bookReviews.add(review);
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returnOwnedBookRating", e);
+        }
+
+        return bookReviews;
+    }
+
+
 
 
 

@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 @SuppressWarnings("SqlDialectInspection")
 public class DatabaseManager {
 
+    /**
+     * The location where the data is stored.
+     */
     public String dataLocation;
     public InsertData Insert;
     public CheckData Check;
@@ -32,9 +35,9 @@ public class DatabaseManager {
     public DatabaseManager(String dataLocation) {
         this.dataLocation = dataLocation;
         this.Check = new CheckData(this.dataLocation);
-        this.Return = new ReturnData(this.dataLocation,this.Check);
+        this.Return = new ReturnData(this.dataLocation, this.Check);
         this.Insert = new InsertData(this.dataLocation, this.Check, this.Return);
-        this.Update = new UpdateData(this.dataLocation, this.Return, this.Insert);
+        this.Update = new UpdateData(this.dataLocation, this.Return, this.Insert, this.Check);
         this.Insert.InsertDataAfter(this.Update);
         this.Login = new LoginData(this.dataLocation);
     }
@@ -152,4 +155,5 @@ public class DatabaseManager {
             logger.log(Level.SEVERE, "Error create tables", e);
         }
     }
+
 }

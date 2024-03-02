@@ -15,7 +15,6 @@ public class InsertData {
 
 
 
-
     /**
      * Constructs a InsertData object with the specified data location.
      *
@@ -28,10 +27,10 @@ public class InsertData {
 
     }
 
-
     public void InsertDataAfter(UpdateData Update){
         this.Update = Update;
     }
+
 
     /**
      * Inserts a new user into the database.
@@ -230,7 +229,7 @@ public class InsertData {
      *          The review is inserted into the database after checking if the user owns the book.
      *          Any SQL exceptions encountered are logged using a logger named "InsertBookReview".
      */
-    public void InsertBookReview(int userId, int bookId, int rating, String reviewText){
+    public void InsertBookReviewText(int userId, int bookId, int rating, String reviewText){
         Logger logger = Logger.getLogger("InsertBookReview");
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
             // SQL statement to insert data into the "book_reviews" table
@@ -243,7 +242,6 @@ public class InsertData {
                 preparedStatement.setString(4, reviewText);
                 preparedStatement.setBoolean(5, this.check.CheckIfBookWasBought(bookId, userId));
 
-                // Execute the SQL statement to insert data
                 preparedStatement.executeUpdate();
 
                 System.out.println("Data inserted into book_reviews table successfully");
@@ -303,6 +301,7 @@ public class InsertData {
             logger.log(Level.SEVERE, "Error inserting data into author table", e);
         }
     }
+
     public void insertOrUpdateBookReview(int bookId, int userId, int rating, String review, boolean is_owned) {
         boolean if_exist = this.check.checkIfReviewExist(bookId, userId);
         if (if_exist){
@@ -362,6 +361,11 @@ public class InsertData {
             return;
         }
 
+        if (!check.CheckIfBookWasBought(bookId, userId) && !check.checkIfOwnedExist(bookId,userId)){
+            System.out.println("BOOK OWNED ROW DOESNT EXIST");
+            InsertNotOwnedBooks(bookId, userId);
+        }
+
         Logger logger = Logger.getLogger("InsertBookRating");
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
             String insertBookReviewSQL = "INSERT INTO book_rating (book_id, user_id, rating) VALUES (?, ?, ?);";
@@ -378,6 +382,27 @@ public class InsertData {
         }
     }
 
+    public void InsertNotOwnedBooks(int bookId, int userId){
+        Logger logger = Logger.getLogger("InsertNotOwnedBooks");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String insertBookReviewSQL = "INSERT INTO book_owned (book_id, user_id, is_owned) VALUES (?, ?, ?);";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookReviewSQL)) {
+                preparedStatement.setInt(1, bookId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.setBoolean(3, false);
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error InsertNotOwnedBooks", e);
+        }
+
+    }
+
+
+
+
 
     public void InsertBookReviewText(int bookId, int userId, String review){
 
@@ -385,6 +410,13 @@ public class InsertData {
             System.out.println("Review Row Already Exist Therefore Updating it");
             Update.updateReviewText(bookId, userId, review);
             return;
+        }
+
+        if (!check.CheckIfBookWasBought(bookId, userId)&& !check.checkIfOwnedExist(bookId,userId)){
+            System.out.println("Book Not Bought AND NO ROW ADDING NEW ROW");
+            InsertNotOwnedBooks(bookId,userId);
+        }else if(check.CheckIfBookWasBought(bookId, userId) && !check.checkIfOwnedExist(bookId,userId)){
+            AddBoughtBook(bookId,userId);
         }
 
         Logger logger = Logger.getLogger("InsertBookReview");
@@ -401,7 +433,16 @@ public class InsertData {
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error InsertBookReview", e);
         }
+
     }
+
+
+
+
+
+
+
+
 
 
 }

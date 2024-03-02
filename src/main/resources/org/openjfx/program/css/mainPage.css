@@ -233,3 +233,15 @@
     -fx-font-family: 'Inter';
     -fx-font-size: 13;
 }
+
+.checkBook__reviewerName{
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+}
+
+.checkBook__reviewText{
+    -fx-font-size: 15;
+    -fx-text-fill: black;
+    -fx-font-family: 'Inter';
+}

@@ -24,7 +24,7 @@ public class app extends Application {
         System.setProperty("prism.order", "sw");
 
         db.createTablesIfNotExist();
-        lm.setSessionId(2);
+        lm.setSessionId(1);
         scene_loader.loadFonts();
 
 /*        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));

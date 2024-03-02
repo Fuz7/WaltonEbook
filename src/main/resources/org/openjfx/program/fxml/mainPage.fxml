@@ -37,11 +37,11 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane fx:id="popup__scrollCheckBook" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
+               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="2.0">
                   <content>
                      <AnchorPane prefHeight="1996.0" prefWidth="571.0" styleClass="checkBookContainer__card">
                         <children>
-                           <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="571.0">
+                           <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="571.0" AnchorPane.topAnchor="0.0">
                               <children>
                                  <ImageView fx:id="checkBook__bookImage" fitHeight="285.0" fitWidth="195.0">
                                     <image>
@@ -243,7 +243,7 @@
                                                    <ImageView fx:id="checkBook__currentReviewImage" fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" styleClass="checkBook__currentReviewImage" />
                                                    <Text fx:id="checkBook__currentReviewUsername" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewUsername" text="Walton Alfante" wrappingWidth="136.6708984375">
                                                       <font>
-                                                         <Font size="15.0" />
+                                                         <Font size="16.0" />
                                                       </font>
                                                       <VBox.margin>
                                                          <Insets top="5.0" />
@@ -251,10 +251,13 @@
                                                    </Text>
                                                 </children>
                                              </VBox>
-                                             <Text fx:id="checkBook__currentReviewBody" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewBody" wrappingWidth="321.13671875">
+                                             <Text fx:id="checkBook__currentReviewBody" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__currentReviewBody" text="         Meet Walton Alfante, the brain behind WaltonEbook. He had a big dream: to create an app where anyone could easily find and enjoy their favorite books online. With a passion for both technology and literature, Walton set out to make this dream a reality. He worked tirelessly to develop WaltonEbook, ensuring it's simple, user-friendly, and full of great reads" wrappingWidth="321.13671875">
                                                 <font>
                                                    <Font size="15.0" />
                                                 </font>
+                                                <HBox.margin>
+                                                   <Insets />
+                                                </HBox.margin>
                                              </Text>
                                           </children>
                                        </HBox>
@@ -313,7 +316,7 @@
                                              <Insets left="55.0" />
                                           </HBox.margin>
                                        </HBox>
-                                       <Label fx:id="checkBook__shopperRatingLabel" styleClass="checkBook__shopperRatingLabel" text="5.0">
+                                       <Label fx:id="checkBook__shopperRatingLabel" prefHeight="19.0" prefWidth="63.0" styleClass="checkBook__shopperRatingLabel" text="5.0">
                                           <font>
                                              <Font size="14.0" />
                                           </font>
@@ -365,7 +368,7 @@
                                              <Insets left="35.0" />
                                           </HBox.margin>
                                        </HBox>
-                                       <Label fx:id="checkBook__anonynmousRatingLabel" prefWidth="22.0" styleClass="checkBook__anonymousRatingLabel" text="5.0">
+                                       <Label fx:id="checkBook__anonymousRatingLabel" prefHeight="19.0" prefWidth="74.0" styleClass="checkBook__anonymousRatingLabel" text="5.0">
                                           <font>
                                              <Font size="14.0" />
                                           </font>
@@ -380,13 +383,81 @@
                                        <Font size="20.0" />
                                     </font>
                                     <VBox.margin>
-                                       <Insets right="392.0" top="70.0" />
+                                       <Insets right="392.0" top="100.0" />
                                     </VBox.margin>
                                  </Label>
-                                 <VBox fx:id="checkBook__reviewContainer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="460.0" styleClass="checkBook__reviewContainer">
+                                 <VBox fx:id="checkBook__reviewContainer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="460.0" styleClass="checkBook__reviewContainer">
                                     <VBox.margin>
-                                       <Insets right="7.0" />
+                                       <Insets right="7.0" top="15.0" />
                                     </VBox.margin>
+                                    <children>
+                                       <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <children>
+                                             <VBox prefHeight="101.0" prefWidth="137.0">
+                                                <children>
+                                                   <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@../images/jorge.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jorge Macabenta" wrappingWidth="137.0">
+                                                      <font>
+                                                         <Font size="16.0" />
+                                                      </font>
+                                                   </Text>
+                                                </children>
+                                             </VBox>
+                                             <VBox prefWidth="317.0">
+                                                <children>
+                                                   <HBox alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="45.0" prefWidth="317.0" spacing="10.0">
+                                                      <children>
+                                                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                               <Image url="@../images/purpleStar.png" />
+                                                            </image>
+                                                         </ImageView>
+                                                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                               <Image url="@../images/purpleStar.png" />
+                                                            </image>
+                                                         </ImageView>
+                                                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                               <Image url="@../images/purpleStar.png" />
+                                                            </image>
+                                                         </ImageView>
+                                                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                               <Image url="@../images/purpleStar.png" />
+                                                            </image>
+                                                         </ImageView>
+                                                      </children>
+                                                   </HBox>
+                                                   <Separator prefWidth="200.0">
+                                                      <effect>
+                                                         <InnerShadow>
+                                                            <color>
+                                                               <Color opacity="0.7480915784835815" />
+                                                            </color>
+                                                         </InnerShadow>
+                                                      </effect>
+                                                      <VBox.margin>
+                                                         <Insets top="10.0" />
+                                                      </VBox.margin>
+                                                   </Separator>
+                                                   <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum" wrappingWidth="316.13671875">
+                                                      <VBox.margin>
+                                                         <Insets bottom="30.0" top="3.0" />
+                                                      </VBox.margin>
+                                                      <font>
+                                                         <Font size="15.0" />
+                                                      </font>
+                                                   </Text>
+                                                </children>
+                                             </VBox>
+                                          </children>
+                                       </HBox>
+                                    </children>
                                  </VBox>
                               </children>
                            </VBox>

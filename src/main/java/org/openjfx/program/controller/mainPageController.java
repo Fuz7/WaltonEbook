@@ -4,10 +4,13 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -22,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import org.openjfx.program.app;
@@ -36,10 +40,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.StringJoiner;
+import java.util.*;
 
 import static javafx.animation.Interpolator.EASE_IN;
 
@@ -103,6 +104,16 @@ public class mainPageController implements Initializable {
     private Text checkBook__currentReviewUsername;
     @FXML
     private Button checkBook_reviewSubmitButton;
+    @FXML
+    private HBox checkBook__shopperRatingImageContainer;
+    @FXML
+    private HBox checkBook__anonymousRatingImageContainer;
+    @FXML
+    private Label checkBook__shopperRatingLabel;
+    @FXML
+    private Label checkBook__anonymousRatingLabel;
+    @FXML
+    private VBox checkBook__reviewContainer;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -284,6 +295,7 @@ public class mainPageController implements Initializable {
         checkBook__bookImage.setImage(bookDetails.image);
         checkBook__bookTitle.setText(bookDetails.title);
         checkBook__bookAuthor.setText(app.db.Return.returnAuthorNameByID(id));
+        renderOverallRatings(id);
         checkBook__soldCount.setText("Sold: " + bookDetails.bookSold);
         checkBook__descriptionBody.setText(bookDetails.formattedDescription);
         String stringGenre = arrayListToStringWithSpace(app.db.Return.returnAllGenreById(id));
@@ -296,7 +308,8 @@ public class mainPageController implements Initializable {
         checkBook_reviewSubmitButton.setOnMouseClicked(mouseEvent ->  renderReviewSubmitTextArea(id,app.lm.getSessionId()));
         slideInCheckBook();
         renderReviewText(id,app.lm.getSessionId());
-
+        renderAverageRatings(id);
+        renderReviews(id);
     }
 
     private void renderPurchaseButton(int bookId){
@@ -378,11 +391,10 @@ public class mainPageController implements Initializable {
             ImageView currStar = (ImageView) parent.getChildren().get(i);
             currStar.getStyleClass().add("checkBook__ratingStar--rated");
         }
-        if(app.db.Check.checkIfRatingExist(bookId,userId)){
-            app.db.Update.updateRating(bookId,userId,ratingScore);
-        }else{
-            app.db.Insert.InsertBookRating(bookId,userId,ratingScore);
-        }
+        app.db.Insert.InsertBookRating(bookId,userId,ratingScore);
+        renderAverageRatings(bookId);
+        renderReviews(bookId);
+        renderOverallRatings(bookId);
     }
 
     private void renderReviewText(int bookId,int userId) {
@@ -437,9 +449,230 @@ public class mainPageController implements Initializable {
         checkBook__currentReviewBody.setText(app.db.Return.returnReviewText(userId,bookId));
         checkBook__reviewBookButton.getStyleClass().add("checkBook__reviewBookButton--reviewed");
         checkBook__reviewBookButton.setText("Reviewed");
-
+        renderReviews(bookId);
 
     }
+
+    private void  renderOverallRatings(int bookId){
+        int ratingSum  = 0;
+        int ratingCount = 0;
+        List<int[]> bookRatings = app.db.Return.returnBookReviewRatings(bookId);
+        for (int[] idAndRating : bookRatings) {
+            ratingSum+=  idAndRating[1];
+            ratingCount +=1;
+        }
+        float averageRating = (float) ratingSum / ratingCount;
+        if(Float.isNaN(averageRating)){
+            checkBook__bookRating.setText("Ratings: 0.00");
+        }else{
+            checkBook__bookRating.setText("Ratings: " +  String.format("%.2f",averageRating));
+        }
+    }
+
+    private void renderAverageRatings(int bookId){
+        checkBook__shopperRatingImageContainer.getChildren().clear();
+        checkBook__anonymousRatingImageContainer.getChildren().clear();
+        List<int[]> bookRatings = app.db.Return.returnBookReviewRatings(bookId);
+        int shopperSum = 0;
+        int anonymousSum = 0;
+        int shopperCount = 0;
+        int anonymousCount = 0;
+        for (int[] idAndRating : bookRatings) {
+            if (app.db.Check.CheckIfBookWasBought(bookId, idAndRating[0])) {
+                shopperSum += idAndRating[1];
+                shopperCount += 1;
+            } else if (!app.db.Check.CheckIfBookWasBought(bookId, idAndRating[0])) {
+                anonymousSum += idAndRating[1];
+                anonymousCount += 1;
+            }
+        }
+        float averageShopperRating = (float) shopperSum / shopperCount;
+        float averageAnonymousRating = (float) anonymousSum / anonymousCount;
+        if(Float.isNaN(averageShopperRating)){
+            checkBook__shopperRatingLabel.setText("0.00");
+        }else{
+            checkBook__shopperRatingLabel.setText(String.format("%.2f",averageShopperRating));
+        }
+        if (Float.isNaN(averageAnonymousRating)) {
+            checkBook__anonymousRatingLabel.setText("0.00");
+        }else{
+            checkBook__anonymousRatingLabel.setText(String.format("%.2f",averageAnonymousRating));
+        }
+
+        for(float i = averageShopperRating;i > 0;i--){
+            if(i >= 1){
+                addShopperStar();
+            }else{
+                addShopperStar(i);
+            }
+        }
+
+        for (float i = averageAnonymousRating; i  > 0;i--){
+            if(i >= 1){
+                addAnonymousStar();
+            }else{
+                addAnonymousStar(i);
+            }
+        }
+
+    }
+
+    private void renderReviews(int bookId){
+        checkBook__reviewContainer.getChildren().clear();
+        List<String[]> bookReviews = app.db.Return.returnAllBookReviewsById(bookId);
+        for(int i = 0;i <bookReviews.size();i++){
+            String[] bookReview = bookReviews.get(i);
+            String bookReviewData  = bookReview[1];
+            if(!bookReviewData.isEmpty()){
+                int userId = Integer.parseInt(bookReview[0]);
+                int rating = app.db.Return.returnReviewRating(userId,bookId);
+                boolean isOwned =  app.db.Check.CheckIfBookWasBought(bookId, userId);
+                renderReviewCard(userId,rating,isOwned,bookReviewData);
+            }
+        }
+    }
+
+    private void renderReviewCard(int userId,int rating, boolean isOwned,String review){
+        HBox cardContainer =  new HBox();
+        cardContainer.minWidth(460);
+        cardContainer.setAlignment(Pos.TOP_LEFT);
+
+        VBox imageAndNameContainer = new VBox();
+        imageAndNameContainer.setAlignment(Pos.TOP_LEFT);
+        imageAndNameContainer.prefWidth(137);
+        imageAndNameContainer.maxWidth(137);
+        ImageView profileImage = createProfileContainer();
+        try {
+            setReviewRoundedCorner(profileImage,returnUserImage(userId));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        Text nameText = new Text();
+        nameText.setWrappingWidth(137);
+        nameText.setTextAlignment(TextAlignment.LEFT);
+        nameText.setText(app.db.Return.returnUserUserName(userId));
+        nameText.getStyleClass().add("checkBook__reviewerName");
+
+        imageAndNameContainer.getChildren().addAll(profileImage,nameText);
+
+        cardContainer.getChildren().add(imageAndNameContainer);
+
+
+        VBox starAndTextContainer = new VBox();
+        starAndTextContainer.setAlignment(Pos.TOP_LEFT);
+        starAndTextContainer.setPadding(new javafx.geometry.Insets(0, 0, 0, 4));
+        starAndTextContainer.prefWidth(317);
+        starAndTextContainer.maxWidth(317);
+
+        HBox starContainer = new HBox();
+        starContainer.setAlignment(Pos.BOTTOM_LEFT);
+        starContainer.setSpacing(10);
+        starContainer.prefWidth(317);
+        starContainer.prefHeight(45);
+        starContainer.maxWidth(317);
+        starContainer.maxHeight(45);
+        for(int i = rating;i > 0;i--){
+            ImageView imageContainer = createFortyPxStarContainer();
+            if(isOwned){
+                addShopperStar(imageContainer);
+            }else{
+                addAnonymousStar(imageContainer);
+            }
+            starContainer.getChildren().add(imageContainer);
+        }
+        starAndTextContainer.getChildren().add(starContainer);
+        Separator separator = new Separator();
+        separator.setMinHeight(3);
+        separator.setPrefWidth(317);
+        separator.setMinWidth(317);
+        VBox.setMargin(separator,new Insets(10,0,0,0));
+        separator.setEffect(new InnerShadow(21,Color.color(0,0,0,0.75)));
+        starAndTextContainer.getChildren().add(separator);
+        Text reviewText = new Text();
+        reviewText.setTextAlignment(TextAlignment.LEFT);
+        reviewText.setWrappingWidth(317);
+        reviewText.getStyleClass().add("checkBook__reviewText");
+        reviewText.setLineSpacing(2);
+        VBox.setMargin(reviewText, new Insets(3,0,30,0));
+        reviewText.setText(review);
+        starAndTextContainer.getChildren().add(reviewText);
+        cardContainer.getChildren().add(starAndTextContainer);
+        checkBook__reviewContainer.getChildren().add(cardContainer);
+    }
+
+    private void addShopperStar(){
+        ImageView imageContainer  = createStarContainer();
+        Image purpleStar =  new Image(Objects.requireNonNull(app.class.getResource("images/purpleStar.png")).toString());
+        imageContainer.setImage(purpleStar);
+        checkBook__shopperRatingImageContainer.getChildren().add(imageContainer);
+    }
+
+
+    private void addShopperStar(ImageView imageContainer){
+        Image purpleStar =  new Image(Objects.requireNonNull(app.class.getResource("images/purpleStar.png")).toString());
+        imageContainer.setImage(purpleStar);
+
+    }
+    private void addAnonymousStar(ImageView imageContainer){
+        Image goldStar =  new Image(Objects.requireNonNull(app.class.getResource("images/goldStar.png")).toString());
+        imageContainer.setImage(goldStar);
+
+    }
+
+
+    private void addShopperStar(float ratingValue){
+        ImageView  imageContainer = createStarContainer();
+        Image purpleStar =  new Image(Objects.requireNonNull(app.class.getResource("images/purpleStar.png")).toString());
+        Rectangle clip = new Rectangle((ratingValue*30),30);
+        imageContainer.setClip(clip);
+        imageContainer.setImage(purpleStar);
+        checkBook__shopperRatingImageContainer.getChildren().add(imageContainer);
+    }
+
+
+
+    private void addAnonymousStar(){
+        ImageView imageContainer  = createStarContainer();
+        Image goldStar =  new Image(Objects.requireNonNull(app.class.getResource("images/goldStar.png")).toString());
+        imageContainer.setImage(goldStar);
+        checkBook__anonymousRatingImageContainer.getChildren().add(imageContainer);
+    }
+
+    private void addAnonymousStar(float ratingValue){
+        ImageView  imageContainer = createStarContainer();
+        Image goldStar =  new Image(Objects.requireNonNull(app.class.getResource("images/goldStar.png")).toString());
+        Rectangle clip = new Rectangle((ratingValue*30),30);
+        imageContainer.setClip(clip);
+        imageContainer.setImage(goldStar);
+        checkBook__anonymousRatingImageContainer.getChildren().add(imageContainer);
+    }
+
+    private ImageView createStarContainer(){
+        ImageView imageContainer  = new ImageView();
+        imageContainer.setFitWidth(30);
+        imageContainer.setFitHeight(30);
+        imageContainer.setPreserveRatio(true);
+        imageContainer.setSmooth(true);
+        return imageContainer;
+    }
+
+    private ImageView createFortyPxStarContainer(){
+        ImageView imageContainer  = new ImageView();
+        imageContainer.setFitWidth(40);
+        imageContainer.setFitHeight(40);
+        imageContainer.setPreserveRatio(true);
+        imageContainer.setSmooth(true);
+        return imageContainer;
+    }
+    private ImageView createProfileContainer(){
+        ImageView imageContainer  = new ImageView();
+        imageContainer.setFitWidth(51);
+        imageContainer.setFitHeight(51);
+        imageContainer.setPreserveRatio(false);
+        imageContainer.setSmooth(true);
+        return imageContainer;
+    }
+
 
     private String arrayListToStringWithSpace(List<String> genre){
         StringJoiner joiner = new StringJoiner(", ");
@@ -597,6 +830,7 @@ public class mainPageController implements Initializable {
         container.setEffect(new DropShadow(10, Color.LIGHTGRAY));
         container.setImage(image);
     }
+
 
     public void setNavbarRoundedImage(ImageView container, String imageLink){
         Image im = new Image(imageLink,false);

@@ -8,20 +8,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UpdateData {
+
     public String dataLocation;
     public ReturnData Return;
     public InsertData Insert;
+    public CheckData Check;
 
     /**
      * Constructs a UpdateData object with the specified data location.
      *
      * @param dataLocation The location where the data is stored.
      */
-    public UpdateData(String dataLocation, ReturnData Return, InsertData Insert) {
+    public UpdateData(String dataLocation, ReturnData Return, InsertData Insert, CheckData Check) {
         this.dataLocation = dataLocation;
         this.Return = Return;
         this.Insert = Insert;
+        this.Check = Check;
     }
+
+
 
     /**
      * Updates the balance for a user with the specified user ID.
@@ -107,13 +112,21 @@ public class UpdateData {
             // Updates users cash
             UpdateUserCash(user_id, usersCash - bookPrice);
             // Record book (Make a new row for book bought)
-            Insert.AddBoughtBook(book_id, user_id);
+            // If book is not found then make a new row for it as owned
+            // If not then it already exist just make it true
+            if (!Check.CheckIfBookWasBought(book_id, user_id) && !Check.checkIfOwnedExist(book_id,user_id)) {
+                Insert.AddBoughtBook(book_id, user_id);
+            }
+            else if(!Check.CheckIfBookWasBought(book_id,user_id) && Check.checkIfOwnedExist(book_id,user_id)){
+                updateOwnedBook(book_id, user_id);
+            }
             // Add one to book sold
             increaseBookSoldByOne(book_id);
             return true;
         }
         return false;
     }
+
     public void updateReview(int bookId, int userId, int rating, String review, boolean is_owned) {
         System.out.println("UPDATING");
         Logger logger = Logger.getLogger("updateReview");
@@ -183,5 +196,29 @@ public class UpdateData {
             logger.log(Level.SEVERE, "Error updateReviewText", e);
         }
     }
+
+    public void updateOwnedBook(int bookId, int userId) {
+        Logger logger = Logger.getLogger("updateReviewText");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            // SQL statement to update data in the "book_reviews" table
+            String update = "UPDATE book_owned " +
+                    "SET is_owned = ?" +
+                    "WHERE book_id = ? AND user_id = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                // Set the parameters for the prepared statement
+                preparedStatement.setBoolean(1, true);
+                preparedStatement.setInt(2, bookId);
+                preparedStatement.setInt(3, userId);
+
+                // Execute the SQL statement to update data
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateReviewText", e);
+        }
+    }
+
+
 
 }
