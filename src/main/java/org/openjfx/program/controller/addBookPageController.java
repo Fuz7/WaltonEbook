@@ -248,7 +248,7 @@ public class addBookPageController {
                     int authorId = app.db.Return.returnAuthorId(app.lm.getSessionId());
                     boolean isAdmin = app.db.Check.checkIfAdmin(app.lm.getSessionId());
                     app.db.Insert.InsertNewBook(title,imageLink,genre,authorId,isAdmin,roundedPrice,0,description);
-
+                    this.mainPageController.switchToBookPublishedPage();
                 }
         }
 

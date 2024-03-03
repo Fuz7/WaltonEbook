@@ -116,6 +116,9 @@ public class mainPageController implements Initializable {
     private Label checkBook__anonymousRatingLabel;
     @FXML
     private VBox checkBook__reviewContainer;
+    @FXML
+    private ImageView checkBookContainer__downloadIcon;
+
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -126,6 +129,8 @@ public class mainPageController implements Initializable {
         hidePopups();
         try {
             setNavbarRoundedImage(profileLogo,returnAccountImage());
+            checkBookContainer__downloadIcon.setMouseTransparent(true);
+
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -306,6 +311,7 @@ public class mainPageController implements Initializable {
         checkBook__bookImage.setImage(bookDetails.image);
         checkBook__bookTitle.setText(bookDetails.title);
         checkBook__bookAuthor.setText(app.db.Return.returnAuthorNameByID(id));
+
         renderOverallRatings(id);
         checkBook__soldCount.setText("Sold: " + bookDetails.bookSold);
         checkBook__descriptionBody.setText(bookDetails.formattedDescription);
@@ -743,7 +749,7 @@ public class mainPageController implements Initializable {
     }
 
     @FXML
-    private void switchToBookPublishedPage(){
+    public void switchToBookPublishedPage(){
         replaceCenterPageContent(app.class.getResource("fxml/centerPages/bookPublished.fxml"), bookPublishedController.class);
 
     }

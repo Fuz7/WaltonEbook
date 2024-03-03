@@ -246,3 +246,21 @@
     -fx-font-family: 'Inter';
 }
 
+
+.checkBookContainer__downloadButton{
+    -fx-text-fill: black;
+    -fx-background-color:  linear-gradient(to bottom left, rgb(75, 180, 37) 0%, rgba(39,216,46,1) 33%, rgb(81, 168, 9) 100%);
+    -fx-background-radius: 30;
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 18;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: white ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.checkBookContainer__downloadButton:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(58, 141, 30) 0%, rgb(34, 192, 39) 33%, rgb(66, 128, 16) 100%);
+
+}
+

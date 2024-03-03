@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -33,15 +34,15 @@
          <children>
             <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minViewportHeight="900.0" minWidth="-Infinity" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer" vmax="1400.0">
             </ScrollPane>
-            <StackPane fx:id="popup__checkBook" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="585.0" style="-fx-background-color: transparent;">
+            <StackPane fx:id="popup__checkBook" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="582.0" style="-fx-background-color: transparent;">
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="585.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="1.0">
+               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="587.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
                   <content>
-                     <AnchorPane prefHeight="1996.0" prefWidth="571.0" styleClass="checkBookContainer__card">
+                     <AnchorPane prefHeight="1996.0" prefWidth="505.0" styleClass="checkBookContainer__card">
                         <children>
-                           <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="571.0" AnchorPane.topAnchor="0.0">
+                           <VBox alignment="TOP_CENTER" prefHeight="1438.0" prefWidth="572.0" AnchorPane.topAnchor="0.0">
                               <children>
                                  <ImageView fx:id="checkBook__bookImage" fitHeight="285.0" fitWidth="195.0">
                                     <image>
@@ -82,12 +83,41 @@
                                        <Insets top="15.0" />
                                     </VBox.margin>
                                  </Label>
+                                 <StackPane maxWidth="-Infinity">
+                                    <children>
+                                       <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" styleClass="checkBookContainer__downloadButton" text="Download">
+                                          <font>
+                                             <Font size="18.0" />
+                                          </font>
+                                          <StackPane.margin>
+                                             <Insets />
+                                          </StackPane.margin>
+                                          <padding>
+                                             <Insets left="20.0" />
+                                          </padding>
+                                       </Button>
+                                       <ImageView fx:id="checkBookContainer__downloadIcon" fitHeight="20.0" fitWidth="20.0" styleClass="checkBookContainer__downloadIcon">
+                                          <image>
+                                             <Image url="@../images/downloadIcon.png" />
+                                          </image>
+                                          <StackPane.margin>
+                                             <Insets right="95.0" />
+                                          </StackPane.margin>
+                                          <cursor>
+                                             <Cursor fx:constant="HAND" />
+                                          </cursor>
+                                       </ImageView>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="12.0" />
+                                    </VBox.margin>
+                                 </StackPane>
                                  <Label fx:id="checkBook__soldCount" styleClass="checkBook__soldCount" text="Sold : 20" textFill="#252525" wrapText="true">
                                     <font>
                                        <Font name="System Bold Italic" size="18.0" />
                                     </font>
                                     <VBox.margin>
-                                       <Insets top="55.0" />
+                                       <Insets top="10.0" />
                                     </VBox.margin>
                                  </Label>
                                  <Separator prefHeight="11.0" prefWidth="571.0">
