@@ -239,7 +239,7 @@
                               <Font size="18.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Self-Help" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <CheckBox mnemonicParsing="false" styleClass="advanceSearchCard__checkBox" text="Self Help" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <font>
                               <Font size="18.0" />
                            </font>

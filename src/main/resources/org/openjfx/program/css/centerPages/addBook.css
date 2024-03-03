@@ -1,0 +1,152 @@
+.addBook__imageContainer--empty{
+    -fx-image: url("../../images/addBookEmptyImage.png");
+    -fx-cursor:hand;
+}
+
+.addBook__imageContainer--empty:hover{
+    -fx-image: url("../../images/addBookEmptyImageHover.png");
+}
+
+.addBook__addABookTitle{
+    -fx-font-size: 64;
+    -fx-text-fill: black;
+    -fx-font-family: 'Karma';
+}
+
+.addBook__imageContainerError,
+.addBook__imageContainerError--visible{
+     -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-font-family: 'Karma-Regular';
+    -fx-opacity: 0;
+}
+
+.addBook__imageContainerError--visible{
+    -fx-opacity: 1;
+}
+
+.addBook__priceTextField{
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-background-color:white;
+    -fx-background-radius: 1;
+    -fx-text-fill: black;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-font-size: 32;
+}
+
+.addBook__priceTextFieldLabel{
+    -fx-text-fill: #484848;
+    -fx-font-family: 'Karma';
+    -fx-font-size: 32;
+}
+
+.addBook__priceFieldError,
+.addBook__priceFieldError--visible{
+    -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-font-family: 'Karma-Regular';
+    -fx-opacity: 0;
+}
+
+.addBook__priceFieldError--visible{
+    -fx-opacity: 1;
+}
+
+
+
+.addBook__titleFieldLabel,
+.addBook__descriptionFieldLabel,
+.addBook__genreLabel{
+    -fx-font-size: 32;
+    -fx-text-fill: black;
+    -fx-font-family: 'Karma';
+}
+
+.addBook__titleTextField{
+    -fx-font-size: 28;
+    -fx-text-fill: black;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-background-color:#F4F4F4;
+    -fx-background-radius: 1;
+}
+
+.addBook__titleFieldError,
+.addBook__titleFieldError--visible{
+    -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-font-family: 'Karma-Regular';
+    -fx-opacity: 0;
+}
+
+.addBook__titleFieldError--visible{
+    -fx-opacity: 1;
+}
+
+.addBook__descriptionTextArea{
+    -fx-font-size:20;
+    -fx-text-fill: black;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: transparent ;
+    -fx-focus-traversable: false;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-color:#F4F4F4;
+    -fx-control-inner-background: #F4F4F4;
+    -fx-background-radius: 4;
+}
+
+.addBook__checkBox{
+    -fx-font-size: 20;
+    -fx-font-family: 'Karma-Regular';
+    -fx-text-fill: black;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.addBook__checkBox .box{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-insets: 1;
+    -fx-background-color: white;
+}
+
+.addBook__checkBox:selected .mark{
+    -fx-background-color: black;
+}
+
+.addBook__genreError,
+.addBook__genreError--visible{
+    -fx-font-size: 16;
+    -fx-text-fill: red;
+    -fx-font-family: 'Karma-Regular';
+    -fx-opacity: 0;
+}
+
+.addBook__genreError--visible{
+    -fx-opacity: 1;
+}
+
+.addBook__submitButton{
+    -fx-text-fill: black;
+    -fx-background-color:  linear-gradient(to top right, rgb(145, 145, 145) 0%, rgb(229, 229, 229) 100%);
+    -fx-background-radius: 50;
+    -fx-font-family: 'Karma';
+    -fx-font-size: 28;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+}
+
+.addBook__submitButton:hover{
+    -fx-background-color:  linear-gradient(to top right, rgb(182, 182, 182) 0%, rgb(252, 252, 252) 100%);
+
+}

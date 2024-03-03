@@ -146,9 +146,18 @@ public class mainPageController implements Initializable {
         String description = (String) value[2];
         String formattedDescription = description.replaceAll("\\n", " ");
         String imageLink = (String) value[3];
-        String correctPath = String.valueOf(app.class.getResource("images/books/" + imageLink));
+        Path sourceDirectory = Paths.get("src/main/resources/org/openjfx/program/images/books/");
 
-        Image image = new Image(correctPath);
+        Path correctPath = Paths.get(sourceDirectory.resolve(imageLink).toUri());
+        File imageFile = new File(correctPath.toString());
+        String absoluteImageUrl = null;
+        try {
+            absoluteImageUrl = imageFile.toURI().toURL().toString();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
+        Image image = new Image(absoluteImageUrl);
         String genre = "Tags: " + value[4];
         int bookSold = Integer.parseInt(value[8]);
         double price = Double.parseDouble(value[7]);
@@ -744,6 +753,10 @@ public class mainPageController implements Initializable {
         renderCenterPageContentFromSearch(app.class.getResource("fxml/centerPages/searchPage.fxml"), searchPageController.class,navbar__searchBar.getText());
     }
 
+    public void switchToAddBookPage(){
+        replaceCenterPageContent(app.class.getResource("fxml/centerPages/addBookPage.fxml"), addBookPageController.class);
+
+    }
 
 
 

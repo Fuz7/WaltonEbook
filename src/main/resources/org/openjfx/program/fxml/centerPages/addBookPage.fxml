@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1571.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/addBook.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.addBookPageController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="1835.0" prefWidth="1685.0">
+         <children>
+            <Label styleClass="addBook__addABookTitle" text="Add A Book">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="addBook__imageContainer" fitHeight="359.0" fitWidth="246.0" onMouseClicked="#chooseImage" pickOnBounds="true" styleClass="addBook__imageContainer--empty">
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="addBook__imageContainerError" fill="RED" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error, please select a valid image such as  .jpg, .jpeg" textAlignment="CENTER" wrappingWidth="264.04425048828125">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="addBook__imageContainerError--visible" />
+                  <String fx:value="addBook__imageContainerError" />
+               </styleClass>
+            </Text>
+            <StackPane maxWidth="-Infinity" prefHeight="52.0" prefWidth="163.0">
+               <children>
+                  <TextField fx:id="addBook__priceTextField" minHeight="-Infinity" onKeyPressed="#hidePriceErrorOnKeyPress" prefHeight="52.0" prefWidth="163.0" styleClass="addBook__priceTextField">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="-1.0" left="15.0" right="23.0" top="-1.0" />
+                     </padding>
+                  </TextField>
+                  <Label fx:id="addBook__priceTextFieldLabel" onMouseClicked="#focusOnPriceFieldOnClick" styleClass="addBook__priceTextFieldLabel" text="Price">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets right="60.0" />
+                     </StackPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+                  <ImageView fx:id="addBook__dollarSign" onMouseClicked="#focusOnPriceFieldOnClick" styleClass="addBook__dollarSign">
+                     <image>
+                        <Image url="@../../images/addBook$.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets left="131.0" top="1.0" />
+                     </StackPane.margin>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="23.0" />
+               </VBox.margin>
+               <effect>
+                  <DropShadow height="11.25" offsetY="2.0" radius="5.3125" width="12.0">
+                     <color>
+                        <Color opacity="0.7213740348815918" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </StackPane>
+            <Text fx:id="addBook__priceFieldError" fill="RED" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error, please input valid price" textAlignment="CENTER" wrappingWidth="264.04425048828125">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="addBook__priceFieldError--visible" />
+                  <String fx:value="addBook__priceFieldError" />
+               </styleClass>
+            </Text>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" spacing="180.0">
+               <children>
+                  <Label styleClass="addBook__titleFieldLabel" text="Title">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addBook__titleTextField" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="630.0" styleClass="addBook__titleTextField">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="4.0" left="16.0" top="4.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="11.5" offsetY="2.0" radius="5.125" width="11.0">
+                           <color>
+                              <Color opacity="0.7824427485466003" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="22.0" />
+               </VBox.margin>
+            </HBox>
+            <Text fx:id="addBook__titleFieldError" fill="RED" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error, please input valid title" textAlignment="CENTER" wrappingWidth="264.04425048828125">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="addBook__titleFieldError" />
+                  <String fx:value="addBook__titleFieldError--visible" />
+               </styleClass>
+            </Text>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="206.0" prefWidth="900.0" spacing="63.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="188.0" styleClass="addBook__descriptionFieldLabel" text="Description">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="100.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="addBook__descriptionTextArea" prefHeight="75.0" prefWidth="630.0" styleClass="addBook__descriptionTextArea">
+                     <effect>
+                        <DropShadow height="10.07" offsetY="2.0" radius="5.2675" width="13.0">
+                           <color>
+                              <Color opacity="0.7862595319747925" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <padding>
+                        <Insets top="1.0" />
+                     </padding>
+                  </TextArea>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="47.0" prefWidth="888.0" spacing="63.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="188.0" styleClass="addBook__genreLabel" text="Genre/Tags">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <GridPane fx:id="addBook__checkBoxContainer" maxWidth="-Infinity" prefHeight="279.0" prefWidth="1169.0" styleClass="advanceSearchCard__checkBoxContainer" vgap="60.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Action">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Adventure" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Business" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Comedy" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Drama" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Education" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Entertainment" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Fiction" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="History" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Horror" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Memoir" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Mystery" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Nonfiction" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Politics" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Psychological" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Thriller" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Self Help" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Travel" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Philosophy" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" styleClass="addBook__checkBox" text="Romance" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="2.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="286.0" top="50.0" />
+               </VBox.margin>
+            </GridPane>
+            <Text fx:id="addBook__genreError" fill="RED" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error, please check at least one genre" textAlignment="CENTER" wrappingWidth="292.0443115234375">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="addBook__genreError--visible" />
+                  <String fx:value="addBook__genreError" />
+               </styleClass>
+            </Text>
+            <Button fx:id="addBook__submitButton" mnemonicParsing="false" onMouseClicked="#onClickSubmitButton" prefHeight="50.0" prefWidth="186.0" styleClass="addBook__submitButton" text="Submit">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-1.0" top="-1.0" />
+               </padding>
+               <effect>
+                  <DropShadow height="12.0" offsetX="1.0" offsetY="2.0" radius="5.5" width="12.0">
+                     <color>
+                        <Color opacity="0.8587786555290222" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+            </Button>
+         </children></VBox>
+   </children>
+</AnchorPane>

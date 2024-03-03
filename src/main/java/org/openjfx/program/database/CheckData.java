@@ -39,6 +39,24 @@ public class CheckData {
         return exists;
     }
 
+    public boolean checkIfBookTitleExists(String bookTitle) {
+        boolean exists = false;
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM book_details WHERE title = ?")) {
+
+            preparedStatement.setString(1, bookTitle);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // If any rows are returned by the query, it means the description exists
+            exists = resultSet.next();
+
+        } catch (SQLException exception) {
+            System.err.println("Error: " + exception.getMessage());
+        }
+        return exists;
+    }
+
     /**
      * Checks if a username already exists in the database.
      *
@@ -206,6 +224,23 @@ public class CheckData {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "checkIfOwnedExist error", e);
+        }
+        return false;
+    }
+    public boolean checkIfAdmin(int userId){
+        Logger logger = Logger.getLogger("checkIfAdmin");
+        String query = "SELECT is_admin FROM users WHERE id = ?";
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getBoolean("is_admin");
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "checkIfAdmin error", e);
         }
         return false;
     }

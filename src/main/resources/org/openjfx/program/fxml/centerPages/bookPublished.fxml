@@ -39,7 +39,7 @@
             </Separator>
             <FlowPane fx:id="booksPublished__pendingBooksContainer" hgap="64.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1432.0" styleClass="booksPublished__pendingBooksContainer" vgap="54.0">
                <children>
-                  <VBox fx:id="booksPublished__addBook" alignment="BOTTOM_CENTER" prefHeight="350.0" prefWidth="223.0" styleClass="booksPublished__addBook">
+                  <VBox fx:id="booksPublished__addBook" alignment="BOTTOM_CENTER" onMouseClicked="#switchToAddBookPage" prefHeight="350.0" prefWidth="223.0" styleClass="booksPublished__addBook">
                      <children>
                         <ImageView fitHeight="164.0" fitWidth="164.0" pickOnBounds="true">
                            <image>

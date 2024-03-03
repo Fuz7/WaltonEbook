@@ -43,6 +43,11 @@ public class bookPublishedController {
         renderBooksPublished();
     }
 
+    @FXML
+    private void switchToAddBookPage(){
+        this.mainPageController.switchToAddBookPage();
+    }
+
     private void renderBooksPending(){
        ObservableList<Node> children = booksPublished__pendingBooksContainer.getChildren();
 
@@ -52,7 +57,7 @@ public class bookPublishedController {
         List<Integer> bookIds = app.db.Return.returnBookPending(app.lm.getSessionId());
         booksPublished__pendingBooksTitle.setText("Books Pending : " + bookIds.size());
         for(int bookId: bookIds){
-            renderBookCard(booksPublished__publishedBooksContainer,bookId,false);
+            renderBookCard(booksPublished__pendingBooksContainer,bookId,false);
         }
 
     }

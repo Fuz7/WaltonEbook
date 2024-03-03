@@ -804,6 +804,7 @@ public class ReturnData {
         Logger logger = Logger.getLogger("InsertDataLogger");
         int[] topBookIds = new int[10];
         String sql = "SELECT * FROM book_details " +
+                " WHERE is_available = 1 " +
                 "ORDER BY id DESC " +
                 "LIMIT 10";
 
