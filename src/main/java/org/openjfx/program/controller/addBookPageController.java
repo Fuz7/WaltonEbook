@@ -107,16 +107,20 @@ public class addBookPageController {
     private boolean checkPriceFieldIfValid(){
 
         if(addBook__priceTextField.getText().trim().isEmpty()){
+            addBook__priceFieldError.setText("Error, please input valid price");
             addBook__priceFieldError.setVisible(true);
             return false;
         }
         if(addBook__priceTextField.getText().equals(".")){
+            addBook__priceFieldError.setText("Error, please input valid price");
             addBook__priceFieldError.setVisible(true);
             return false;
         }
-        double price = Double.parseDouble(addBook__priceTextField.getText());
+        double price = roundToTwoDecimalPlaces(Double.parseDouble(addBook__priceTextField.getText()));
         if(price <= 0){
+            addBook__priceFieldError.setText("Error, value should be greater than or equal to 0.01");
             addBook__priceFieldError.setVisible(true);
+
             return false;
         }
         return  true;
