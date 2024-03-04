@@ -28,6 +28,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.openjfx.program.app;
@@ -118,7 +119,10 @@ public class mainPageController implements Initializable {
     private VBox checkBook__reviewContainer;
     @FXML
     private ImageView checkBookContainer__downloadIcon;
-
+    @FXML
+    private StackPane checkBook__downloadContainer;
+    @FXML
+    private Button checkBookContainer__downloadButton;
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -269,6 +273,7 @@ public class mainPageController implements Initializable {
     }
 
 
+
     @FXML
     private void returnAnimation(){
         TranslateTransition translateAnimation = new TranslateTransition(Duration.millis(200),popup__myBooks);
@@ -311,7 +316,8 @@ public class mainPageController implements Initializable {
         checkBook__bookImage.setImage(bookDetails.image);
         checkBook__bookTitle.setText(bookDetails.title);
         checkBook__bookAuthor.setText(app.db.Return.returnAuthorNameByID(id));
-
+        renderDownloadButton(id,app.lm.getSessionId());
+        checkBookContainer__downloadButton.setOnMouseClicked(mouseEvent -> downloadFile(id));
         renderOverallRatings(id);
         checkBook__soldCount.setText("Sold: " + bookDetails.bookSold);
         checkBook__descriptionBody.setText(bookDetails.formattedDescription);
@@ -327,6 +333,10 @@ public class mainPageController implements Initializable {
         renderReviewText(id,app.lm.getSessionId());
         renderAverageRatings(id);
         renderReviews(id);
+    }
+
+    private void renderDownloadButton(int bookId, int userId){
+        checkBook__downloadContainer.setVisible(app.db.Check.CheckIfBookWasBought(bookId, userId));
     }
 
     private void renderPurchaseButton(int bookId){
@@ -924,6 +934,24 @@ public class mainPageController implements Initializable {
 
     private static boolean isExistingFile(Path path) {
         return Files.exists(path) && Files.isRegularFile(path);
+    }
+
+
+    private void downloadFile(int bookId){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        // Set the initial directory
+        directoryChooser.setInitialDirectory(new File("C:/")); // Change this to your desired initial directory
+        Stage currentStage = (Stage) checkBook__shopperRatingLabel.getScene().getWindow();
+
+        // Show the directory chooser
+        File selectedDirectory = directoryChooser.showDialog(currentStage);
+
+        if (selectedDirectory != null) {
+            System.out.println("Selected Directory: " + selectedDirectory.getAbsolutePath());
+        } else {
+            System.out.println("No Directory Selected");
+        }
     }
 
 }

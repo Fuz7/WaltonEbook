@@ -83,9 +83,9 @@
                                        <Insets top="15.0" />
                                     </VBox.margin>
                                  </Label>
-                                 <StackPane maxWidth="-Infinity">
+                                 <StackPane fx:id="checkBook__downloadContainer" maxWidth="-Infinity" styleClass="checkBook__downloadContainer">
                                     <children>
-                                       <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" styleClass="checkBookContainer__downloadButton" text="Download">
+                                       <Button fx:id="checkBookContainer__downloadButton" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" styleClass="checkBookContainer__downloadButton" text="Download">
                                           <font>
                                              <Font size="18.0" />
                                           </font>
