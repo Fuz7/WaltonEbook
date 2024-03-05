@@ -28,7 +28,7 @@
 
 <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
    <children>
-      <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1776.0" prefWidth="1685.0">
+      <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1864.0" prefWidth="1685.0">
          <children>
             <StackPane prefWidth="1685.0">
                <VBox.margin>

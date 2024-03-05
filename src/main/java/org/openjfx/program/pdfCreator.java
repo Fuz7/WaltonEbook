@@ -19,30 +19,17 @@ import java.util.List;
 public class pdfCreator {
     public static void main(String[] args) throws IOException{
         app.db.Insert.AdminBookInserter(
-                "The Mayor of Maxwell Street",
-                "The Mayor of Maxwell Street.jpg",
-                new String[]{"Fiction", "Romance", "Historical", "Mystery", "Thriller"},
-                "Avery Cunningham",
+                "The Road",
+                "The Road.jpeg",
+                new String[]{"Fiction", "Horror"},
+                "Cormac McCarthy",
                 true,
-                10.99,
-                120,
-                "When a rich Black debutante enlists the help of a low-level speakeasy manager to identify the"
-                        + "head of an underground crime syndicate, the two are thrust into the dangerous world of"
-                        + "Prohibition-era Chicago."
-                        + "\n"
-                        + "The year is 1921, and America is burning. A fire of vice and virtue rages on every shore with"
-                        + "Chicago at its beating heart."
-                        + "\n"
-                        + "Twenty-year-old Nelly Sawyer is the daughter of the alleged “wealthiest Negro in America,” a"
-                        + "Kentucky horse breeder whose wealth and prestige catapults his family to the heights of the"
-                        + "exclusive, elite Black society. After the unexpected death of her brother—the family’s presumed heir"
-                        + "—Nelly goes from being virtually unknown to a premier debutante overnight. But Nelly has"
-                        + "aspirations beyond society influence and marriage. For the past year, she has worked undercover as"
-                        + "an investigative journalist for the Chicago Defender , sharing the achievements and tribulations of"
-                        + "everyday Black people living in the shadow of Jim Crow. Now, her latest assignment thrusts her into"
-                        + "the den of a dangerous vice the so-called Mayor of Maxwell Street."
+                8.99,
+                287,
+                "The Road is a haunting post-apocalyptic novel that follows the journey of a father and his young son "
+                        + "as they travel through a desolate landscape in search of safety and salvation. Along the way, they "
+                        + "encounter dangers both natural and human."
         );
-
 
     }
 
