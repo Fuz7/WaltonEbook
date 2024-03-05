@@ -218,6 +218,39 @@ public class UpdateData {
             logger.log(Level.SEVERE, "Error updateReviewText", e);
         }
     }
+    public void updateBookToAvailable(int bookId){
+        Logger logger = Logger.getLogger("updateBookToAvailable");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String update = "UPDATE book_details " +
+                    "SET is_available = true " +
+                    "WHERE id = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                preparedStatement.setInt(1, bookId);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateBookToAvailable", e);
+        }
+    }
+
+    public void updateBookToUnavailable(int bookId){
+        Logger logger = Logger.getLogger("updateBookToAvailable");
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String update = "UPDATE book_details " +
+                    "SET is_available = false " +
+                    "WHERE id = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+                preparedStatement.setInt(1, bookId);
+
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error updateBookToAvailable", e);
+        }
+    }
 
 
 
