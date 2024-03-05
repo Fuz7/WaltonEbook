@@ -75,7 +75,7 @@ public class mainPageController implements Initializable {
     @FXML
     private ScrollPane popup__scrollCheckBook;
     @FXML
-    private Label checkBook__bookTitle;
+    private Text checkBook__bookTitle;
     @FXML
     private Label checkBook__bookAuthor;
     @FXML

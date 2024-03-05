@@ -59,14 +59,14 @@
                                        </DropShadow>
                                     </effect>
                                  </ImageView>
-                                 <Label fx:id="checkBook__bookTitle" styleClass="checkBook__bookTitle" text="Atomic Habits" textAlignment="CENTER" wrapText="true">
+                                 <Text fx:id="checkBook__bookTitle" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__bookTitle" text="Text" textAlignment="CENTER" wrappingWidth="529.341796875">
                                     <font>
                                        <Font size="30.0" />
                                     </font>
                                     <VBox.margin>
                                        <Insets top="13.0" />
                                     </VBox.margin>
-                                 </Label>
+                                 </Text>
                                  <Label fx:id="checkBook__bookAuthor" styleClass="checkBook__bookAuthor" text="James Clear" textAlignment="CENTER" underline="true">
                                     <font>
                                        <Font size="20.0" />
