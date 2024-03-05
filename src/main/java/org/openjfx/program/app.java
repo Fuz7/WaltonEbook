@@ -27,15 +27,9 @@ public class app extends Application {
         lm.setSessionId(1);
         scene_loader.loadFonts();
 
-/*        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());*/
+        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/loginPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
 
-
-        FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage.fxml"));
-        BorderPane root = fxmlLoader.load();
-        mainPageController mainPageController = fxmlLoader.getController();
-        mainPageController.replaceCenterPageContent(app.class.getResource("fxml/centerPages/homePage.fxml"), homePageController.class);
-        Scene scene = new Scene(root);
 
         stage.setTitle("Login Page");
         // Center Screen

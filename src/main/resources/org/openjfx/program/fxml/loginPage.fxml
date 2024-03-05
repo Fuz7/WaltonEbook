@@ -16,132 +16,185 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="762.0" styleClass="body" stylesheets="@../css/loginPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.loginPageController">
+<StackPane stylesheets="@../css/loginPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.loginPageController">
    <children>
-      <HBox layoutX="75.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="612.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="106.0">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="762.0" styleClass="body">
          <children>
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="108.0" styleClass="blackBar" />
-            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="503.0" styleClass="formContent">
+            <HBox layoutX="75.0" layoutY="106.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="612.0" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="106.0">
                <children>
-                  <ImageView fitHeight="110.0" fitWidth="361.0">
-                     <image>
-                        <Image url="@../images/loginLogo.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets left="55.0" top="2.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <HBox prefHeight="50.0" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets top="65.0" />
-                     </VBox.margin>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="108.0" styleClass="blackBar" />
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="503.0" styleClass="formContent">
                      <children>
-                        <Label styleClass="userLabel" text="Email:">
+                        <ImageView fitHeight="110.0" fitWidth="361.0">
+                           <image>
+                              <Image url="@../images/loginLogo.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="55.0" top="2.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox prefHeight="50.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets top="65.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label styleClass="userLabel" text="Email:">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <TextField fx:id="login__emailInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__emailInput">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="77.5" top="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="50.0" prefWidth="200.0">
+                           <children>
+                              <Label styleClass="passwordLabel" text="Password:">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <PasswordField fx:id="login__passwordInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__passwordInput">
+                                 <HBox.margin>
+                                    <Insets left="27.5" top="3.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <Label fx:id="login__errorText" alignment="CENTER" prefHeight="25.0" prefWidth="503.0" styleClass="errorText" text="Incorrect username/password, try again." textFill="#c60a0a">
                            <font>
-                              <Font size="32.0" />
+                              <Font size="16.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
+                           <VBox.margin>
+                              <Insets top="45.0" />
+                           </VBox.margin>
                         </Label>
-                        <TextField fx:id="login__emailInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__emailInput">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="77.5" top="5.0" />
-                           </HBox.margin>
-                        </TextField>
+                        <StackPane prefHeight="46.0" prefWidth="503.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMousePressed="#loginButtonOnclickHandler" prefHeight="50.0" prefWidth="150.0" styleClass="loginButton" text="Login">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="37.0" right="37.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </StackPane>
+                        <Separator prefHeight="5.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </Separator>
+                        <StackPane prefHeight="81.0" prefWidth="503.0">
+                           <children>
+                              <Button mnemonicParsing="false" onMousePressed="#switchToCreateAccountScene" prefHeight="65.0" prefWidth="200.0" styleClass="createAccountButton" text="Create New Account" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="37.0" right="37.0" />
+                                 </padding>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </StackPane>
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets top="18.0" />
                      </padding>
-                  </HBox>
-                  <HBox prefHeight="50.0" prefWidth="200.0">
-                     <children>
-                        <Label styleClass="passwordLabel" text="Password:">
-                           <font>
-                              <Font size="32.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
-                        </Label>
-                        <PasswordField fx:id="login__passwordInput" onKeyPressed="#loginInputsOnChangeHandler" prefHeight="38.0" prefWidth="294.0" styleClass="login__passwordInput">
-                           <HBox.margin>
-                              <Insets left="27.5" top="3.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </PasswordField>
-                     </children>
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <Label fx:id="login__errorText" alignment="CENTER" prefHeight="25.0" prefWidth="503.0" styleClass="errorText" text="Incorrect username/password, try again." textFill="#c60a0a">
+                  </VBox>
+               </children>
+               <effect>
+                  <DropShadow height="10.13" offsetY="3.0" radius="3.2825" width="5.0">
+                     <color>
+                        <Color opacity="0.2862595319747925" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <VBox fx:id="login__adminContainer" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="login__adminContainer">
+         <children>
+            <VBox alignment="TOP_CENTER" maxWidth="-Infinity" prefHeight="152.0" prefWidth="332.0" styleClass="login__adminCard">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" />
+               </effect>
+               <children>
+                  <Label alignment="TOP_CENTER" styleClass="login__cardText" text="Proceed To Admin Panel?">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="22.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="45.0" />
+                        <Insets top="19.0" />
                      </VBox.margin>
                   </Label>
-                  <StackPane prefHeight="46.0" prefWidth="503.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="53.0" prefWidth="332.0" spacing="51.0">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
                      <children>
-                        <Button mnemonicParsing="false" onMousePressed="#loginButtonOnclickHandler" prefHeight="50.0" prefWidth="150.0" styleClass="loginButton" text="Login">
+                        <Button mnemonicParsing="false" onMouseClicked="#closeAndLaunch" prefHeight="51.0" prefWidth="100.0" styleClass="login__yesButton" text="Yes">
                            <font>
                               <Font size="24.0" />
                            </font>
-                           <padding>
-                              <Insets left="37.0" right="37.0" />
-                           </padding>
+                           <effect>
+                              <DropShadow height="12.0" offsetX="1.0" offsetY="2.0" radius="6.25" width="15.0">
+                                 <color>
+                                    <Color opacity="0.5839694738388062" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </StackPane>
-                  <Separator prefHeight="5.0" prefWidth="200.0">
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                  </Separator>
-                  <StackPane prefHeight="81.0" prefWidth="503.0">
-                     <children>
-                        <Button mnemonicParsing="false" onMousePressed="#switchToCreateAccountScene" prefHeight="65.0" prefWidth="200.0" styleClass="createAccountButton" text="Create New Account" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="login__noButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="100.0" styleClass="login__noButton" text="No">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="24.0" />
                            </font>
-                           <padding>
-                              <Insets left="37.0" right="37.0" />
-                           </padding>
+                           <effect>
+                              <DropShadow height="2.93" offsetX="2.0" offsetY="2.0" radius="4.0175" width="15.14">
+                                 <color>
+                                    <Color opacity="0.5190839767456055" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
                         </Button>
                      </children>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </StackPane>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-               <padding>
-                  <Insets top="18.0" />
-               </padding>
-            </VBox>
+                  </HBox>
+               </children></VBox>
          </children>
-         <effect>
-            <DropShadow height="10.13" offsetY="3.0" radius="3.2825" width="5.0">
-               <color>
-                  <Color opacity="0.2862595319747925" />
-               </color>
-            </DropShadow>
-         </effect>
-      </HBox>
+      </VBox>
    </children>
-</AnchorPane>
+</StackPane>

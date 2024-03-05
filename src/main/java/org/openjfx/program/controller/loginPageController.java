@@ -1,17 +1,22 @@
 package org.openjfx.program.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.openjfx.program.AdminPanelCls;
 import org.openjfx.program.app;
+import org.openjfx.program.pdfCreator;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,8 +30,10 @@ public class loginPageController implements Initializable {
     private TextField login__passwordInput;
     @FXML
     private Label login__errorText;
-
-
+    @FXML
+    private VBox login__adminContainer;
+    @FXML
+    private Button login__noButton;
 
     public void initialize(URL locations, ResourceBundle resources) {
         login__errorText.setVisible(false);
@@ -46,6 +53,31 @@ public class loginPageController implements Initializable {
                 loginInputsOnChangeHandler();
             }
         });
+
+        login__noButton.setOnMouseClicked(event -> {
+            try {
+                switchToMainScene();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        login__adminContainer.setVisible(false);
+        login__adminContainer.setMouseTransparent(true);
+    }
+    @FXML
+    private void closeAndLaunch() {
+
+        // Schedule the new application logic to run after the JavaFX platform exits
+        Platform.runLater(() -> {
+            try {
+                AdminPanelCls.main(new String[]{});
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Exit the JavaFX platform
+        Platform.exit();
     }
 
     public void loginInputsOnChangeHandler(){
@@ -68,7 +100,13 @@ public class loginPageController implements Initializable {
                 System.out.println("Login successful.");
 
                 // SWITCH SCENE
-                switchToMainScene();
+                if(app.db.Check.checkIfAdmin(app.lm.getSessionId())){
+                    login__adminContainer.setVisible(true);
+                    login__adminContainer.setMouseTransparent(false);
+                }else{
+                    switchToMainScene();
+
+                }
                 System.out.println(app.lm.getSessionId());
 
             } else {

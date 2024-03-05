@@ -18,18 +18,6 @@ import java.util.List;
 
 public class pdfCreator {
     public static void main(String[] args) throws IOException{
-        app.db.Insert.AdminBookInserter(
-                "The Road",
-                "The Road.jpeg",
-                new String[]{"Fiction", "Horror"},
-                "Cormac McCarthy",
-                true,
-                8.99,
-                287,
-                "The Road is a haunting post-apocalyptic novel that follows the journey of a father and his young son "
-                        + "as they travel through a desolate landscape in search of safety and salvation. Along the way, they "
-                        + "encounter dangers both natural and human."
-        );
 
     }
 

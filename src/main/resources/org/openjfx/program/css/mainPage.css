@@ -74,6 +74,7 @@
     -fx-faint-focus-color: black ;
     -fx-focus-traversable: false;
     -fx-cursor: hand;
+
 }
 
 .checkBook__purchaseButton--bought{

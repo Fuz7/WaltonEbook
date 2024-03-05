@@ -69,3 +69,49 @@
     -fx-background-radius: 5;
     -fx-background-insets: 0, 1, 1;
 }
+
+.login__adminContainer{
+    -fx-background-color: rgba(0, 0, 0,0.3);
+}
+
+.login__adminCard{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(218, 218, 218) 0%, rgb(234, 234, 234) 33%, rgb(224, 224, 224) 100%);
+    -fx-background-radius: 20;
+;
+}
+
+.login__cardText{
+    -fx-font-size: 22;
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+}
+
+.login__yesButton{
+    -fx-font-size: 24;
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+    -fx-background-color:  linear-gradient(to bottom left, rgb(75, 180, 37) 0%, rgba(39,216,46,1) 33%, rgb(81, 168, 9) 100%);
+}
+
+.login__yesButton:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(54, 140, 24) 0%, rgb(35, 190, 40) 33%, rgb(71, 143, 10) 100%);
+}
+
+.login__noButton{
+    -fx-font-size: 24;
+    -fx-font-family: 'Inter Bold';
+    -fx-text-fill: black;
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(to bottom left, rgba(116,116,116,1) 0%, rgba(209,209,209,1) 33%, rgb(124, 124, 124) 100%);
+}
+
+.login__noButton:hover{
+    -fx-background-color:  linear-gradient(to bottom left, rgb(98, 98, 98) 0%, rgb(182, 180, 180) 33%, rgb(117, 117, 117) 100%);
+}
