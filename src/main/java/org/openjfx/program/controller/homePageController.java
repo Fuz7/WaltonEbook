@@ -204,7 +204,7 @@ public class homePageController implements Initializable {
                 Text sold = (Text) soldParent.getChildren().getFirst();
 
                 author.setText(authorName);
-                title.setText(cardBookData.title);
+                title.setText(limitWithEllipsis(cardBookData.title,24));
                 description.setText(ellipsesDescription);
                 genre.setText(cardBookData.genre);
                 price.setText(formattedPrice);

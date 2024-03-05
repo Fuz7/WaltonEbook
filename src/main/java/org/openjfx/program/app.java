@@ -31,8 +31,6 @@ public class app extends Application {
         Scene scene = new Scene(fxmlLoader.load());*/
 
 
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(app.class.getResource("fxml/mainPage.fxml"));
         BorderPane root = fxmlLoader.load();
         mainPageController mainPageController = fxmlLoader.getController();

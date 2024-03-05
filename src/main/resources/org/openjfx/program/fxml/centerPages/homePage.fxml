@@ -228,7 +228,7 @@
                                     <Insets top="11.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Atomic Habits">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Atomic Habits" wrappingWidth="289.734375">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
@@ -346,7 +346,7 @@
                                     <Insets top="11.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Natomic">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Natomic" wrappingWidth="292.2109375">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>
@@ -460,7 +460,7 @@
                                     <Insets top="11.0" />
                                  </VBox.margin>
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Batomic">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="monthCards__title" text="Batomic" wrappingWidth="292.63671875">
                                        <font>
                                           <Font name="System Bold" size="24.0" />
                                        </font>

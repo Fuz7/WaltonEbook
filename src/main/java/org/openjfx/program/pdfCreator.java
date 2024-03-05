@@ -18,6 +18,21 @@ import java.util.List;
 
 public class pdfCreator {
     public static void main(String[] args) throws IOException{
+        app.db.Insert.AdminBookInserter(
+                "How to Stay Married The Most Insane Love Story Ever Told",
+                "How to Stay Married The Most Insane Love Story Ever Told.jpeg",
+                new String[]{"Humor", "Memoir", "Relationships", "Spirituality"},
+                "Harrison Scott Key",
+                true,
+                11.49,
+                57,
+                "From Harrison Scott Key, winner of the Thurber Prize for American Humor, How to Stay Married tells the hilarious, shocking, and spiritually profound story of one man’s journey through hell and back when infidelity threatens his marriage.\n"
+                        + "\n"
+                        + "One gorgeous autumn day, Harrison discovers that his wife—the sweet, funny, loving mother of their three daughters, a woman “who’s spent just about every Sunday of her life in a church”—is having an affair with a family friend. This revelation propels the hysterical, heartbreaking action of How to Stay Married, casting our narrator onto “the factory floor of hell,” where his wife was now in love with a man who “wears cargo shorts, on purpose.” What will he do? Kick her out? Set fire to all her panties in the yard? Beat this man to death with a gardening implement? Ask God for help in winning her back?\n"
+                        + "\n"
+                        + "Armed with little but a sense of humor and a hunger for the truth, Harrison embarks on a hellish journey into his past, seeking answers to the riddles of faith and forgiveness. Through an absurd series of escalating confessions and betrayals, Harrison reckons with his failure to love his wife in the ways she needed most, resolves to fight for his family, and in a climax almost too ridiculous to be believed, finally learns that love is no joke. How to Stay Married is a comic romp unlike any in contemporary literature, a wild Pilgrim’s Progress through the hellscape of marriage and the mysteries of mercy."
+        );
+
     }
 
     public static void createBookPdf(String imagePath, String title,String description, String genre,String dirPath) throws IOException {

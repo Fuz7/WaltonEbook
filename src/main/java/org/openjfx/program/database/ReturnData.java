@@ -687,13 +687,13 @@ public class ReturnData {
         switch (searchBy) {
             case "Book Name": // HANDLES THE BOOK NAME
                 System.out.println("Search by Book Name");
-                query = "SELECT bd.id, bd.title FROM book_details bd WHERE title LIKE ?";
+                query = "SELECT bd.id, bd.title FROM book_details bd WHERE title LIKE ? AND is_available = 1 ";
                 break;
             case "Author": // HANDLES THE AUTHOR
                 System.out.println("Search by Author");
                 query = "SELECT bd.id, bd.title " +
                         "FROM book_details bd " +
-                        "WHERE author_id = (SELECT id FROM author WHERE user_id = (SELECT id FROM users WHERE username LIKE ?));";
+                        "WHERE author_id = (SELECT id FROM author WHERE user_id = (SELECT id FROM users WHERE username LIKE ?)) AND is_available = 1 ;";
                 break;
             case "Description": // HANDLES THE DESCRIPTION
                 System.out.println("Search by Description");
@@ -703,7 +703,7 @@ public class ReturnData {
                         "    SELECT book_title " +
                         "    FROM book_description " +
                         "    WHERE description LIKE ?" +
-                        ")";
+                        ") AND is_available = 1 ";
                 break;
             default:
                 System.out.println("Invalid search option");
@@ -764,7 +764,7 @@ public class ReturnData {
             if (!genre.isEmpty()) {
                 for (String g : genre) {
                     if (first) {
-                        sql += String.format(" WHERE bd.title IN (SELECT title FROM book_genre WHERE genre = '%s')", g);
+                        sql += String.format(" WHERE bd.title IN (SELECT title FROM book_genre WHERE genre = '%s') AND is_available = 1 ", g);
                         first = false;
                     }
                     else{
@@ -777,7 +777,7 @@ public class ReturnData {
             if (!ShowOwned){ // Exclude All Bought Book
                 System.out.println("Exclude the Book Bought");
                 if (!need_AND) {
-                    sql += String.format(" WHERE bd.id NOT IN (SELECT book_id FROM book_owned WHERE user_id = %d)", UserId);
+                    sql += String.format(" WHERE bd.id NOT IN (SELECT book_id FROM book_owned WHERE user_id = %d) AND is_available = 1 ", UserId);
                 } else{
                     sql += String.format(" AND bd.id NOT IN (SELECT book_id FROM book_owned WHERE user_id = %d)", UserId);
                 }
