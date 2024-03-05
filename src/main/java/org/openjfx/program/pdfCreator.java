@@ -11,15 +11,16 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import java.io.*;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class wordToPdfCreator {
+public class pdfCreator {
     public static void main(String[] args) throws IOException{
-        wordToPdfCreator.createBookPdf();
     }
 
-    public static void createBookPdf() throws IOException {
+    public static void createBookPdf(String imagePath, String title,String description, String genre,String dirPath) throws IOException {
         PDDocument document = new PDDocument();
         PDRectangle myPageSize = new PDRectangle(600,800);
         PDPage myPage = new PDPage(myPageSize);
@@ -29,31 +30,49 @@ public class wordToPdfCreator {
         float pageWidth = document.getPage(0).getMediaBox().getWidth();
         float pageHeight = document.getPage(0).getMediaBox().getHeight();
 
-        PDImageXObject bookImage = PDImageXObject.createFromFile("C:\\Users\\Fuz\\Downloads\\ds.jpg", document);
+        String imagePathDecoded = URLDecoder.decode(imagePath, StandardCharsets.UTF_8);
+        if (imagePath.startsWith("file:")) {
+            imagePathDecoded = imagePathDecoded.substring("file:".length());
+        }
+        imagePathDecoded = imagePathDecoded.replace("%20", " ");
 
-// Get the width and height of the image
-        float imageWidth = bookImage.getWidth();
-        float imageHeight = bookImage.getHeight();
+            PDImageXObject bookImage = PDImageXObject.createFromFile(imagePathDecoded, document);
+        // Set the specified image dimensions
+        float specifiedWidth = 220;
+        float specifiedHeight = 300;
 
-// Set the margins
+        // Calculate scaling factors for width and height
+        float scaleWidth = specifiedWidth / bookImage.getWidth();
+        float scaleHeight = specifiedHeight / bookImage.getHeight();
+
+        // Choose the minimum scaling factor to maintain the aspect ratio
+        float scaleFactor = Math.min(scaleWidth, scaleHeight);
+
+        // Calculate the scaled width and height
+        float scaledWidth = bookImage.getWidth() * scaleFactor;
+        float scaledHeight = bookImage.getHeight() * scaleFactor;
+
+        // Set the margins
         float topMargin = 20;
         float sideMargin = 50;
 
-// Calculate the X-coordinate to center the image horizontally
-        float imageXCoordinate = (pageWidth - imageWidth) / 2;
+        // Calculate the X-coordinate to center the scaled image horizontally
+        float imageXCoordinate = (pageWidth - scaledWidth) / 2;
 
-// Calculate the Y-coordinate to position the image with the margin at the top of the page
-        float imageYCoordinate = pageHeight - imageHeight - topMargin;
+        // Calculate the Y-coordinate to position the scaled image with the margin at the top of the page
+        float imageYCoordinate = pageHeight - topMargin - scaledHeight;
 
-// Draw the image
-        contentStream.drawImage(bookImage, imageXCoordinate, imageYCoordinate);
+
+        // Draw the scaled image with margins
+        contentStream.drawImage(bookImage, imageXCoordinate, imageYCoordinate, scaledWidth, scaledHeight);
+
 
 // Set font and font size for the title
         PDFont titleFont = PDType1Font.HELVETICA_BOLD;
         float titleFontSize = 32 ;
 
 // Set the title text
-        String titleText = "Your Title";
+        String titleText = title;
 
 // Calculate the width and height of the title text
         float titleTextWidth = titleFont.getStringWidth(titleText) * titleFontSize / 1000f;
@@ -85,10 +104,7 @@ public class wordToPdfCreator {
         float paragraphFontSize = 14;
 
         // Set the paragraph text
-        String paragraphText = "A masterpiece of rebellion and imprisonment where war is peace, freedom is slavery, and Big Brother is watching. Thought Police, Big Brother, Orwellian—these words have entered our vocabulary because of George Orwells classic dystopian novel, 1984. The story of one mans nightmare odyssey as he pursues a forbidden love affair through a world ruled by warring states and a power structure that c ontrols not only information but also individual thought and memory. 1984 is a prophetic, haunting tale. More relevant than ever before, 1984 exposes the worst crimes imaginable: the destruction of truth, freedom, and individual ity. With a foreword by Thomas Pynchon. A masterpiece of rebellion and imprisonment where war is peace, freedom is slavery, and Big Brother is watching. View our feature on George Orwell's 1984 Thought Police, Big Brother, Orwel lian—these words have entered our vocabulary because of George Orwell's classic dystopian novel, 1984. The story of one man's nightmare odyssey as he pursues a forbidden love affair through a world r relon" +
-                "ASDKHJSAKDHHKSASHD" +
-                "ASDKJHSHAHDKSADSH" +
-                "ASDHJKSAHDKSAJQWKE JLQWJEKLQWJLKEJWQLKE SA DKSADKHSAKDKSA.";
+        String paragraphText = sanitizeString(description);
 
         // Wrap the paragraph text
         String[] wrappedParagraph = wrapText(paragraphText, paragraphFont, paragraphFontSize, pageWidth - 2 * sideMargin);
@@ -119,7 +135,7 @@ public class wordToPdfCreator {
         float secondParagraphFontSize = 12;
 
         // Set the second paragraph text
-        String secondParagraphText = "Another paragraph below the first KALSJDLKASJDKSLAJDLJSALD JLASDASDSA ASDJLASDJLSAJDLSADJ D one.";
+        String secondParagraphText = genre;
 
         // Wrap the second paragraph text
         String[] wrappedSecondParagraph = wrapText(secondParagraphText, secondParagraphFont, secondParagraphFontSize, pageWidth - 2 * sideMargin);
@@ -146,7 +162,7 @@ public class wordToPdfCreator {
         contentStream.endText();
 
         contentStream.close();
-        document.save("D:\\file.pdf");
+        document.save(dirPath + "\\" +title.replaceFirst("\\.*","") + ".pdf");
         document.close();
         // ... (Remaining code)
 
@@ -173,7 +189,10 @@ public class wordToPdfCreator {
         lines.add(currentLine.toString().trim());
         return lines.toArray(new String[0]);
     }
-
+    private static String sanitizeString(String input) {
+        // Replace or remove illegal characters
+        return input.replaceAll("[\u0000-\u001F]", ""); // Replace control characters with an empty string
+    }
 }
 
 

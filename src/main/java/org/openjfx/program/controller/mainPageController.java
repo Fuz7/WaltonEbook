@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
+import org.openjfx.program.pdfCreator;
 
 import java.io.File;
 import java.io.IOException;
@@ -317,7 +318,13 @@ public class mainPageController implements Initializable {
         checkBook__bookTitle.setText(bookDetails.title);
         checkBook__bookAuthor.setText(app.db.Return.returnAuthorNameByID(id));
         renderDownloadButton(id,app.lm.getSessionId());
-        checkBookContainer__downloadButton.setOnMouseClicked(mouseEvent -> downloadFile(id));
+        checkBookContainer__downloadButton.setOnMouseClicked(mouseEvent -> {
+            try {
+                downloadFile(id);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         renderOverallRatings(id);
         checkBook__soldCount.setText("Sold: " + bookDetails.bookSold);
         checkBook__descriptionBody.setText(bookDetails.formattedDescription);
@@ -937,9 +944,9 @@ public class mainPageController implements Initializable {
     }
 
 
-    private void downloadFile(int bookId){
+    private void downloadFile(int bookId) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-
+        BookData bookData = getBookData(bookId);
         // Set the initial directory
         directoryChooser.setInitialDirectory(new File("C:/")); // Change this to your desired initial directory
         Stage currentStage = (Stage) checkBook__shopperRatingLabel.getScene().getWindow();
@@ -949,9 +956,28 @@ public class mainPageController implements Initializable {
 
         if (selectedDirectory != null) {
             System.out.println("Selected Directory: " + selectedDirectory.getAbsolutePath());
+            Path sourceDirectory = Paths.get("src/main/resources/org/openjfx/program/images/books/");
+            String imageLink =  getImageLinkName(bookData.image.getUrl());
+            Path correctPath = Paths.get(sourceDirectory.resolve(imageLink).toUri());
+            File imageFile = new File(correctPath.toString());
+            String absoluteImageUrl = null;
+            String dirPath = selectedDirectory.getAbsolutePath().toString();
+            try {
+                absoluteImageUrl = imageFile.toURI().toURL().toString();
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+            String genre = bookData.genre;
+            pdfCreator.createBookPdf(absoluteImageUrl,bookData.title,bookData.formattedDescription,genre,dirPath);
         } else {
             System.out.println("No Directory Selected");
         }
+    }
+
+    private static String getImageLinkName(String imageUrl) throws MalformedURLException {
+        URL url = new URL(imageUrl);
+        String path = url.getPath();
+        return path.substring(path.lastIndexOf('/') + 1);
     }
 
 }
