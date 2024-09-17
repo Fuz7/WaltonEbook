@@ -543,7 +543,7 @@ public class ReturnData {
         Logger logger = Logger.getLogger("returnAuthorNameByID");
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
-            String sql = "SELECT username FROM users WHERE id = ?";
+            String sql = "SELECT username FROM users WHERE id = (SELECT author_id FROM book_details WHERE id = ? )";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, userId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -831,7 +831,7 @@ public class ReturnData {
         Logger logger = Logger.getLogger("InsertDataLogger");
         List<Integer> ownedBooks = new ArrayList<>();
 
-        String sql = "SELECT book_id FROM book_owned WHERE user_id = ?";
+        String sql = "SELECT book_id FROM book_owned WHERE user_id = ? AND is_owned = 1 ";
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation);
              PreparedStatement statement = connection.prepareStatement(sql)) {

@@ -25,7 +25,12 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.openjfx.program.app;
 import org.openjfx.program.model.BookData;
+
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -60,6 +65,9 @@ public class homePageController implements Initializable {
     private HBox bronzeCard;
     @FXML
     private FlowPane homePage__LatestUploadContainer;
+    @FXML
+    private ImageView homePage__easterIcon;
+
 
     private static boolean fadeAnimating;
     public mainPageController mainPageController;
@@ -210,6 +218,39 @@ public class homePageController implements Initializable {
                 price.setText(formattedPrice);
                 sold.setText("Sold: "+cardBookData.bookSold);
             }
+        }
+    }
+
+
+    @FXML
+    private void renderEasterEgg(){
+        int rand = (int) (Math.floor(Math.random() * 3) + 1);
+        if(rand == 2){
+            Path sourceDirectory = Paths.get("src/main/resources/org/openjfx/program/images/");
+            String imageLink = "smilingWalton.png";
+            Path correctPath = Paths.get(sourceDirectory.resolve(imageLink).toUri());
+            File imageFile = new File(correctPath.toString());
+            String absoluteImageUrl = null;
+            try {
+                absoluteImageUrl = imageFile.toURI().toURL().toString();
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+
+            homePage__easterIcon.setImage(new Image(absoluteImageUrl));
+        }else{
+            Path sourceDirectory = Paths.get("src/main/resources/org/openjfx/program/images/");
+            String imageLink = "waltonSleeping.png";
+            Path correctPath = Paths.get(sourceDirectory.resolve(imageLink).toUri());
+            File imageFile = new File(correctPath.toString());
+            String absoluteImageUrl = null;
+            try {
+                absoluteImageUrl = imageFile.toURI().toURL().toString();
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e);
+            }
+
+            homePage__easterIcon.setImage(new Image(absoluteImageUrl));
         }
     }
 

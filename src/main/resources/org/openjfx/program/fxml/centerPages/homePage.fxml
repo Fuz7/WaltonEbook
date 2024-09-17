@@ -51,13 +51,16 @@
                               </Text>
                            </children>
                         </StackPane>
-                        <ImageView fitHeight="200.0" fitWidth="200.0">
+                        <ImageView id="homePage__easterIcon" fx:id="homePage__easterIcon" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#renderEasterEgg">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
                            <image>
                               <Image url="@../../images/waltonSleeping.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="CLOSED_HAND" />
+                           </cursor>
                         </ImageView>
                      </children>
                   </VBox>

@@ -42,7 +42,7 @@ public class aboutUsController implements Initializable {
         this.mainPageController.scrollContainer.vvalueProperty().addListener(
                 (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
 
-                   if(newValue.doubleValue() > 550 && !founderOfTheProjectAnimation){
+                   if(newValue.doubleValue() > 0.4273185553483867 && !founderOfTheProjectAnimation){
                        aboutUsPage__gojoContainer.setVisible(true);
                        firstPartFounderAnimation();
                        founderOfTheProjectAnimation = true;

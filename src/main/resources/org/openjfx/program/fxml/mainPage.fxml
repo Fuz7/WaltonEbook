@@ -32,7 +32,7 @@
    <center>
       <StackPane BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" maxWidth="-Infinity" minHeight="-Infinity" minViewportHeight="900.0" minWidth="-Infinity" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer" vmax="1400.0">
+            <ScrollPane fx:id="scrollContainer" fitToHeight="true" fitToWidth="true" hmax="0.0" maxWidth="-Infinity" minHeight="-Infinity" minViewportHeight="900.0" minWidth="-Infinity" prefHeight="900.0" prefViewportHeight="780.0" prefWidth="1700.0" styleClass="mainPage__scrollContainer">
             </ScrollPane>
             <StackPane fx:id="popup__checkBook" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="582.0" style="-fx-background-color: transparent;">
                <StackPane.margin>
