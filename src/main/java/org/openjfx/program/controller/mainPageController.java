@@ -32,6 +32,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.openjfx.program.app;
+import org.openjfx.program.database.ReturnData;
 import org.openjfx.program.model.BookData;
 import org.openjfx.program.pdfCreator;
 
@@ -124,6 +125,21 @@ public class mainPageController implements Initializable {
     private StackPane checkBook__downloadContainer;
     @FXML
     private Button checkBookContainer__downloadButton;
+    @FXML
+    private StackPane popup__receiptContainer;
+    @FXML
+    private Text receipt__balance;
+    @FXML
+    private Text receipt__cost;
+    @FXML
+    private Text receipt__newBalance;
+    @FXML
+    private Text receipt__bookName;
+    @FXML
+    private ImageView receipt__image;
+    @FXML
+    private Text receipt__header;
+
 
     private boolean myBooks__animating = false;
     private boolean account__animating = false;
@@ -148,6 +164,8 @@ public class mainPageController implements Initializable {
         popup__account.setVisible(false);
         popup__checkBook.setMouseTransparent(true);
         popup__checkBook.setVisible(false);
+        popup__receiptContainer.setMouseTransparent(true);
+        popup__receiptContainer.setVisible(false);
     }
 
     public BookData getBookData(int book_id){
@@ -332,7 +350,19 @@ public class mainPageController implements Initializable {
         checkBook__genreBody.setText(stringGenre);
         renderPurchaseButton(id);
         checkBook__purchaseButton.setOnMouseClicked(mouseEvent ->  purchaseButtonOnClick(id));
+
         checkBook__priceTag.setText(String.format("%.2f$",bookDetails.price));
+        receipt__cost.setText(String.format("- %.2f $",bookDetails.price));
+
+        String username = app.db.Return.returnUserName(app.lm.getSessionId());
+        receipt__header.setText("Thank you "+  username + " for your recent transaction on WaltonEBook");
+        receipt__image.setImage(bookDetails.image);
+        double balance = app.db.Return.returnUserCash(app.lm.getSessionId());
+        receipt__balance.setText(String.format(" %.2f $",balance));
+        double newBalance = balance - bookDetails.price;
+        receipt__newBalance.setText(String.format(" %.2f $",newBalance));
+        receipt__bookName.setText(bookDetails.title);
+
         renderRatingStarsEvents(id,app.lm.getSessionId());
         renderRatingStarsClass(id,app.lm.getSessionId());
         checkBook_reviewSubmitButton.setOnMouseClicked(mouseEvent ->  renderReviewSubmitTextArea(id,app.lm.getSessionId()));
@@ -367,7 +397,8 @@ public class mainPageController implements Initializable {
             }else{
                 popup__checkBook.setVisible(false);
                 checkBook__purchaseButton.getStyleClass().add("checkBook__purchaseButton--bought");
-                renderCheckBook(bookId);
+                popup__receiptContainer.setVisible(true);
+                popup__receiptContainer.setMouseTransparent(false);
 
             }
         }
@@ -722,6 +753,12 @@ public class mainPageController implements Initializable {
     private void closeCheckBook(){
         popup__checkBook.setVisible(false);
         popup__checkBook.setMouseTransparent(true);
+    }
+
+    @FXML
+    private void closeReceipt(){
+        popup__receiptContainer.setVisible(false);
+        popup__receiptContainer.setMouseTransparent(true);
     }
 
 

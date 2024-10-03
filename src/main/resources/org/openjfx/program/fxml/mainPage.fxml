@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -614,6 +615,127 @@
                   </DropShadow>
                </effect>
             </VBox>
+            <StackPane fx:id="popup__receiptContainer" styleClass="popup__receiptContainer">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="763.0" styleClass="receiptContainer">
+                     <children>
+                        <StackPane maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#closeReceipt" prefHeight="38.0" prefWidth="38.0" styleClass="receiptContainer__closeButton">
+                           <children>
+                              <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="39.0" text="X">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="700.0" top="12.0" />
+                           </VBox.margin>
+                        </StackPane>
+                        <Text fx:id="receipt__header" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt__header" text="Thank you Jorge Macabenta for your recent transaction on WaltonEBook" wrappingWidth="663.9144973754883">
+                           <VBox.margin>
+                              <Insets left="32.0" top="6.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#161616" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt__note" text="The book below has been added">
+                           <VBox.margin>
+                              <Insets left="32.0" top="26.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="190.0" prefWidth="690.0" styleClass="receipt__priceContainer">
+                           <VBox.margin>
+                              <Insets left="32.0" top="40.0" />
+                           </VBox.margin>
+                           <children>
+                              <ImageView fx:id="receipt__image" fitHeight="160.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                                 <image>
+                                    <Image url="@../images/books/1984.jpeg" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow height="13.0" offsetX="-4.0" offsetY="5.0" radius="7.25" width="18.0">
+                                       <color>
+                                          <Color opacity="0.2538071274757385" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </ImageView>
+                              <StackPane alignment="CENTER_LEFT" prefHeight="190.0" prefWidth="282.0">
+                                 <children>
+                                    <Text fx:id="receipt__bookName" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt_bookName" text="The Fellowship Of The Ring" wrappingWidth="264.92308044433594">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                       <StackPane.margin>
+                                          <Insets left="22.0" />
+                                       </StackPane.margin>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <VBox prefHeight="190.0" prefWidth="274.0">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="254.0">
+                                       <children>
+                                          <Label minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" styleClass="receipt__balanceLabel" text="Balance">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Text fx:id="receipt__balance" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt__balance" text="  300 $" textAlignment="RIGHT" wrappingWidth="135.0">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="9.0" top="40.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="254.0">
+                                       <children>
+                                          <Label minWidth="-Infinity" prefHeight="20.0" prefWidth="120.0" styleClass="receipt__costLabel" text="Cost" />
+                                          <Text fx:id="receipt__cost" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt__cost" text=" - 54.43 $" textAlignment="RIGHT" wrappingWidth="115.0" />
+                                       </children>
+                                    </HBox>
+                                    <Line endX="151.0" startX="-100.0">
+                                       <VBox.margin>
+                                          <Insets top="4.0" />
+                                       </VBox.margin>
+                                    </Line>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="254.0">
+                                       <children>
+                                          <Label minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="105.0" styleClass="receipt__newLabel" text="New Balance" />
+                                          <Text fx:id="receipt__newBalance" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="receipt__newBalance" text="  3010.34 $" textAlignment="RIGHT" wrappingWidth="107.33338928222656">
+                                             <HBox.margin>
+                                                <Insets left="23.0" />
+                                             </HBox.margin>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="6.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <StackPane.margin>
+                        <Insets bottom="100.0" />
+                     </StackPane.margin>
+                  </VBox>
+               </children>
+            </StackPane>
          </children>
       </StackPane>
    </center>

@@ -111,6 +111,7 @@ public class ReturnData {
         return -1;
     }
 
+
     /**
      * Returns the description of a book based on its title.
      *
@@ -326,6 +327,26 @@ public class ReturnData {
         }
         return -0.0;
     }
+
+    public String returnUserName(int userId){
+        Logger logger = Logger.getLogger("InsertDataLogger");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String sql = "SELECT username FROM users WHERE id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, userId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        return resultSet.getString("username");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error Returning cash", e);
+        }
+        return "";
+    }
+
 
     /**
      * Returns the price of a book based on the book ID.

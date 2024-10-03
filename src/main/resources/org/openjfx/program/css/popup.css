@@ -90,3 +90,77 @@ popup__myBooks__accountButtonsText{
     -fx-border-width:2;
     -fx-cursor: hand;
 }
+
+.receiptContainer{
+    -fx-background-color: white;
+    -fx-background-radius: 2;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+
+.receiptContainer__closeButton{
+
+    -fx-background-color: white;
+    -fx-background-radius: 4;
+    -fx-border-color: black;
+    -fx-border-radius: 4;
+    -fx-border-width:3;
+    -fx-cursor: hand;
+
+}
+
+.receipt__header{
+    -fx-font-family: "Inter Bold";
+    -fx-font-size: 26px;
+}
+
+.receipt__note{
+    -fx-font-size: 22px;
+    -fx-font-family: Inter;
+}
+
+.receipt__priceContainer{
+    -fx-background-color: rgba(228, 228, 228, 0.8);
+}
+
+.receipt_bookName{
+    -fx-font-size: 20px;
+    -fx-font-family: 'Inter Medium';
+}
+
+.receipt__balanceLabel{
+    -fx-font-size: 16px;
+    -fx-font-family: Inter;
+}
+
+.receipt__balance{
+    -fx-font-size: 16px;
+    -fx-font-family: Inter;
+}
+
+.receipt__costLabel{
+    -fx-font-size: 14px;
+    -fx-font-family: Inter;
+}
+
+.receipt__cost{
+    -fx-font-size: 14px;
+    -fx-font-family: Inter;
+    -fx-text-fill: rgba(0, 0, 0, 0.66);
+}
+
+.receipt__newLabel{
+    -fx-font-size: 16px;
+    -fx-font-family: Inter;
+
+}
+
+.receipt__newBalance{
+    -fx-font-size: 18px;
+    -fx-font-family: "Inter Medium";
+
+}
+
+.popup__receiptContainer{
+    -fx-background-color: rgba(0, 0, 0, 0.17);
+}
