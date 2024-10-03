@@ -139,6 +139,13 @@ public class mainPageController implements Initializable {
     private ImageView receipt__image;
     @FXML
     private Text receipt__header;
+    @FXML
+    private Label checkBook__year;
+    @FXML
+    private Text checkBook__language;
+    @FXML
+    private Text checkBook__isbn;
+
 
 
     private boolean myBooks__animating = false;

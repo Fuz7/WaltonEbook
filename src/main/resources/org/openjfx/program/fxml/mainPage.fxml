@@ -39,7 +39,7 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="587.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
+               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="587.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="0.35">
                   <content>
                      <AnchorPane prefHeight="1996.0" prefWidth="505.0" styleClass="checkBookContainer__card">
                         <children>
@@ -74,6 +74,14 @@
                                     </font>
                                     <VBox.margin>
                                        <Insets top="3.0" />
+                                    </VBox.margin>
+                                 </Label>
+                                 <Label fx:id="checkBook__year" styleClass="checkBook__year" text="Year: 1921" textAlignment="CENTER">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                    <VBox.margin>
+                                       <Insets top="8.0" />
                                     </VBox.margin>
                                  </Label>
                                  <Label fx:id="checkBook__bookRating" styleClass="checkBook__bookRating" text="Ratings: 4.21" textAlignment="CENTER">
@@ -167,6 +175,40 @@
                                     </children>
                                     <VBox.margin>
                                        <Insets top="80.0" />
+                                    </VBox.margin>
+                                 </HBox>
+                                 <HBox maxWidth="-Infinity" prefHeight="20.0" prefWidth="474.0">
+                                    <VBox.margin>
+                                       <Insets top="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                       <Text fx:id="checkBook__descriptionBody1" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__languageLabel" text="Language:" wrappingWidth="105.0">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                       </Text>
+                                       <Text fx:id="checkBook__language" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__language" text="English" wrappingWidth="87.73770475387573">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                       </Text>
+                                    </children>
+                                 </HBox>
+                                 <HBox maxWidth="-Infinity" prefHeight="20.0" prefWidth="474.0">
+                                    <children>
+                                       <Text fx:id="checkBook__descriptionBody11" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__isbnLabel" text="ISBN:" wrappingWidth="105.0">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                       </Text>
+                                       <Text fx:id="checkBook__isbn" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__isbn" text="9007-421" wrappingWidth="87.73770475387573">
+                                          <font>
+                                             <Font size="15.0" />
+                                          </font>
+                                       </Text>
+                                    </children>
+                                    <VBox.margin>
+                                       <Insets top="10.0" />
                                     </VBox.margin>
                                  </HBox>
                                  <HBox alignment="CENTER">
@@ -615,7 +657,7 @@
                   </DropShadow>
                </effect>
             </VBox>
-            <StackPane fx:id="popup__receiptContainer" styleClass="popup__receiptContainer">
+            <StackPane fx:id="popup__receiptContainer" styleClass="popup__receiptContainer" visible="false">
                <children>
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="763.0" styleClass="receiptContainer">
                      <children>

@@ -164,3 +164,21 @@ popup__myBooks__accountButtonsText{
 .popup__receiptContainer{
     -fx-background-color: rgba(0, 0, 0, 0.17);
 }
+
+.checkBook__year{
+    -fx-font-family: Inter;
+    -fx-font-size: 18px;
+    -fx-text-fill: black;
+}
+
+.checkBook__languageLabel,
+.checkBook__isbnLabel{
+    -fx-font-family: "Inter Bold";
+    -fx-font-size: 14px;
+}
+
+.checkBook__language,
+.checkBook__isbn{
+    -fx-font-family: 'Inter';
+    -fx-font-size: 14px;
+}
