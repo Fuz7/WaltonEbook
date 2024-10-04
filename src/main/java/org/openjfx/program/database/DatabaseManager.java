@@ -110,7 +110,7 @@ public class DatabaseManager {
             String createReviewTableSQL = "CREATE TABLE IF NOT EXISTS book_reviews ("
                     + "book_id INTEGER,"
                     + "user_id INTEGER,"
-                    + "rating INTGER,"
+                    + "rating INTEGER,"
                     + "review TEXT,"
                     + "is_owned BOOLEAN,"
                     + "FOREIGN KEY (book_id) REFERENCES book_details (id),"
