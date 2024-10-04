@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1571.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/addBook.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.addBookPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1993.0" prefWidth="1685.0" stylesheets="@../../css/centerPages/addBook.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.addBookPageController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="1835.0" prefWidth="1685.0">
          <children>
@@ -171,6 +171,86 @@
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="231.0" styleClass="addBook__titleFieldLabel" text="Language">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addBook__titleTextField1" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="4.0" left="16.0" top="4.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="11.5" offsetY="2.0" radius="5.125" width="11.0">
+                           <color>
+                              <Color opacity="0.7824427485466003" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="47.0" prefWidth="100.0" styleClass="addBook__titleFieldLabel" text="Year">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addBook__titleTextField11" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="4.0" left="16.0" top="4.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="11.5" offsetY="2.0" radius="5.125" width="11.0">
+                           <color>
+                              <Color opacity="0.7824427485466003" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="900.0" spacing="20.0">
+               <children>
+                  <Label prefHeight="47.0" prefWidth="231.0" styleClass="addBook__titleFieldLabel" text="ISBN">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addBook__titleTextField11" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="249.0" promptText="Ex. 978-0-123-45678-9" styleClass=".addBook__isbnField">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="4.0" left="16.0" top="4.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow height="11.5" offsetY="2.0" radius="5.125" width="11.0">
+                           <color>
+                              <Color opacity="0.7824427485466003" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <HBox.margin>
+                        <Insets right="150.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="40.0" />
                </VBox.margin>
             </HBox>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="47.0" prefWidth="888.0" spacing="63.0">

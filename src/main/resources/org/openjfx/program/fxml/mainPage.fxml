@@ -39,7 +39,7 @@
                <StackPane.margin>
                   <Insets bottom="351.0" left="1077.0" />
                </StackPane.margin>
-               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="587.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer" vvalue="0.35">
+               <ScrollPane fx:id="popup__scrollCheckBook" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="587.0" style="-fx-focus-color: transparent;" styleClass="popup__checkBookContainer">
                   <content>
                      <AnchorPane prefHeight="1996.0" prefWidth="505.0" styleClass="checkBookContainer__card">
                         <children>

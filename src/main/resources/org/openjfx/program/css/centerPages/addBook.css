@@ -150,3 +150,14 @@
     -fx-background-color:  linear-gradient(to top right, rgb(182, 182, 182) 0%, rgb(252, 252, 252) 100%);
 
 }
+
+.addBook__isbnField{
+    -fx-font-size: 20;
+    -fx-text-fill: black;
+    -fx-font-family: 'Gentium Book Plus Bold';
+    -fx-focus-color: transparent ;
+    -fx-faint-focus-color: black ;
+    -fx-focus-traversable: false;
+    -fx-background-color:#F4F4F4;
+    -fx-background-radius: 1;
+}
