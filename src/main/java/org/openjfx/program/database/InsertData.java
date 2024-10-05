@@ -81,7 +81,9 @@ public class InsertData {
      * This method inserts a new book with the provided information into the "book_details" table of the database.
      * It also handles insertion of genres and description associated with the book.
      */
-    public void InsertNewBook(String title, String imageName, String[] genres, int authorId, boolean availability, double bookPrice, int bookSold, String description){
+    public void InsertNewBook(String title, String imageName, String[] genres,
+                              int authorId, boolean availability, double bookPrice, int bookSold, String description,
+                              String isbn, int publicationDate, String language){
         Logger logger = Logger.getLogger("InsertDataLogger");
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
             // SQL statement to insert data into the "book_details" table
@@ -103,6 +105,9 @@ public class InsertData {
 
                 // Insert the description to the book_description table
                 InsertNewDescription(title, description);
+
+                // Insert metadata
+                InsertMetaData(isbn, publicationDate, language, title);
 
                 // Insert all genre of the specific book to a different table (1NF)
                 for (String genre : genres){
@@ -277,7 +282,7 @@ public class InsertData {
 
 
         }
-        InsertNewBook(title, imageLink, genre, authorId, availability, bookPrice, bookSold, description);
+//        InsertNewBook(title, imageLink, genre, authorId, availability, bookPrice, bookSold, description);
 
     }
 
@@ -434,6 +439,25 @@ public class InsertData {
             logger.log(Level.SEVERE, "Error InsertBookReview", e);
         }
 
+    }
+
+    public void InsertMetaData(String isbn, int publicationDate, String language, String book_title){
+        Logger logger = Logger.getLogger("InsertBookMetadata");
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
+            String insertBookMetaDataSQL = "INSERT INTO book_metadata (isbn, publication_date, language, book_title) VALUES (?, ?, ?, ?);";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBookMetaDataSQL)) {
+                preparedStatement.setString(1, isbn);
+                preparedStatement.setInt(2, publicationDate);
+                preparedStatement.setString(3, language);
+                preparedStatement.setString(4, book_title);
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error insertBookMetadata", e);
+        }
     }
 
 

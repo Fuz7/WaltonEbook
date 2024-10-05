@@ -94,11 +94,13 @@ public class DatabaseManager {
                     + "FOREIGN KEY (book_title) REFERENCES book_details (title)"
                     + ");";
             String createBookMetaDataSQL = "CREATE TABLE IF NOT EXISTS book_metadata ("
-                    +  "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    +  "isbn TEXT NOT NULL,"
-                    +  "publication_date INTEGER,"
-                    +  "language TEXT NOT NULL"
-                    +  ");";
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "isbn TEXT NOT NULL,"
+                    + "publication_date INTEGER,"
+                    + "language TEXT NOT NULL,"
+                    + "book_title TEXT NOT NULL,"
+                    + "FOREIGN KEY (book_title) REFERENCES book_details (title)"
+                    + ");";
         
             String createAuthorTableSQL = "CREATE TABLE IF NOT EXISTS author ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"

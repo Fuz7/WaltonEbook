@@ -180,7 +180,7 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addBook__titleTextField1" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
+                  <TextField fx:id="addBook__language" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -203,7 +203,7 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addBook__titleTextField11" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
+                  <TextField fx:id="addBook__year" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="150.0" styleClass="addBook__titleTextField">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -230,7 +230,7 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addBook__titleTextField11" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="249.0" promptText="Ex. 978-0-123-45678-9" styleClass=".addBook__isbnField">
+                  <TextField fx:id="addBook__isbn" maxHeight="-Infinity" maxWidth="-Infinity" onKeyPressed="#hideTitleErrorOnKeyPress" prefHeight="50.0" prefWidth="249.0" promptText="Ex. 978-0-123-45678-9" styleClass=".addBook__isbnField">
                      <font>
                         <Font size="20.0" />
                      </font>

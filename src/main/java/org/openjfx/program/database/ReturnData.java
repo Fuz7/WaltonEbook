@@ -1180,7 +1180,34 @@ public class ReturnData {
         return unpublishedBooks;
     }
 
+    public String[] ReturnMetaDataByTitle(String book_title) {
+        Logger logger = Logger.getLogger("returnMetaDataById");
+        String[] bookMetaData = new String[3];
 
+        String sql = "SELECT isbn, publication_date, language, book_title " +
+                "FROM book_metadata " +
+                "WHERE book_title = ?";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, book_title);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                bookMetaData[0] = resultSet.getString("isbn");
+                int publicationDate = resultSet.getInt("publication_date");
+                bookMetaData[1] = String.valueOf(publicationDate);
+                bookMetaData[2] = resultSet.getString("language");
+
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error returning metadata", e);
+        }
+
+        return bookMetaData;
+    }
 
 
 

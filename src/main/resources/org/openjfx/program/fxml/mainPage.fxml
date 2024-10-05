@@ -187,7 +187,7 @@
                                              <Font size="15.0" />
                                           </font>
                                        </Text>
-                                       <Text fx:id="checkBook__language" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__language" text="English" wrappingWidth="87.73770475387573">
+                                       <Text fx:id="checkBook__language" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__language" text="English" wrappingWidth="230.40441465377808">
                                           <font>
                                              <Font size="15.0" />
                                           </font>
@@ -201,7 +201,7 @@
                                              <Font size="15.0" />
                                           </font>
                                        </Text>
-                                       <Text fx:id="checkBook__isbn" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__isbn" text="9007-421" wrappingWidth="87.73770475387573">
+                                       <Text fx:id="checkBook__isbn" lineSpacing="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="checkBook__isbn" text="9007-421" wrappingWidth="314.404155254364">
                                           <font>
                                              <Font size="15.0" />
                                           </font>

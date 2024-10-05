@@ -360,6 +360,10 @@ public class mainPageController implements Initializable {
 
         checkBook__priceTag.setText(String.format("%.2f$",bookDetails.price));
         receipt__cost.setText(String.format("- %.2f $",bookDetails.price));
+        String[] metadata = app.db.Return.ReturnMetaDataByTitle(bookDetails.title);
+        checkBook__isbn.setText(metadata[0]);
+        checkBook__year.setText(metadata[1]);
+        checkBook__language.setText(metadata[2]);
 
         String username = app.db.Return.returnUserName(app.lm.getSessionId());
         receipt__header.setText("Thank you "+  username + " for your recent transaction on WaltonEBook");

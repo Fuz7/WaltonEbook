@@ -50,6 +50,12 @@ public class addBookPageController {
     private Text addBook__genreError;
     @FXML
     private Button addBook__submitButton;
+    @FXML
+    private TextField addBook__language;
+    @FXML
+    private TextField addBook__isbn;
+    @FXML
+    private TextField addBook__year;
 
     private Path latestImageURI;
 
@@ -247,7 +253,10 @@ public class addBookPageController {
                     String[] genre = returnAllActiveGenre();
                     int authorId = app.db.Return.returnAuthorId(app.lm.getSessionId());
                     boolean isAdmin = app.db.Check.checkIfAdmin(app.lm.getSessionId());
-                    app.db.Insert.InsertNewBook(title,imageLink,genre,authorId,isAdmin,roundedPrice,0,description);
+                    String isbn = addBook__isbn.getText();
+                    int year = Integer.parseInt(addBook__year.getText());
+                    String language = addBook__language.getText();
+                    app.db.Insert.InsertNewBook(title,imageLink,genre,authorId,isAdmin,roundedPrice,0,description,isbn,year,language);
                     this.mainPageController.switchToBookPublishedPage();
                 }
         }
