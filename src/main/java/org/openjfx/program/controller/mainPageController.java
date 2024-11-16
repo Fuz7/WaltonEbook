@@ -358,7 +358,13 @@ public class mainPageController implements Initializable {
         renderPurchaseButton(id);
         checkBook__purchaseButton.setOnMouseClicked(mouseEvent ->  purchaseButtonOnClick(id));
 
-        checkBook__priceTag.setText(String.format("%.2f$",bookDetails.price));
+        String price;
+        if(bookDetails.price != 0){
+            price = String.format("%.2f$",bookDetails.price);
+        }else{
+            price = "Free";
+        }
+        checkBook__priceTag.setText(price);
         receipt__cost.setText(String.format("- %.2f $",bookDetails.price));
         String[] metadata = app.db.Return.ReturnMetaDataByTitle(bookDetails.title);
         checkBook__isbn.setText(metadata[0]);
