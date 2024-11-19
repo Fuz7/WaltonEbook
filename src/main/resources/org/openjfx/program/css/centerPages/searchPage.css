@@ -134,3 +134,38 @@
     -fx-text-fill: black;
 }
 
+.searchPage__PriceSearch__radio {
+    -fx-padding: 5; /* Padding around the button */
+    -fx-font-size: 16px; /* Text size */
+    -fx-text-fill: black; /* Text color */
+}
+
+.searchPage__PriceSearch__radio .radio {
+    -fx-background-color: #ffffff; /* Outer circle background color */
+    -fx-background-radius: 50%; /* Circular background */
+    -fx-border-color: #000000; /* Outer circle border color */
+    -fx-border-width: 2px; /* Outer circle border width */
+    -fx-border-radius: 50%; /* Circular border */
+}
+
+.searchPage__PriceSearch__radio:selected .radio {
+    -fx-background-color: #000000; /* Color of the dot (inner circle) */
+    -fx-background-radius: 50%; /* Circular background for dot */
+}
+
+.searchPage__PriceSearch__radio .text {
+    -fx-font-family: "System"; /* Font family of the label */
+    -fx-font-size: 24px; /* Font size of the label */
+}
+
+.searchPage__PriceSearch__SubLabel {
+    -fx-font-family: "System";
+    -fx-font-size: 14px;
+}
+
+.searchPage__PriceSearch__TextField {
+    -fx-border-color: #000000;
+    -fx-font-family: "System";
+    -fx-font-size: 12px;
+}
+

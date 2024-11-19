@@ -27,6 +27,14 @@ import static javafx.animation.Interpolator.EASE_IN;
 public class searchPageController implements Initializable {
 
     @FXML
+    private RadioButton PriceRangeFree_RadioButton; // This
+    @FXML
+    private TextField PriceRangeMaximum_TextField; // This
+    @FXML
+    private RadioButton PriceRangeMinToMax_RadioButton; // This
+    @FXML
+    private TextField PriceRangeMinimum_TextField; // This
+    @FXML
     private StackPane searchPage__advanceSearchButton;
     @FXML
     private VBox searchPage__advanceSearchCard;
