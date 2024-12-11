@@ -26,7 +26,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
+<AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../../css/centerPages/searchPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.program.controller.searchPageController">
    <children>
       <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="2000.0" prefWidth="1685.0">
          <children>
@@ -145,33 +145,29 @@
                         </Label>
                         <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="1063.0" spacing="10.0">
                            <children>
-                              <RadioButton fx:id="PriceRangeMinToMax_RadioButton" mnemonicParsing="false" styleClass="searchPage__PriceSearch__radio">
-                                 <padding>
-                                    <Insets left="40.0" />
-                                 </padding>
-                              </RadioButton>
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <VBox prefHeight="47.0" prefWidth="128.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="92.0" styleClass="searchPage__PriceSearch__SubLabel" text="Minimum" />
-                                    <TextField fx:id="PriceRangeMinimum_TextField" promptText="\$" styleClass="searchPage__PriceSearch__TextField">
+                                    <TextField fx:id="PriceRangeMinimum_TextField" prefHeight="27.0" prefWidth="138.0" promptText="\$" scaleY="1.1" styleClass="searchPage__PriceSearch__TextField">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
                                     </TextField>
                                  </children>
                               </VBox>
-                              <Label text=" _ " />
-                              <VBox prefHeight="200.0" prefWidth="100.0">
+                              <Label text=" _ " translateY="4.0" />
+                              <VBox prefHeight="200.0" prefWidth="128.0">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="97.0" styleClass="searchPage__PriceSearch__SubLabel" text="Maximum" />
-                                    <TextField fx:id="PriceRangeMaximum_TextField" prefHeight="27.0" prefWidth="75.0" promptText="\$" styleClass="searchPage__PriceSearch__TextField" />
+                                    <TextField fx:id="PriceRangeMaximum_TextField" prefHeight="27.0" prefWidth="75.0" promptText="\$" scaleY="1.1" styleClass="searchPage__PriceSearch__TextField">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></TextField>
                                  </children>
                               </VBox>
-                              <RadioButton fx:id="PriceRangeFree_RadioButton" mnemonicParsing="false" styleClass="searchPage__PriceSearch__radio" text="Free">
-                                 <padding>
-                                    <Insets left="40.0" />
-                                 </padding>
-                              </RadioButton>
                            </children>
                            <opaqueInsets>
                               <Insets />
