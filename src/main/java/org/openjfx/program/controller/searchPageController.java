@@ -3,6 +3,8 @@ package org.openjfx.program.controller;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -26,12 +28,10 @@ import static javafx.animation.Interpolator.EASE_IN;
 
 public class searchPageController implements Initializable {
 
-    @FXML
-    private RadioButton PriceRangeFree_RadioButton; // This
+
     @FXML
     private TextField PriceRangeMaximum_TextField; // This
-    @FXML
-    private RadioButton PriceRangeMinToMax_RadioButton; // This
+
     @FXML
     private TextField PriceRangeMinimum_TextField; // This
     @FXML
@@ -66,7 +66,7 @@ public class searchPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        forcePriceFieldsToBeNumericAndHandleProperValues();
     }
 
     @FXML
@@ -164,6 +164,80 @@ public class searchPageController implements Initializable {
         return showOwnedButton__box.getStyleClass().contains("showOwnedButton__box--visible");
     }
 
+    private double returnMinPrice(){
+        if(PriceRangeMinimum_TextField.getText().isBlank()){
+            return 0;
+        }else{
+            double value = Double.parseDouble(PriceRangeMinimum_TextField.getText());
+            return value;
+        }
+    }
+
+    private double returnMaxPrice(){
+        if(PriceRangeMaximum_TextField.getText().isBlank()){
+            return 9998;
+        }else{
+            double value = Double.parseDouble(PriceRangeMaximum_TextField.getText());
+            return value;
+        }
+    }
+
+    private boolean isUpdating = false;
+
+
+    private void forcePriceFieldsToBeNumericAndHandleProperValues() {
+        PriceRangeMinimum_TextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (isUpdating) return; // Prevent cascading updates
+                isUpdating = true;
+
+                if (newValue.isEmpty()) {
+                    PriceRangeMinimum_TextField.setText(""); // Allow empty value
+                    isUpdating = false;
+                    return;
+                }
+
+                if (!newValue.matches("\\d*\\.?\\d*")) {
+                    PriceRangeMinimum_TextField.setText(newValue.replaceAll("[^\\d]", ""));
+                    isUpdating = false;
+                    return;
+                }
+
+
+
+                isUpdating = false; // Reset flag
+            }
+        });
+
+        PriceRangeMaximum_TextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (isUpdating) return; // Prevent cascading updates
+                isUpdating = true;
+
+                if (newValue.isEmpty()) {
+                    PriceRangeMaximum_TextField.setText(""); // Allow empty value
+                    isUpdating = false;
+                    return;
+                }
+
+                if (!newValue.matches("\\d*\\.?\\d*")) {
+                    PriceRangeMaximum_TextField.setText(newValue.replaceAll("[^\\d]", ""));
+                    isUpdating = false;
+                    return;
+                }
+
+
+                isUpdating = false; // Reset flag
+            }
+        });
+    }
+
+
+
     @FXML
     private void renderSearchedBooksByFxml(){
         renderSearchedBooks();
@@ -171,7 +245,7 @@ public class searchPageController implements Initializable {
 
     private void renderSearchedBooks(){
         String searchQuery =  searchPage__searchBar.getText();
-        List<Integer> bookIds = app.db.Return.returnSearch(returnSearchByValue(),returnSelectedGenre(),searchQuery,returnShowOwnedState(),app.lm.getSessionId());
+        List<Integer> bookIds = app.db.Return.returnSearch(returnSearchByValue(),returnSelectedGenre(),searchQuery,returnShowOwnedState(),app.lm.getSessionId(),returnMaxPrice(),returnMinPrice());
         List<AnchorPane> bookCards = new ArrayList<AnchorPane>();
         searchPage__bookLayout.getChildren().clear();
         for (Integer bookId : bookIds) {

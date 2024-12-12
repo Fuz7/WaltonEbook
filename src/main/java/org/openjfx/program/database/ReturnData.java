@@ -700,7 +700,7 @@ public class ReturnData {
     //TODO: Search Empty Return ALL GENRE (use the old method for it)
     //TODO: Possible optimization
 
-    public List<Integer> returnSearch(String searchBy, List<String> genre, String keyword, Boolean ShowOwned, int UserId){
+    public List<Integer> returnSearch(String searchBy, List<String> genre, String keyword, Boolean ShowOwned, int UserId, double max, double min){
         Logger logger = Logger.getLogger("ReturnSearch");
         List<Integer> bookIds = new ArrayList<>();
         String query = "";
@@ -748,10 +748,10 @@ public class ReturnData {
         // CANNOT USE OR MUST BE SPECIFIED
         if (keyword.isEmpty() && genre.isEmpty()){ // If keyword and genre is empty just return Everything
             System.out.println("KEYWORD AND GENRE IS EMPTY RETURN ALL BOOK ID INSTEAD");
-            return returnAllBookId(genre, ShowOwned, UserId);
+            return returnAllBookId(genre, ShowOwned, UserId, max, min);
         } else if (keyword.isEmpty() && !genre.isEmpty()) { // If keyword is empty but genre is not
             System.out.println("KEYWORD IS EMPTY RETURN ALL BOOK MATCHES THE GENRE");
-            return returnAllBookId(genre, ShowOwned, UserId);
+            return returnAllBookId(genre, ShowOwned, UserId, max, min);
         }
 
         try (Connection connection = DriverManager.getConnection(this.dataLocation)) {
@@ -770,10 +770,17 @@ public class ReturnData {
             logger.log(Level.SEVERE, "Error retrieving not bought books", e);
         }
 
+        if (max != 9999 && min != 9999) {
+            List<Integer> MatchesPrice = returnListMatchedByPrice(max, min);
+            bookIds.retainAll(MatchesPrice);
+
+        }
+
         return bookIds;
     }
 
-    public List<Integer> returnAllBookId(List<String> genre, boolean ShowOwned, int UserId) {
+
+    public List<Integer> returnAllBookId(List<String> genre, boolean ShowOwned, int UserId, double max, double min) {
         Logger logger = Logger.getLogger("returnAuthorId");
         boolean need_AND = false;
         List<Integer> bookIds = new ArrayList<>();
@@ -815,6 +822,12 @@ public class ReturnData {
             }
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Error connecting to database", e);
+        }
+
+        if (max != 9999 && min != 9999) {
+            List<Integer> MatchesPrice = returnListMatchedByPrice(max, min);
+            bookIds.retainAll(MatchesPrice);
+
         }
 
         return bookIds;
@@ -936,7 +949,33 @@ public class ReturnData {
         }
         return "";
     }
+    public List<Integer> returnListMatchedByPrice(double max, double min) {
+        List<Integer> bookIds = new ArrayList<>();
+        Logger logger = Logger.getLogger("InsertDataLogger");
 
+        String sql = "SELECT id FROM book_details " +
+                "WHERE price BETWEEN ? AND ? " +
+                "AND is_available = 1 " +
+                "ORDER BY id DESC";
+
+        try (Connection connection = DriverManager.getConnection(this.dataLocation);
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setDouble(1, min);
+            statement.setDouble(2, max);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    bookIds.add(resultSet.getInt("id"));
+                }
+            }
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Error retrieving book IDs by price range", e);
+        }
+
+        return bookIds;
+    }
     public String returnUserUserName(int userId){
         Logger logger = Logger.getLogger("InsertDataLogger");
 
